@@ -23,7 +23,7 @@ class Login extends React.Component {
     this.state = {
       name: '',
       password: '',
-      isError: false
+      isError: this.props.isError
     };
   }
 

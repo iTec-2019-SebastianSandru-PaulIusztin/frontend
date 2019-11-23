@@ -5,6 +5,20 @@ import { setToken } from '../../core/localStorage';
 export default class RegisterScreen extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      isError: false
+    };
+  }
+
+  componentWillMount() {
+    if (this.props.is_loggedin !== undefined) {
+      if (this.props.is_loggedin) {
+        this.props.history.replace('/admin/index');
+      }
+      else {
+        this.setState({ isError: true });
+      }
+    }
   }
 
   componentDidMount() {
@@ -15,13 +29,13 @@ export default class RegisterScreen extends React.Component {
     }
   }
 
+
     onSubmitClicked = (value) => {
       // redux here
-      console.log(value);
-      this.props.history.replace('/admin/index');
+
     };
 
     render() {
-      return <Login onSubmitClicked={ this.onSubmitClicked } />;
+      return <Login isError={ this.state.isError } onSubmitClicked={ this.onSubmitClicked } />;
     }
 }
