@@ -70,7 +70,8 @@ class Sidebar extends React.Component {
 
   // creates the links that appear in the left menu / Sidebar
   createLinks = (routes) => routes.map((prop, key) => {
-
+    const { user } = this.props
+    console.log(user);
     if (prop.path === '/login' || prop.path === '/register') {
 
     }
@@ -229,4 +230,10 @@ Sidebar.propTypes = {
   })
 };
 
-export default connect()(Sidebar);
+function mapStateToProps(state) {
+  return {
+    user: auth.getCurrentUser(state)
+  }
+}
+
+export default connect(mapStateToProps)(Sidebar);

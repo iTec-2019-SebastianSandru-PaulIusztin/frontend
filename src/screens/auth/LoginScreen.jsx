@@ -27,15 +27,6 @@ class LoginScreen extends React.Component {
     }
   }
 
-  componentDidMount() {
-    const token = this.props.location.pathname.split('/')[this.props.location.pathname.split('/').length - 1];
-    // call redux use token here
-    if (token !== 'login') {
-      setToken(token);
-    }
-  }
-
-
     onSubmitClicked = (value) => {
       const { dispatch } = this.props;
       const { name, password } = value;
