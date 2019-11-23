@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 // reactstrap components
 import {
@@ -14,6 +15,7 @@ import {
   Col
 } from 'reactstrap';
 import UserHeader from '../../components/Headers/UserHeader';
+import { auth } from '../../redux';
 // core components
 
 class Profile extends React.Component {
@@ -195,4 +197,10 @@ class Profile extends React.Component {
   }
 }
 
-export default Profile;
+function mapStateToProps(state) {
+  return {
+    user: auth.getCurrentUser(state)
+  }
+}
+
+export default connect(mapStateToProps)(Profile);
