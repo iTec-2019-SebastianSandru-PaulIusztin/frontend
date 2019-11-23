@@ -2,8 +2,8 @@ import createAPI from './createAPI';
 
 const API_SPEC = {
   endpoints: {
-    // TODO: TEST CODE
-    users: '/users/:id?/'
+    auth: '/auth/email/:id?/',
+    buyer: '/buyer/:id?/'
   },
   mappings: {},
   options: {}

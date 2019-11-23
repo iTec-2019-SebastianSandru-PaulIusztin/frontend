@@ -364,7 +364,7 @@
               <item name="frontend" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="core" type="462c0819:PsiDirectoryNode" />
-              <item name="localStorage" type="462c0819:PsiDirectoryNode" />
+              <item name="storage" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="frontend" type="b2602c69:ProjectViewProjectNode" />
@@ -535,7 +535,7 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/navigation/ToatePozeleCuTineVreauSaLeStergPanaMaine.jsx" />
-    <entry file="file://$PROJECT_DIR$/src/core/localStorage/index.js">
+    <entry file="file://$PROJECT_DIR$/src/core/storage/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
           <caret line="1" selection-start-line="1" selection-end-line="1" />

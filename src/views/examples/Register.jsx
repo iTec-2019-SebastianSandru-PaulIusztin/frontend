@@ -31,7 +31,7 @@ class Register extends React.Component {
         city: '',
         street: ''
       },
-      type: '',
+      type: 'Buyer',
       isCompany: false,
       isTargetingCompanies: false,
       isError: false,

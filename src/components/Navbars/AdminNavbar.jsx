@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux'
+import { auth } from '../../redux'
+
 import { Link } from 'react-router-dom';
 // reactstrap components
 import {
@@ -114,6 +117,12 @@ class AdminNavbar extends React.Component {
     this.setState({isAdvancedSearch: false});
   };
 
+  logout = () => {
+    const { dispatch } = this.props
+    dispatch(auth.logout())
+    this.props.history.replace('/auth/login')
+  }
+
   render() {
     return (
       <>
@@ -178,9 +187,7 @@ class AdminNavbar extends React.Component {
                   <DropdownItem divider />
                   <DropdownItem href="#pablo" onClick={ (e) => e.preventDefault() }>
                     <i className="ni ni-user-run" />
-                    <span onClick={ () => {
-                      this.props.history.replace('/auth/login');
-                    } }
+                    <span onClick={ this.logout }
                     >
 Logout
                     </span>
@@ -197,4 +204,4 @@ Logout
   }
 }
 
-export default AdminNavbar;
+export default connect()(AdminNavbar);

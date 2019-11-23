@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux'
+import { auth } from '../../redux'
+
 import { NavLink as NavLinkRRD, Link } from 'react-router-dom';
 // nodejs library to set properties for components
 import { PropTypes } from 'prop-types';
@@ -87,6 +90,12 @@ class Sidebar extends React.Component {
     }
   });
 
+  logout = () => {
+    const { dispatch } = this.props
+    dispatch(auth.logout())
+    this.props.history.replace('/auth/login')
+  }
+
   render() {
     const { bgColor, routes, logo } = this.props;
     let navbarBrandProps;
@@ -148,7 +157,7 @@ class Sidebar extends React.Component {
                 <DropdownItem divider />
                 <DropdownItem href="#pablo" onClick={ (e) => e.preventDefault() }>
                   <i className="ni ni-user-run" />
-                  <span onClick={ () => this.props.history.replace('/auth/login') }>Logout</span>
+                  <span onClick={ this.logout }>Logout</span>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
@@ -219,4 +228,4 @@ Sidebar.propTypes = {
   })
 };
 
-export default Sidebar;
+export default connect()(Sidebar);
