@@ -20,7 +20,7 @@ class UserHeader extends React.Component {
                 <Button
                   color="info"
                   href="#pablo"
-                  onClick={ (e) => e.preventDefault() }
+                  onClick={ (e) => this.props.onSave() }
                 >
                   Edit profile
                 </Button>
