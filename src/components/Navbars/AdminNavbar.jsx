@@ -29,7 +29,8 @@ class AdminNavbar extends React.Component {
       searchInput: '',
       searchCategory: '',
       searchLocation: '',
-      isError: false
+      isError: false,
+      anonUser: this.props.user === undefined
     };
   }
 
@@ -189,17 +190,31 @@ class AdminNavbar extends React.Component {
                   <DropdownItem className="noti-title" header tag="div">
                     <h6 className="text-overflow m-0">Welcome!</h6>
                   </DropdownItem>
-                  <DropdownItem to="/admin/user-profile" tag={ Link }>
-                    <i className="ni ni-single-02" />
-                    <span>My profile</span>
-                  </DropdownItem>
+                  {this.state.anonUser ? (null) : (
+                    <DropdownItem to="/admin/user-profile" tag={ Link }>
+                      <i className="ni ni-single-02" />
+                      <span>My profile</span>
+                    </DropdownItem>
+                  )}
+
                   <DropdownItem divider />
-                  <DropdownItem href="#pablo" onClick={ (e) => e.preventDefault() }>
-                    <i className="ni ni-user-run" />
-                    <span onClick={ this.logout }>
+                  {this.state.anonUser ? (null) : (
+                    <DropdownItem href="#pablo" onClick={ (e) => e.preventDefault() }>
+                      <i className="ni ni-user-run" />
+                      <span onClick={ this.logout }>
 Logout
-                    </span>
-                  </DropdownItem>
+                      </span>
+                    </DropdownItem>
+                  )}
+
+                  {this.state.anonUser ? (
+                    <DropdownItem href="#pablo" onClick={ (e) => e.preventDefault() }>
+                      <i className="ni ni-email-83" />
+                      <span onClick={ (e) => this.props.history.replace('/auth/register') }>
+Register
+                      </span>
+                    </DropdownItem>
+                  ) : (null)}
                 </DropdownMenu>
               </UncontrolledDropdown>
             </Nav>
@@ -212,4 +227,11 @@ Logout
   }
 }
 
-export default connect()(AdminNavbar);
+function mapStateToProps(state) {
+  return {
+    user: auth.getCurrentUser(state)
+  };
+}
+
+
+export default connect(mapStateToProps)(AdminNavbar);

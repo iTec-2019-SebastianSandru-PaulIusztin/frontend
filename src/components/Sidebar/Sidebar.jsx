@@ -71,7 +71,25 @@ class Sidebar extends React.Component {
   // creates the links that appear in the left menu / Sidebar
   createLinks = (routes) => routes.map((prop, key) => {
     const { user } = this.props;
-    if (user && user.is_seller) {
+    if (user === undefined){
+      if (prop.path === '/login' || prop.path === '/register' || prop.path === '/products' ||
+        prop.path === '/user-profile' || prop.path === '/shop/cart') {
+    }else {
+        return (
+            <NavItem key={ key }>
+              <NavLink
+                  to={ prop.layout + prop.path }
+                  tag={ NavLinkRRD }
+                  onClick={ this.closeCollapse }
+                  activeClassName="active"
+              >
+                <i className={ prop.icon } />
+                {prop.name}
+              </NavLink>
+            </NavItem>
+        );
+      }
+    } else if ((user.is_seller !== undefined || user.is_seller !== null) && user.is_seller) {
       if (prop.path === '/login' || prop.path === '/register') {
 
       }
