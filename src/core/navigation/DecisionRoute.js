@@ -1,14 +1,14 @@
-import {Route} from "react-router";
+import { Route } from 'react-router';
 import React from 'react';
 
 export const DecisionRoute = ({ trueComponent, falseComponent, decisionFunc, ...rest }) => (
-    <Route
-        { ...rest }
+  <Route
+    { ...rest }
 
-        render={
+    render={
             decisionFunc()
-                ? trueComponent
-                : falseComponent
+              ? trueComponent
+              : falseComponent
         }
-    />
+  />
 );

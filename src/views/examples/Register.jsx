@@ -31,12 +31,14 @@ class Register extends React.Component {
         city: '',
         street: ''
       },
-      type: '',
+      type: 'Buyer',
       isCompany: false,
       isTargetingCompanies: false,
-      isError: false
+      isError: false,
+      isConfirmPopup: false
     };
   }
+
 
 
   renderError = (message) => (
@@ -96,31 +98,94 @@ Bad credentials !
     this.setState({ isTargetingCompanies: !this.state.isTargetingCompanies });
   };
 
-  onSubmitClicked = () => {
-    const { isError, name, phoneNumber, password, email, address, type, isTargetingCompanies, isCompany } = this.state;
+  setConfirmAccountPopup = () => {
+    this.setState({isConfirmPopup: true});
+    console.log('gdsfds');
+  };
 
-    if (!PasswordValidator(password) || !NameValidator(name)
-        || !EmailValidator(email) || phoneNumber === '' || address.country === '' || address.county === '' || address.city === '' || address.street === '') {
+  renderConfirmAccount = () => (
+      <Alert color="success">
+        <strong>Success!</strong> Check your email in order to confirm account!
+      </Alert>
+  );
+
+  onSubmitClickedPhase1 = () => {
+    const {email} = this.state;
+
+    if (!EmailValidator(email)) {
       this.setState({ isError: true });
       window.scrollTo(0, 0);
       setTimeout(() => this.setState({ isError: false }), 4000);
     }
     else {
-      this.props.onSubmitClicked(this.state);
+      this.setConfirmAccountPopup();
+      this.props.onSubmitClickedPhase1(this.state);
+    }
+  };
+
+  onSubmitClickedPhase2 = () => {
+    const { name, phoneNumber, address } = this.state;
+
+    if (!NameValidator(name)
+        || phoneNumber === '' || address.country === '' || address.county === '' || address.city === '' || address.street === '') {
+      this.setState({ isError: true });
+      window.scrollTo(0, 0);
+      setTimeout(() => this.setState({ isError: false }), 4000);
+    }
+    else {
+      this.props.onSubmitClickedPhase2(this.state);
     }
   };
 
   render() {
-    const { isError, name, phoneNumber, password, email, address, type, isTargetingCompanies, isCompany } = this.state;
+    const { isError, name, phoneNumber,isConfirmPopup, password, email, address, type, isTargetingCompanies, isCompany } = this.state;
+    console.log(this.props.isConfirmed);
     return (
       <>
         <Col lg="6" md="8">
           {isError ? this.renderError() : null}
+          {isConfirmPopup ? this.renderConfirmAccount() : null}
+          {!this.props.isConfirmed ? (
+              <Card className="bg-secondary shadow border-0">
+              <CardBody className="px-lg-5 py-lg-5">
+                <div className="text-center text-muted mb-4">
+                  <small>Sign up with credentials</small>
+                </div>
+                <Form role="form">
+                  <FormGroup>
+                    <InputGroup className="input-group-alternative mb-3">
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i className="ni ni-hat-3" />
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Input value={ email } placeholder="Email" type="email" onChange={ (e) => this.updateEmail(e) } />
+                    </InputGroup>
+                  </FormGroup>
+                  <FormGroup>
+                    <InputGroup className="input-group-alternative mb-3">
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i className="ni ni-email-83" />
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Input value={ password } placeholder="Password" type="password" onChange={ (e) => this.updatePassword(e) } />
+                    </InputGroup>
+                  </FormGroup>
+                  <div className="text-center">
+                    <Button onClick={ this.onSubmitClickedPhase1 } className="mt-4" color="primary" type="button">
+                      Continue Registration
+                    </Button>
+                  </div>
+                </Form>
+              </CardBody>
+              </Card>
 
-          <Card className="bg-secondary shadow border-0">
+
+          ) : (<Card className="bg-secondary shadow border-0">
             <CardBody className="px-lg-5 py-lg-5">
               <div className="text-center text-muted mb-4">
-                <small>Sign up with credentials</small>
+                <small>Continue Registration</small>
               </div>
               <Form role="form">
                 <FormGroup>
@@ -133,27 +198,6 @@ Bad credentials !
                     <Input value={ name } placeholder="Name" type="text" onChange={ this.updateName } />
                   </InputGroup>
                 </FormGroup>
-                <FormGroup>
-                  <InputGroup className="input-group-alternative mb-3">
-                    <InputGroupAddon addonType="prepend">
-                      <InputGroupText>
-                        <i className="ni ni-email-83" />
-                      </InputGroupText>
-                    </InputGroupAddon>
-                    <Input value={ email } placeholder="Email" type="email" onChange={ this.updateEmail } />
-                  </InputGroup>
-                </FormGroup>
-                <FormGroup>
-                  <InputGroup className="input-group-alternative">
-                    <InputGroupAddon addonType="prepend">
-                      <InputGroupText>
-                        <i className="ni ni-lock-circle-open" />
-                      </InputGroupText>
-                    </InputGroupAddon>
-                    <Input value={ password } placeholder="Password" type="password" onChange={ this.updatePassword } />
-                  </InputGroup>
-                </FormGroup>
-
                 <FormGroup>
                   <InputGroup className="input-group-alternative mb-3">
                     <InputGroupAddon addonType="prepend">
@@ -246,18 +290,18 @@ Bad credentials !
                   </InputGroup>
                 </FormGroup>
                 {type === 'Seller' ? (
-                  <div className="custom-control custom-control-alternative custom-checkbox mb-3">
-                    <input
-                      value={ isTargetingCompanies }
-                      onChange={ this.updateIsTargetingCompanies }
-                      className="custom-control-input"
-                      id="customCheck5"
-                      type="checkbox"
-                    />
-                    <label className="custom-control-label" htmlFor="customCheck5">
+                    <div className="custom-control custom-control-alternative custom-checkbox mb-3">
+                      <input
+                          value={ isTargetingCompanies }
+                          onChange={ this.updateIsTargetingCompanies }
+                          className="custom-control-input"
+                          id="customCheck5"
+                          type="checkbox"
+                      />
+                      <label className="custom-control-label" htmlFor="customCheck5">
                         Targeting Companies ?
-                    </label>
-                  </div>
+                      </label>
+                    </div>
                 ) : null}
 
 
@@ -272,13 +316,13 @@ Bad credentials !
                   <Col xs="12">
                     <div className="custom-control custom-control-alternative custom-checkbox">
                       <input
-                        className="custom-control-input"
-                        id="customCheckRegister"
-                        type="checkbox"
+                          className="custom-control-input"
+                          id="customCheckRegister"
+                          type="checkbox"
                       />
                       <label
-                        className="custom-control-label"
-                        htmlFor="customCheckRegister"
+                          className="custom-control-label"
+                          htmlFor="customCheckRegister"
                       >
                         <span className="text-muted">
                           I agree with the
@@ -292,13 +336,14 @@ Bad credentials !
                   </Col>
                 </Row>
                 <div className="text-center">
-                  <Button onClick={ this.onSubmitClicked } className="mt-4" color="primary" type="button">
+                  <Button onClick={ this.onSubmitClickedPhase2 } className="mt-4" color="primary" type="button">
                     Create account
                   </Button>
                 </div>
               </Form>
             </CardBody>
-          </Card>
+          </Card>)}
+
         </Col>
       </>
     );

@@ -23,7 +23,7 @@ class Login extends React.Component {
     this.state = {
       name: '',
       password: '',
-      isError: false
+      isError: this.props.isError
     };
   }
 
@@ -38,7 +38,7 @@ class Login extends React.Component {
   onSubmitClicked = () => {
     if (!PasswordValidator(this.state.password) || !NameValidator(this.state.name)) {
       this.setState({ isError: true });
-      window.scrollTo(0, 0)
+      window.scrollTo(0, 0);
       setTimeout(() => this.setState({ isError: false }), 4000);
     }
     else {
@@ -46,9 +46,13 @@ class Login extends React.Component {
     }
   };
 
-  renderError = () => (<Alert color="warning">
-    <strong>Error !</strong> Bad credentials !
-  </Alert>);
+  renderError = () => (
+    <Alert color="warning">
+      <strong>Error !</strong>
+      {' '}
+Bad credentials !
+    </Alert>
+  );
 
   render() {
     const { username, password, isError } = this.state;

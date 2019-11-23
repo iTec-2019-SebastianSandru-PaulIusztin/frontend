@@ -2,7 +2,8 @@ import createAPI from './createAPI';
 
 const API_SPEC = {
   endpoints: {
-    auth: '/auth/email/:id?/'
+    auth: '/auth/email/:id?/',
+    buyer: '/buyer/:id?/'
   },
   mappings: {},
   options: {}
