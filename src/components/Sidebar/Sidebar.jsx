@@ -67,24 +67,25 @@ class Sidebar extends React.Component {
 
   // creates the links that appear in the left menu / Sidebar
   createLinks = (routes) => routes.map((prop, key) => {
-    if(prop.path === '/login' || prop.path === '/register'){
-      return;
-    } else {
+    if (prop.path === '/login' || prop.path === '/register') {
+
+    }
+    else {
       return (
-          <NavItem key={ key }>
-            <NavLink
-                to={ prop.layout + prop.path }
-                tag={ NavLinkRRD }
-                onClick={ this.closeCollapse }
-                activeClassName="active"
-            >
-              <i className={ prop.icon } />
-              {prop.name}
-            </NavLink>
-          </NavItem>
+        <NavItem key={ key }>
+          <NavLink
+            to={ prop.layout + prop.path }
+            tag={ NavLinkRRD }
+            onClick={ this.closeCollapse }
+            activeClassName="active"
+          >
+            <i className={ prop.icon } />
+            {prop.name}
+          </NavLink>
+        </NavItem>
       );
-    }}
-  );
+    }
+  });
 
   render() {
     const { bgColor, routes, logo } = this.props;
@@ -135,9 +136,7 @@ class Sidebar extends React.Component {
               </DropdownMenu>
             </UncontrolledDropdown>
             <UncontrolledDropdown nav>
-              <DropdownToggle nav>
-
-              </DropdownToggle>
+              <DropdownToggle nav />
               <DropdownMenu className="dropdown-menu-arrow" right>
                 <DropdownItem className="noti-title" header tag="div">
                   <h6 className="text-overflow m-0">Welcome!</h6>
@@ -149,7 +148,7 @@ class Sidebar extends React.Component {
                 <DropdownItem divider />
                 <DropdownItem href="#pablo" onClick={ (e) => e.preventDefault() }>
                   <i className="ni ni-user-run" />
-                  <span onClick={()=> this.props.history.replace('/auth/login')}>Logout</span>
+                  <span onClick={ () => this.props.history.replace('/auth/login') }>Logout</span>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
@@ -159,9 +158,9 @@ class Sidebar extends React.Component {
             {/* Collapse header */}
             <div className="navbar-collapse-header d-md-none">
               <Row>
-                  <Col className="collapse-brand" xs="6">
-                    <h1 className="text-success">Trocify.ro</h1>
-                  </Col>
+                <Col className="collapse-brand" xs="6">
+                  <h1 className="text-success">Trocify.ro</h1>
+                </Col>
                 <Col className="collapse-close" xs="6">
                   <button
                     className="navbar-toggler"

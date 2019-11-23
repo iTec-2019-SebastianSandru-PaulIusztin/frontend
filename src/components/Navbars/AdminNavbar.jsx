@@ -36,9 +36,16 @@ class AdminNavbar extends React.Component {
                   <InputGroupAddon addonType="prepend">
                     <InputGroupText>
                       <i className="fas fa-search" />
+
                     </InputGroupText>
                   </InputGroupAddon>
                   <Input placeholder="Search" type="text" />
+                  <InputGroupAddon addonType="prepend">
+                    <InputGroupText>
+                      <i className="fas fa-search-location" />
+
+                    </InputGroupText>
+                  </InputGroupAddon>
                 </InputGroup>
               </FormGroup>
             </Form>
@@ -70,7 +77,12 @@ class AdminNavbar extends React.Component {
                   <DropdownItem divider />
                   <DropdownItem href="#pablo" onClick={ (e) => e.preventDefault() }>
                     <i className="ni ni-user-run" />
-                    <span onClick={() => {this.props.history.replace('/auth/login')}}>Logout</span>
+                    <span onClick={ () => {
+                      this.props.history.replace('/auth/login');
+                    } }
+                    >
+Logout
+                    </span>
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>

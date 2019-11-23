@@ -19,7 +19,7 @@ import {
   Table,
   Container,
   Row,
-  UncontrolledTooltip, Input, Col
+  UncontrolledTooltip, Input, Col, Button, Alert
 } from 'reactstrap';
 // core components
 import Header from '../../components/Headers/Header';
@@ -35,111 +35,179 @@ class Tables extends React.Component {
           name: 'nume1-produs',
           owner: 'numeOnwer',
           price: 121,
+          quantity: 12,
           location: '341fsafsdf',
           storeName: 'fadsfasdfasdfSTORE'
         },
         {
-          name: 'nume1-produs',
+          name: 'nume2-produs',
           owner: 'numeOnwer',
           price: 121,
+          quantity: 1,
           location: '341fsafsdf',
           storeName: 'fadsfasdfasdfSTORE'
         },
         {
-          name: 'nume1-produs',
+          name: 'nume3-produs',
           owner: 'numeOnwer',
           price: 121,
+          quantity: 2,
           location: '341fsafsdf',
           storeName: 'fadsfasdfasdfSTORE'
         },
         {
-          name: 'nume1-produs',
+          name: 'nume4-produs',
           owner: 'numeOnwer',
           price: 121,
+          quantity: 3,
           location: '341fsafsdf',
           storeName: 'fadsfasdfasdfSTORE'
         },
         {
-          name: 'nume1-produs',
+          name: 'nume5-produs',
           owner: 'numeOnwer',
           price: 121,
+          quantity: 5,
+          location: '341fsafsdf',
+          storeName: 'fadsfasdfasdfSTORE'
+        },
+        {
+          name: 'nume6-produs',
+          owner: 'numeOnwer',
+          price: 121,
+          quantity: 9,
+          location: '341fsafsdf',
+          storeName: 'fadsfasdfasdfSTORE'
+        },
+        {
+          name: 'nume7-produs',
+          owner: 'numeOnwer',
+          price: 121,
+          quantity: 1,
+          location: '341fsafsdf',
+          storeName: 'fadsfasdfasdfSTORE'
+        },
+        {
+          name: 'nume8-produs',
+          owner: 'numeOnwer',
+          price: 121,
+          quantity: 1,
+          location: '341fsafsdf',
+          storeName: 'fadsfasdfasdfSTORE'
+        },
+        {
+          name: 'nume9-produs',
+          owner: 'numeOnwer',
+          price: 121,
+          quantity: 1,
+          location: '341fsafsdf',
+          storeName: 'fadsfasdfasdfSTORE'
+        },
+        {
+          name: 'nume10-produs',
+          owner: 'numeOnwer',
+          price: 121,
+          quantity: 1,
           location: '341fsafsdf',
           storeName: 'fadsfasdfasdfSTORE'
         }
       ],
-      isListSelected: true
+      isListSelected: true,
+      quantities: [],
+      isError: false,
     };
   }
 
-  createItemInTable({ name, owner, price, location, storeName }) {
-    console.log('fsdfsd', this.state.items);
+  componentDidMount() {
+    const quantities = this.state.items.map((item) => ({ itemIndex: this.state.items.indexOf(item), quantity: 0 }));
+    this.setState({ quantities: [...quantities] });
+  }
+
+  renderError = () => (
+      <Alert color="warning">
+        <strong>Error !</strong>
+        {' '}
+        Bad Quantity !
+      </Alert>
+  );
+
+
+  getItem = (e, index) => {
+    e.preventDefault();
+    // REDUX HERE
+    const item = this.state.items[index];
+    if(item.quantity < parseInt(this.state.quantities[index].quantity, 10)){
+      this.setState({isError: true});
+      window.scrollTo(0, 0);
+      setTimeout(() => this.setState({isError: false}),4000);
+    } else {
+      console.log(this.state.items[index], this.state.quantities[index].quantity);
+    }
+  };
+
+  createItemInTable({ name, owner, price, location, storeName }, index) {
     return (
-        <tr>
-          {/** IMAGE AND NAME * */}
+      <tr key={ index }>
+        {/** IMAGE AND NAME * */}
 
-          <th scope="row">
-            <Media className="align-items-center">
-              <a
-                  className="avatar rounded-circle mr-3"
-                  href="#pablo"
-                  onClick={ (e) => e.preventDefault() }
-              >
-                <img
-                    alt="..."
-                    src={ require('../../assets/img/theme/bootstrap.jpg') }
-                />
-              </a>
-              <Media>
-            <span className="mb-0 text-sm">
-              {name}
-            </span>
-              </Media>
-            </Media>
-          </th>
-          {/** PRICE PER KG* */}
-          <td>{`${price}lei`}</td>
-          <td>
-            <Badge color="" className="badge-dot mr-4">
-              <i className="bg-warning" />
-              {location}
-            </Badge>
-          </td>
-          <td>
-            {/** NAME AND STORE * */}
-            { `${owner} ${storeName}`}
-          </td>
-
-          {/**       DROP DOWN * */}
-          <td>
-            <Input
-                placeholder="How many"
-                type="number"
+        <th scope="row">
+          <Media className="align-items-center">
+            <img
+              alt="..."
+              src={ require('../../assets/img/theme/bootstrap.jpg') }
             />
-          </td>
-          <td className="text-right">
-            <UncontrolledDropdown>
-              <DropdownToggle
-                  className="btn-icon-only text-light"
-                  href="#pablo"
-                  role="button"
-                  size="sm"
-                  color=""
-                  onClick={ (e) => e.preventDefault() }
-              >
-                <i className="fas fa-ellipsis-v" />
-              </DropdownToggle>
+            <Media>
+              <span className="mb-0 text-sm">
+                {name}
+              </span>
+            </Media>
+          </Media>
+        </th>
+        {/** PRICE PER KG* */}
+        <td>{`${price}lei`}</td>
+        <td>
+          <Badge color="" className="badge-dot mr-4">
+            <i className="bg-warning" />
+            {location}
+          </Badge>
+        </td>
+        <td>
+          {/** NAME AND STORE * */}
+          { `${owner} ${storeName}`}
+        </td>
 
-              <DropdownMenu className="dropdown-menu-arrow" right>
-                <DropdownItem
-                    href="#pablo"
-                    onClick={ (e) => e.preventDefault() }
-                >
+        {/**       DROP DOWN * */}
+        <td>
+          <Input
+            onChange={ (e) => this.updateQuantity(e, index) }
+            placeholder="How many"
+            type="number"
+          />
+        </td>
+        <td className="text-right">
+          <UncontrolledDropdown>
+            <DropdownToggle
+              className="btn-icon-only text-light"
+              href="#pablo"
+              role="button"
+              size="sm"
+              color=""
+              onClick={ (e) => e.preventDefault() }
+            >
+              <i className="fas fa-ellipsis-v" />
+            </DropdownToggle>
+
+            <DropdownMenu className="dropdown-menu-arrow" right>
+              <DropdownItem
+                href="#pablo"
+                onClick={ (e) => this.getItem(e, index) }
+              >
                   Add to cart
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
-          </td>
-        </tr>
+              </DropdownItem>
+            </DropdownMenu>
+          </UncontrolledDropdown>
+        </td>
+      </tr>
     );
   }
 
@@ -147,19 +215,17 @@ class Tables extends React.Component {
   onOtherThingSelected = (isListSelected) => {
     if (isListSelected) {
       this.setState({ isListSelected: true });
-      console.log(this.state.items);
-
     }
     else {
       this.setState({ isListSelected: false });
-      console.log(this.state.items);
-
     }
   };
 
   renderTable = () => (
     <Container className="mt--7" fluid>
       {/* Table */}
+      {this.state.isError ? this.renderError() : null}
+
       <Row>
         <div className="col">
           <Card className="shadow">
@@ -179,7 +245,7 @@ class Tables extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                {this.state.items.map((item) => this.createItemInTable({ ...item }))}
+                {this.state.items.map((item, index) => this.createItemInTable({ ...item }, index))}
               </tbody>
             </Table>
             <CardFooter className="py-4">
@@ -242,11 +308,19 @@ class Tables extends React.Component {
     </Container>
   );
 
-  renderGridItem = ({ name, owner, price, location, storeName }) => (
-    <Col className="col-sm" style={ { padding: 24 } }>
+  updateQuantity = (e, index) => {
+    e.preventDefault();
+    const newQuantities = this.state.quantities;
+    const foundIndex = newQuantities.findIndex((x) => x.itemIndex === index);
+    newQuantities[foundIndex] = { itemIndex: index, quantity: e.target.value };
+    this.setState({ quantities: newQuantities });
+  };
+
+  renderGridItem = ({ name, owner, price, location, storeName }, index) => (
+    <Col key={ index } className="col-sm" style={ { padding: 24 } }>
       <Card className="shadow">
         <CardHeader className="border-0">
-          <h3 className="mb-0">One of three columns</h3>
+          <h1 className="mb-0">{name}</h1>
         </CardHeader>
         <Media className="align-items-center">
 
@@ -254,19 +328,39 @@ class Tables extends React.Component {
             alt="..."
             src={ require('../../assets/img/theme/bootstrap.jpg') }
           />
-          <Media>
-            <span className="mb-0 text-sm">
-              name
-            </span>
-          </Media>
+          <div style={ { display: 'flex', flexDirection: 'column' } }>
+            <div style={ { paddingBottom: '8px' } }>
+              <h3 className="mb-0">{owner}</h3>
+            </div>
+            <div style={ { paddingBottom: '8px' } }>
+              <h3 className="mb-0">{`${price} lei / Kg`}</h3>
+            </div>
+            <div style={ { paddingBottom: '8px' } }>
+              <h3 className="mb-0">{`${storeName} ,${location}`}</h3>
+            </div>
+            <Input
+              value={ this.state.quantities[index].quantity }
+              onChange={ (e) => this.updateQuantity(e, index) }
+              placeholder="How many"
+              type="number"
+            />
+          </div>
+
         </Media>
+
+        <Button
+          onClick={ (e) => this.getItem(e, index) }
+          color="secondary"
+          type="button"
+        >
+          Add to cart
+        </Button>
       </Card>
     </Col>
   );
 
   transformForGridRecursive(list, isTakingTwo, result = []) {
     if (list.length === 0) {
-      console.log(result);
       return result;
     }
     if (isTakingTwo) {
@@ -291,11 +385,14 @@ class Tables extends React.Component {
     const newList = [];
     const stateItems = [...this.state.items];
     this.transformForGridRecursive(stateItems, true, newList);
+    let itemId = 0;
     return (
       <Container className="mt--7" fluid>
-        {newList.map((list) => (
-          <Row>
-            {list.map((item) => this.renderGridItem({ ...item }))}
+        {this.state.isError ? this.renderError() : null}
+
+        {newList.map((list, firstIndex) => (
+          <Row key={ firstIndex }>
+            {list.map((item, index) => this.renderGridItem({ ...item }, itemId++))}
           </Row>
         ))}
       </Container>
@@ -305,8 +402,10 @@ class Tables extends React.Component {
   render() {
     return (
       <>
+
         <Header onChangeTab={ this.onOtherThingSelected } />
         {/* Page content */}
+
         { this.state.isListSelected ? (this.renderTable()
         ) : (this.renderGrid())
         }

@@ -13,7 +13,7 @@ import AuthLayout from '../auth/Auth';
 import { auth } from '../../redux';
 
 function App({ dispatch }) {
-  dispatch(auth.logout());
+  // dispatch(auth.logout());
   return (
     <BrowserRouter>
       <Switch>

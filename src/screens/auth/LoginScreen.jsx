@@ -1,6 +1,6 @@
 import React from 'react';
 import Login from '../../views/examples/Login';
-import {setToken} from "../../core/localStorage";
+import { setToken } from '../../core/localStorage';
 
 export default class RegisterScreen extends React.Component {
   constructor(props) {
@@ -10,7 +10,7 @@ export default class RegisterScreen extends React.Component {
   componentDidMount() {
     const token = this.props.location.pathname.split('/')[this.props.location.pathname.split('/').length - 1];
     // call redux use token here
-    if(token !== 'login') {
+    if (token !== 'login') {
       setToken(token);
     }
   }
