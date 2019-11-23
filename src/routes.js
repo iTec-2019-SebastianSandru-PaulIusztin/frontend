@@ -3,6 +3,7 @@ import LoginScreen from './screens/auth/LoginScreen';
 import Tables from './views/examples/Tables';
 import Shopcart from "./views/examples/Shopcart";
 import Profile from "./views/examples/Profile";
+import Products from "./views/examples/Products";
 
 const routes = [
   {
@@ -31,6 +32,7 @@ const routes = [
   {
     path: '/products',
     name: 'Products',
+    component: Products,
     icon: 'ni ni-bullet-list-67 text-red',
     layout: '/admin'
   },

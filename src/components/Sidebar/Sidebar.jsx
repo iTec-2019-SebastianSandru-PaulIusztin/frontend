@@ -1,6 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux'
-import { auth } from '../../redux'
+import { connect } from 'react-redux';
 
 import { NavLink as NavLinkRRD, Link } from 'react-router-dom';
 // nodejs library to set properties for components
@@ -36,6 +35,7 @@ import {
   Row,
   Col
 } from 'reactstrap';
+import { auth } from '../../redux';
 
 let ps;
 
@@ -70,9 +70,28 @@ class Sidebar extends React.Component {
 
   // creates the links that appear in the left menu / Sidebar
   createLinks = (routes) => routes.map((prop, key) => {
-    const { user } = this.props
-    console.log(user);
-    if (prop.path === '/login' || prop.path === '/register') {
+    const { user } = this.props;
+    if (user.is_seller) {
+      if (prop.path === '/login' || prop.path === '/register') {
+
+      }
+      else {
+        return (
+          <NavItem key={ key }>
+            <NavLink
+              to={ prop.layout + prop.path }
+              tag={ NavLinkRRD }
+              onClick={ this.closeCollapse }
+              activeClassName="active"
+            >
+              <i className={ prop.icon } />
+              {prop.name}
+            </NavLink>
+          </NavItem>
+        );
+      }
+    }
+    else if (prop.path === '/login' || prop.path === '/register' || prop.path === '/products') {
 
     }
     else {
@@ -93,9 +112,9 @@ class Sidebar extends React.Component {
   });
 
   logout = () => {
-    const { dispatch } = this.props
-    dispatch(auth.logout())
-    this.props.history.replace('/auth/login')
+    const { dispatch } = this.props;
+    dispatch(auth.logout());
+    this.props.history.replace('/auth/login');
   }
 
   render() {
@@ -233,7 +252,7 @@ Sidebar.propTypes = {
 function mapStateToProps(state) {
   return {
     user: auth.getCurrentUser(state)
-  }
+  };
 }
 
 export default connect(mapStateToProps)(Sidebar);
