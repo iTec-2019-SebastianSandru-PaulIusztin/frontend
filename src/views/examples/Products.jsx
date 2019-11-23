@@ -1,9 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Geocode from "react-geocode";
+
 import { Button, Card, CardBody, CardHeader, Col, Container, Form, FormGroup, Input, Row } from 'reactstrap';
 import SimpleHeader from '../../components/Headers/SimpleHeader';
 import ShopHeader from '../../components/Headers/ShopHeader';
-import { auth } from '../../redux';
+import { auth, shops } from '../../redux';
+import { dispatch } from 'rxjs/internal/observable/range';
 
 class Products extends React.Component {
   constructor(props) {
@@ -21,8 +24,24 @@ class Products extends React.Component {
   }
 
     onStoreSaveClick = () => {
-       // dispatch here
-        console.log(this.state);
+      const { country, county, city, street } = this.state.address
+
+      Geocode.fromAddress(`${country ? country : ''} ${county ? county : ''} ${city ? city : ''} ${street ? street : ''}`).then(
+        response => {
+          const { lat, lng } = response.results[0].geometry.location;
+          const newPayload = {
+            name: this.state.storeName,
+            lat,
+            lng
+          }
+
+          dispatch(shops.addShop(newPayload))
+        },
+        error => {
+          console.error(error);
+        }
+      );
+        
     };
 
     updateStoreName = (e) => {

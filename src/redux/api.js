@@ -3,12 +3,13 @@ import createAPI from './createAPI';
 const API_SPEC = {
   endpoints: {
     auth: '/auth/email/:id?/',
-    buyer: '/buyer/:id?/'
+    buyer: '/buyer/:id?/',
+    shops: '/stores/:id?/'
   },
   mappings: {},
   options: {}
 };
 
-const BASE_URL = 'https://add26e8b.ngrok.io/api/';
+const BASE_URL = 'https://aa2adbc9.ngrok.io/api/';
 
 export default createAPI(BASE_URL, API_SPEC);
