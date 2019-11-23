@@ -2,6 +2,7 @@ import RegisterScreen from './screens/auth/RegisterScreen';
 import LoginScreen from './screens/auth/LoginScreen';
 import Tables from './views/examples/Tables';
 import Shopcart from "./views/examples/Shopcart";
+import Profile from "./views/examples/Profile";
 
 const routes = [
   {
@@ -22,6 +23,8 @@ const routes = [
   {
     path: '/user-profile',
     name: 'User Profile',
+    component: Profile,
+
     icon: 'ni ni-single-02 text-yellow',
     layout: '/admin'
   },

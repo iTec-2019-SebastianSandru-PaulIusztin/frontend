@@ -40,7 +40,6 @@ class Register extends React.Component {
   }
 
 
-
   renderError = (message) => (
     <Alert color="warning">
       <strong>Error !</strong>
@@ -99,18 +98,20 @@ Bad credentials !
   };
 
   setConfirmAccountPopup = () => {
-    this.setState({isConfirmPopup: true});
+    this.setState({ isConfirmPopup: true });
     console.log('gdsfds');
   };
 
   renderConfirmAccount = () => (
-      <Alert color="success">
-        <strong>Success!</strong> Check your email in order to confirm account!
-      </Alert>
+    <Alert color="success">
+      <strong>Success!</strong>
+      {' '}
+Check your email in order to confirm account!
+    </Alert>
   );
 
   onSubmitClickedPhase1 = () => {
-    const {email} = this.state;
+    const { email } = this.state;
 
     if (!EmailValidator(email)) {
       this.setState({ isError: true });
@@ -126,7 +127,7 @@ Bad credentials !
   onSubmitClickedPhase2 = () => {
     const { name, phoneNumber, address } = this.state;
 
-    if (!NameValidator(name)
+    if (name === ''
         || phoneNumber === '' || address.country === '' || address.county === '' || address.city === '' || address.street === '') {
       this.setState({ isError: true });
       window.scrollTo(0, 0);
@@ -138,7 +139,7 @@ Bad credentials !
   };
 
   render() {
-    const { isError, name, phoneNumber,isConfirmPopup, password, email, address, type, isTargetingCompanies, isCompany } = this.state;
+    const { isError, name, phoneNumber, isConfirmPopup, password, email, address, type, isTargetingCompanies, isCompany } = this.state;
     console.log(this.props.isConfirmed);
     return (
       <>
@@ -146,7 +147,7 @@ Bad credentials !
           {isError ? this.renderError() : null}
           {isConfirmPopup ? this.renderConfirmAccount() : null}
           {!this.props.isConfirmed ? (
-              <Card className="bg-secondary shadow border-0">
+            <Card className="bg-secondary shadow border-0">
               <CardBody className="px-lg-5 py-lg-5">
                 <div className="text-center text-muted mb-4">
                   <small>Sign up with credentials</small>
@@ -179,170 +180,172 @@ Bad credentials !
                   </div>
                 </Form>
               </CardBody>
-              </Card>
+            </Card>
 
 
-          ) : (<Card className="bg-secondary shadow border-0">
-            <CardBody className="px-lg-5 py-lg-5">
-              <div className="text-center text-muted mb-4">
-                <small>Continue Registration</small>
-              </div>
-              <Form role="form">
-                <FormGroup>
-                  <InputGroup className="input-group-alternative mb-3">
-                    <InputGroupAddon addonType="prepend">
-                      <InputGroupText>
-                        <i className="ni ni-hat-3" />
-                      </InputGroupText>
-                    </InputGroupAddon>
-                    <Input value={ name } placeholder="Name" type="text" onChange={ this.updateName } />
-                  </InputGroup>
-                </FormGroup>
-                <FormGroup>
-                  <InputGroup className="input-group-alternative mb-3">
-                    <InputGroupAddon addonType="prepend">
-                      <InputGroupText>
-                        <i className="ni ni-chat-round" />
-                      </InputGroupText>
-                    </InputGroupAddon>
-                    <Input value={ phoneNumber } placeholder="Phone number" type="text" onChange={ this.updatePhoneNumber } />
-                  </InputGroup>
-                </FormGroup>
+          ) : (
+            <Card className="bg-secondary shadow border-0">
+              <CardBody className="px-lg-5 py-lg-5">
                 <div className="text-center text-muted mb-4">
-                  <small>Address details</small>
+                  <small>Continue Registration</small>
                 </div>
-                <hr className="my-3" />
+                <Form role="form">
+                  <FormGroup>
+                    <InputGroup className="input-group-alternative mb-3">
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i className="ni ni-hat-3" />
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Input value={ name } placeholder="Name" type="text" onChange={ this.updateName } />
+                    </InputGroup>
+                  </FormGroup>
+                  <FormGroup>
+                    <InputGroup className="input-group-alternative mb-3">
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i className="ni ni-chat-round" />
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Input value={ phoneNumber } placeholder="Phone number" className="form-control-alternative" type="text" onChange={ this.updatePhoneNumber } />
+                    </InputGroup>
+                  </FormGroup>
+                  <div className="text-center text-muted mb-4">
+                    <small>Address details</small>
+                  </div>
+                  <hr className="my-3" />
 
-                <FormGroup>
-                  <InputGroup className="input-group-alternative mb-3">
-                    <InputGroupAddon addonType="prepend">
-                      <InputGroupText>
-                        <i className="ni ni-building" />
-                      </InputGroupText>
-                    </InputGroupAddon>
-                    <Input value={ address.country } onChange={ this.updateAddressCountry } className="form-control-alternative" placeholder="Country" type="text" />
-                  </InputGroup>
-                </FormGroup>
+                  <FormGroup>
+                    <InputGroup className="input-group-alternative mb-3">
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i className="ni ni-building" />
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Input value={ address.country } onChange={ this.updateAddressCountry } className="form-control-alternative" placeholder="Country" type="text" />
+                    </InputGroup>
+                  </FormGroup>
 
-                <FormGroup>
-                  <InputGroup className="input-group-alternative mb-3">
-                    <InputGroupAddon addonType="prepend">
-                      <InputGroupText>
-                        <i className="ni ni-building" />
-                      </InputGroupText>
-                    </InputGroupAddon>
-                    <Input value={ address.county } onChange={ this.updateAddressCounty } className="form-control-alternative" placeholder="County" type="text" />
-                  </InputGroup>
-                </FormGroup>
+                  <FormGroup>
+                    <InputGroup className="input-group-alternative mb-3">
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i className="ni ni-building" />
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Input value={ address.county } onChange={ this.updateAddressCounty } className="form-control-alternative" placeholder="County" type="text" />
+                    </InputGroup>
+                  </FormGroup>
 
-                <FormGroup>
-                  <InputGroup className="input-group-alternative mb-3">
-                    <InputGroupAddon addonType="prepend">
-                      <InputGroupText>
-                        <i className="ni ni-building" />
-                      </InputGroupText>
-                    </InputGroupAddon>
-                    <Input value={ address.city } onChange={ this.updateAddressCity } className="form-control-alternative" placeholder="City" type="text" />
-                  </InputGroup>
-                </FormGroup>
+                  <FormGroup>
+                    <InputGroup className="input-group-alternative mb-3">
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i className="ni ni-building" />
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Input value={ address.city } onChange={ this.updateAddressCity } className="form-control-alternative" placeholder="City" type="text" />
+                    </InputGroup>
+                  </FormGroup>
 
-                <FormGroup>
-                  <InputGroup className="input-group-alternative mb-3">
-                    <InputGroupAddon addonType="prepend">
-                      <InputGroupText>
-                        <i className="ni ni-building" />
-                      </InputGroupText>
-                    </InputGroupAddon>
-                    <Input value={ address.street } onChange={ this.updateAddressStreet } className="form-control-alternative" placeholder="Street" type="text" />
-                  </InputGroup>
-                </FormGroup>
+                  <FormGroup>
+                    <InputGroup className="input-group-alternative mb-3">
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i className="ni ni-building" />
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Input value={ address.street } onChange={ this.updateAddressStreet } className="form-control-alternative" placeholder="Street" type="text" />
+                    </InputGroup>
+                  </FormGroup>
 
-                <div className="text-center text-muted mb-4">
-                  <small>Type</small>
-                </div>
-                <hr className="my-3" />
+                  <div className="text-center text-muted mb-4">
+                    <small>Type</small>
+                  </div>
+                  <hr className="my-3" />
 
-                <FormGroup>
-                  <InputGroup className="input-group-alternative mb-3">
-                    <InputGroupAddon addonType="prepend">
-                      <InputGroupText>
-                        <i className="ni ni-building" />
-                      </InputGroupText>
-                    </InputGroupAddon>
-                    <Input value={ isCompany ? 'Company' : 'Private' } placeholder="Buyer/Seller" onChange={ this.updateIsCompany } type="select" name="select" id="exampleSelect">
-                      <option>Private</option>
-                      <option>Company</option>
-                    </Input>
-                  </InputGroup>
-                </FormGroup>
+                  <FormGroup>
+                    <InputGroup className="input-group-alternative mb-3">
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i className="ni ni-building" />
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Input value={ isCompany ? 'Company' : 'Private' } placeholder="Buyer/Seller" onChange={ this.updateIsCompany } type="select" name="select" id="exampleSelect">
+                        <option>Private</option>
+                        <option>Company</option>
+                      </Input>
+                    </InputGroup>
+                  </FormGroup>
 
-                <FormGroup>
-                  <InputGroup className="input-group-alternative mb-3">
-                    <InputGroupAddon addonType="prepend">
-                      <InputGroupText>
-                        <i className="ni ni-building" />
-                      </InputGroupText>
-                    </InputGroupAddon>
-                    <Input value={ type } placeholder="Buyer/Seller" onChange={ this.updateType } type="select" name="select" id="exampleSelect">
-                      <option>Buyer</option>
-                      <option>Seller</option>
-                    </Input>
-                  </InputGroup>
-                </FormGroup>
-                {type === 'Seller' ? (
+                  <FormGroup>
+                    <InputGroup className="input-group-alternative mb-3">
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i className="ni ni-building" />
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Input value={ type } placeholder="Buyer/Seller" onChange={ this.updateType } type="select" name="select" id="exampleSelect">
+                        <option>Buyer</option>
+                        <option>Seller</option>
+                      </Input>
+                    </InputGroup>
+                  </FormGroup>
+                  {type === 'Seller' ? (
                     <div className="custom-control custom-control-alternative custom-checkbox mb-3">
                       <input
-                          value={ isTargetingCompanies }
-                          onChange={ this.updateIsTargetingCompanies }
-                          className="custom-control-input"
-                          id="customCheck5"
-                          type="checkbox"
+                        value={ isTargetingCompanies }
+                        onChange={ this.updateIsTargetingCompanies }
+                        className="custom-control-input"
+                        id="customCheck5"
+                        type="checkbox"
                       />
                       <label className="custom-control-label" htmlFor="customCheck5">
                         Targeting Companies ?
                       </label>
                     </div>
-                ) : null}
+                  ) : null}
 
 
-                <div className="text-muted font-italic">
-                  <small>
+                  <div className="text-muted font-italic">
+                    <small>
                     password strength:
-                    {' '}
-                    <span className="text-success font-weight-700">strong</span>
-                  </small>
-                </div>
-                <Row className="my-4">
-                  <Col xs="12">
-                    <div className="custom-control custom-control-alternative custom-checkbox">
-                      <input
+                      {' '}
+                      <span className="text-success font-weight-700">strong</span>
+                    </small>
+                  </div>
+                  <Row className="my-4">
+                    <Col xs="12">
+                      <div className="custom-control custom-control-alternative custom-checkbox">
+                        <input
                           className="custom-control-input"
                           id="customCheckRegister"
                           type="checkbox"
-                      />
-                      <label
+                        />
+                        <label
                           className="custom-control-label"
                           htmlFor="customCheckRegister"
-                      >
-                        <span className="text-muted">
+                        >
+                          <span className="text-muted">
                           I agree with the
-                          {' '}
-                          <a href="#pablo" onClick={ (e) => e.preventDefault() }>
+                            {' '}
+                            <a href="#pablo" onClick={ (e) => e.preventDefault() }>
                             Privacy Policy
-                          </a>
-                        </span>
-                      </label>
-                    </div>
-                  </Col>
-                </Row>
-                <div className="text-center">
-                  <Button onClick={ this.onSubmitClickedPhase2 } className="mt-4" color="primary" type="button">
+                </a>
+                          </span>
+                        </label>
+                      </div>
+                    </Col>
+                  </Row>
+                  <div className="text-center">
+                    <Button onClick={ this.onSubmitClickedPhase2 } className="mt-4" color="primary" type="button">
                     Create account
-                  </Button>
-                </div>
-              </Form>
-            </CardBody>
-          </Card>)}
+                    </Button>
+                  </div>
+                </Form>
+              </CardBody>
+            </Card>
+          )}
 
         </Col>
       </>
