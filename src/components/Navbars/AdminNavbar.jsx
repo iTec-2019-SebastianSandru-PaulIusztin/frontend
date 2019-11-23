@@ -1,6 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux'
-import { auth } from '../../redux'
+import { connect } from 'react-redux';
 
 import { Link } from 'react-router-dom';
 // reactstrap components
@@ -20,6 +19,7 @@ import {
   Container,
   Media, Button, Modal, Alert
 } from 'reactstrap';
+import { auth } from '../../redux';
 
 class AdminNavbar extends React.Component {
   constructor(props) {
@@ -34,40 +34,43 @@ class AdminNavbar extends React.Component {
   }
 
   renderError = () => (
-      <Alert color="warning">
-        <strong>Error !</strong>
-        {' '}
+    <Alert color="warning">
+      <strong>Error !</strong>
+      {' '}
         Bad credentials !
-      </Alert>
+    </Alert>
   );
 
   search = (e) => {
     // REDUX HERE
-    if(this.state.searchInput === ''){
-      this.setState({isError: true});
-      setTimeout(() => {this.setState({isError: false})},3000);
-    } else {
-      this.setState({isAdvancedSearch: false});
+    if (this.state.searchInput === '') {
+      this.setState({ isError: true });
+      setTimeout(() => {
+        this.setState({ isError: false });
+      }, 3000);
+    }
+    else {
+      this.setState({ isAdvancedSearch: false });
       console.log(this.state);
     }
   };
 
   updateSearchCategory = (e) => {
-    this.setState({searchCategory: e.target.value});
+    this.setState({ searchCategory: e.target.value });
   };
 
 
   updateSearchLocation = (e) => {
-    this.setState({searchLocation: e.target.value});
+    this.setState({ searchLocation: e.target.value });
   };
 
 
   updateSearchInput = (e) => {
-    this.setState({searchInput: e.target.value});
+    this.setState({ searchInput: e.target.value });
   };
 
   enterAdvancedSearch = () => {
-    this.setState({isAdvancedSearch: true});
+    this.setState({ isAdvancedSearch: true });
   };
 
   renderModal = () => (
@@ -85,19 +88,19 @@ class AdminNavbar extends React.Component {
             Search by Category or by the Location !
           </p>
         </div>
-        <FormGroup className="mb-0" style={{    paddingBottom: "16px"}}>
+        <FormGroup className="mb-0" style={ {    paddingBottom: '16px' } }>
           <InputGroup className="input-group-alternative">
-            <Input value={this.state.searchCategory} onChange = {(e) => this.updateSearchCategory(e)}placeholder="Category" type="text" />
+            <Input value={ this.state.searchCategory } onChange={ (e) => this.updateSearchCategory(e) } placeholder="Category" type="text" />
           </InputGroup>
         </FormGroup>
         <FormGroup className="mb-0">
           <InputGroup className="input-group-alternative">
-            <Input value={this.state.searchLocation} onChange = {(e) => this.updateSearchLocation(e)} placeholder="Location" type="text" />
+            <Input value={ this.state.searchLocation } onChange={ (e) => this.updateSearchLocation(e) } placeholder="Location" type="text" />
           </InputGroup>
         </FormGroup>
       </div>
       <div className="modal-footer">
-        <Button onClick = {()=> this.search()}className="btn-white" color="default" type="button">
+        <Button onClick={ () => this.search() } className="btn-white" color="default" type="button">
           Search
         </Button>
         <Button
@@ -114,13 +117,13 @@ class AdminNavbar extends React.Component {
   );
 
   cancelModal = () => {
-    this.setState({isAdvancedSearch: false});
+    this.setState({ isAdvancedSearch: false });
   };
 
   logout = () => {
-    const { dispatch } = this.props
-    dispatch(auth.logout())
-    this.props.history.replace('/auth/login')
+    const { dispatch } = this.props;
+    dispatch(auth.logout());
+    this.props.history.replace('/auth/login');
   }
 
   render() {
@@ -145,14 +148,20 @@ class AdminNavbar extends React.Component {
 
                     </InputGroupText>
                   </InputGroupAddon>
-                  <Input onKeyPress={event => {
-                    if (event.key === 'Enter') {
-                      this.search()
-                    }
-                  }}value={this.state.searchInput} onChange = {(e) => this.updateSearchInput(e)}placeholder="Search" type="text" />
+                  <Input
+                    onKeyPress={ (event) => {
+                      if (event.key === 'Enter') {
+                        this.search();
+                      }
+                    } }
+                    value={ this.state.searchInput }
+                    onChange={ (e) => this.updateSearchInput(e) }
+                    placeholder="Search"
+                    type="text"
+                  />
                   <InputGroupAddon addonType="prepend">
                     <InputGroupText>
-                      <i onClick={ this.enterAdvancedSearch } className="fas fa-search-location" style={{cursor: "pointer"}} />
+                      <i onClick={ this.enterAdvancedSearch } className="fas fa-search-location" style={ { cursor: 'pointer' } } />
 
                     </InputGroupText>
                   </InputGroupAddon>
@@ -171,7 +180,7 @@ class AdminNavbar extends React.Component {
                     </span>
                     <Media className="ml-2 d-none d-lg-block">
                       <span className="mb-0 text-sm font-weight-bold">
-                        Jessica Jones
+                        Sebastian Sandru
                       </span>
                     </Media>
                   </Media>
@@ -187,8 +196,7 @@ class AdminNavbar extends React.Component {
                   <DropdownItem divider />
                   <DropdownItem href="#pablo" onClick={ (e) => e.preventDefault() }>
                     <i className="ni ni-user-run" />
-                    <span onClick={ this.logout }
-                    >
+                    <span onClick={ this.logout }>
 Logout
                     </span>
                   </DropdownItem>

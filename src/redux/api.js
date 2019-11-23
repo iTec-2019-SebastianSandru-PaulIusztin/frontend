@@ -9,6 +9,6 @@ const API_SPEC = {
   options: {}
 };
 
-const BASE_URL = 'http://localhost:8888/api/';
+const BASE_URL = 'https://add26e8b.ngrok.io/api/';
 
 export default createAPI(BASE_URL, API_SPEC);

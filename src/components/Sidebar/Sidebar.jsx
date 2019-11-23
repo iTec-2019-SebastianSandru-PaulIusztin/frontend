@@ -71,7 +71,7 @@ class Sidebar extends React.Component {
   // creates the links that appear in the left menu / Sidebar
   createLinks = (routes) => routes.map((prop, key) => {
     const { user } = this.props
-
+    console.log(user);
     if (prop.path === '/login' || prop.path === '/register') {
 
     }
