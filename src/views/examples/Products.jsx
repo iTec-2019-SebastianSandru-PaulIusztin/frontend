@@ -24,6 +24,7 @@ class Products extends React.Component {
   }
 
     onStoreSaveClick = () => {
+      const { dispatch } = this.props
       const { country, county, city, street } = this.state.address
 
       Geocode.fromAddress(`${country ? country : ''} ${county ? county : ''} ${city ? city : ''} ${street ? street : ''}`).then(
@@ -237,7 +238,8 @@ class Products extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    user: auth.getCurrentUser(state)
+    user: auth.getCurrentUser(state),
+    shop: shops.getCurrentShop(state)
   };
 }
 

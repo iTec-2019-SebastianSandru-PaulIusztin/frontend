@@ -10,7 +10,7 @@ import { REFRESH_CURRENT_USER } from './auth';
 export const ADD_SHOP = '@ shops / ADD_SHOP'
 export const GET_CURRENT_SHOP_SUCCEEDED = '@ shops / GET_CURRENT_SHOP_SUCCEEDED'
 
-export const addShop = (paylaod) => ({type: ADD_SHOP, paylaod})
+export const addShop = (payload) => ({type: ADD_SHOP, payload})
 
 //
 // REDUCERS
@@ -22,7 +22,7 @@ export function reducer(state = initialState, action = {}) {
       case GET_CURRENT_SHOP_SUCCEEDED:
         return {
           ...state,
-          current: action.payload
+          current: action.payload.data.undefined
         }
       default:
         return api.reduceRequests('shops', state, action)
@@ -37,12 +37,13 @@ export function* saga() {
 }
 
 function* addShopHandler({ payload }) {
-  const shopURL = api.buildURL('stores');
+  console.log(payload)
+  const shopURL = api.buildURL('shops');
   yield put(api.create(shopURL, payload));
 
   const { success } = yield race({
-    success: take(api.stores.CREATE_SUCCEEDED),
-    failure: take(api.stores.CREATE_FAILED)
+    success: take(api.shops.CREATE_SUCCEEDED),
+    failure: take(api.shops.CREATE_FAILED)
   });
 
   if(success) {
@@ -51,16 +52,22 @@ function* addShopHandler({ payload }) {
 }
 
 function* getCurrentShopHandler() {
-  const shopURL = api.buildURL('stores', { id: 'me' });
+  const shopURL = api.buildURL('shops', { id: 'me' });
     yield put(api.get(shopURL));
 
   const { success } = yield race({
-    success: take(api.stores.GET_SUCCEEDED),
-    failure: take(api.stores.GET_FAILED)
+    success: take(api.shops.GET_SUCCEEDED),
+    failure: take(api.shops.GET_FAILED)
   });
 
   if(success) {
       yield put({type: GET_CURRENT_SHOP_SUCCEEDED, payload: success.payload})
   }
 }
+
+export const getState = (state) => (state.shops)
+export const getCurrentShop= createSelector(
+  getState,
+  (state) => state.current
+)
 
