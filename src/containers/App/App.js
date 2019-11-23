@@ -1,35 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import ReactDOM from 'react-dom';
+import '../../assets/vendor/nucleo/css/nucleo.css';
+import '../../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css';
+import '../../assets/css/argon-dashboard-react.css';
+import AdminLayout from '../admin/Admin';
+import AuthLayout from '../auth/Auth';
+// import "assets/css/argon-dashboard-react.min.css";
+// import "assets/css/argon-dashboard-react.css.map";
 
 import { auth } from '../../redux';
 
 function App({ dispatch }) {
-  // TODO: TEST CODE: DELETE ME
   dispatch(auth.logout());
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={ logo } className="App-logo" alt="logo" />
-        <p>
-          Edit
-          {' '}
-          <code>src/App.js</code>
-          {' '}
-and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/admin" render={ (props) => <AdminLayout { ...props } /> } />
+        <Route path="/auth" render={ (props) => <AuthLayout { ...props } /> } />
+        <Redirect from="/" to="/admin/index" />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
