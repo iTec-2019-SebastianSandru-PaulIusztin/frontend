@@ -3,6 +3,7 @@ import { createSelector } from 'reselect'
 
 import { api } from '../redux';
 import { getCredentials, getToken, setCredentials, setToken, clear } from '../core/storage'
+import { stat } from 'fs';
 
 //
 // ACTIONS
@@ -46,6 +47,11 @@ export const initialState = {
 
 export function reducer(state = initialState, action = {}) {
   switch (action.type) {
+    case IS_AUTHENTICATED:
+      return {
+        ...state,
+        is_loggedin: true
+      }
     case LOGIN_SUCCEEDED:
       return {
         ...state,
@@ -68,6 +74,14 @@ export function reducer(state = initialState, action = {}) {
         ...state,
         is_signup: false
       };
+    case api.buyer.GET_SUCCEEDED:
+      const user_id = Object.keys(action.payload.data)[0]
+      const user = action.payload.data[user_id]
+
+      return {
+        ...state,
+        user
+      }
     case LOGOUT:
       clear()
 
@@ -89,7 +103,8 @@ export function* saga() {
   yield takeLatest(LOGIN, loginHandler);
   yield takeLatest(VERIFY, verifyHandler);
   yield takeEvery([LOGIN_SUCCEEDED, IS_AUTHENTICATED], grantAccess);
-  yield takeLatest(UPDATE_CURRENT_USER, updateCurrentUserHandler)
+  yield takeLatest(UPDATE_CURRENT_USER, updateCurrentUserHandler);
+  yield takeLatest(ACCESS_GRANTED, getCurrentUserHanlder);
 }
 
 function* checkAuthentication() {
@@ -199,8 +214,8 @@ function* updateCurrentUserHandler({ payload }) {
   }
 
   const { success } = yield race({
-    success: take(api.buyer.CREATE_SUCCEEDED),
-    failure: take(api.buyer.CREATE_FAILED)
+    success: take([api.buyer.CREATE_SUCCEEDED, api.buyer.UPDATE_SUCCEEDED]),
+    failure: take([api.buyer.CREATE_FAILED, api.buyer.UPDATE_FAILED])
   });
 
   if (success) {
@@ -212,7 +227,8 @@ function* updateCurrentUserHandler({ payload }) {
 }
 
 function* getCurrentUserHanlder() {
-
+  const getUserUrl = api.buildURL('buyer', { id: 'me' });
+  yield put(api.get(getUserUrl));
 }
 
 //
