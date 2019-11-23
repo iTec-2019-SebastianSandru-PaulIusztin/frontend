@@ -1,12 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Geocode from "react-geocode";
+import Geocode from 'react-geocode';
 
 import { Button, Card, CardBody, CardHeader, Col, Container, Form, FormGroup, Input, Row } from 'reactstrap';
-import SimpleHeader from '../../components/Headers/SimpleHeader';
 import ShopHeader from '../../components/Headers/ShopHeader';
 import { auth, shops } from '../../redux';
-import { dispatch } from 'rxjs/internal/observable/range';
+import AddProduct from "./AddProduct";
 
 class Products extends React.Component {
   constructor(props) {
@@ -19,30 +18,32 @@ class Products extends React.Component {
         city: '',
         street: ''
       },
-      storeName: ''
+      storeName: '',
+      hasStore: false,
+      isAddProduct: false,
     };
+    console.log(this.props.shop);
   }
 
     onStoreSaveClick = () => {
-      const { dispatch } = this.props
-      const { country, county, city, street } = this.state.address
+      const { dispatch } = this.props;
+      const { country, county, city, street } = this.state.address;
 
-      Geocode.fromAddress(`${country ? country : ''} ${county ? county : ''} ${city ? city : ''} ${street ? street : ''}`).then(
-        response => {
+      Geocode.fromAddress(`${country || ''} ${county || ''} ${city || ''} ${street || ''}`).then(
+        (response) => {
           const { lat, lng } = response.results[0].geometry.location;
           const newPayload = {
             name: this.state.storeName,
             lat,
             lng
-          }
+          };
 
-          dispatch(shops.addShop(newPayload))
+          dispatch(shops.addShop(newPayload));
         },
-        error => {
+        (error) => {
           console.error(error);
         }
       );
-        
     };
 
     updateStoreName = (e) => {
@@ -73,8 +74,20 @@ class Products extends React.Component {
     this.setState({ storeCreation: !this.state.storeCreation });
   };
 
+  setAddProductFlag = () => {
+    this.setState({isAddProduct: !this.state.isAddProduct});
+  };
+
   onStoreCancelClick = () => {
     this.setState({ storeCreation: false });
+  };
+
+  componentDidMount() {
+    if(this.props.shop === undefined || this.props.shop === null) {
+      this.setState({hasStore: false});
+    } else {
+      this.setState({hasStore: true, storeName: this.props.shop.name});
+    }
   }
 
   renderStoreCreation() {
@@ -114,8 +127,8 @@ class Products extends React.Component {
                     </label>
                     <Input
                       className="form-control-alternative"
-                      defaultValue={this.state.storeName}
-                      onChange={(e) => this.updateStoreName(e)}
+                      defaultValue={ this.state.storeName }
+                      onChange={ (e) => this.updateStoreName(e) }
                       id="input-username"
                       placeholder="Username"
                       type="text"
@@ -141,8 +154,8 @@ class Products extends React.Component {
                     </label>
                     <Input
                       className="form-control-alternative"
-                      defaultValue={this.state.address.country}
-                      onChange={(e) => this.updateAddressCountry(e)}
+                      defaultValue={ this.state.address.country }
+                      onChange={ (e) => this.updateAddressCountry(e) }
                       id="input-address"
                       placeholder="Country"
                       type="text"
@@ -161,10 +174,9 @@ class Products extends React.Component {
                     </label>
                     <Input
                       className="form-control-alternative"
-                      defaultValue="New York"
                       id="input-city"
-                      defaultValue={this.state.address.county}
-                      onChange={(e) => this.updateAddressCounty(e)}
+                      defaultValue={ this.state.address.county }
+                      onChange={ (e) => this.updateAddressCounty(e) }
                       placeholder="County"
                       type="text"
                     />
@@ -181,8 +193,8 @@ class Products extends React.Component {
                     <Input
                       className="form-control-alternative"
                       id="input-country"
-                      defaultValue={this.state.address.city}
-                      onChange={(e) => this.updateAddressCity(e)}
+                      defaultValue={ this.state.address.city }
+                      onChange={ (e) => this.updateAddressCity(e) }
                       placeholder="City"
                       type="text"
                     />
@@ -199,15 +211,15 @@ class Products extends React.Component {
                     <Input
                       className="form-control-alternative"
                       id="input-country"
-                      defaultValue={this.state.address.street}
-                      onChange={(e) => this.updateAddressStreet(e)}
+                      defaultValue={ this.state.address.street }
+                      onChange={ (e) => this.updateAddressStreet(e) }
                       placeholder="Country"
                       type="text"
                     />
                   </FormGroup>
                 </Col>
               </Row>
-              <Button onClick={ this.onStoreSaveClick }className="my-4" color="primary" type="button">
+              <Button onClick={ this.onStoreSaveClick } className="my-4" color="primary" type="button">
                               Create
               </Button>
               <Button onClick={ this.onStoreCancelClick } className="my-4" color="secondary" type="button">
@@ -221,14 +233,42 @@ class Products extends React.Component {
   }
 
   render() {
+    console.log(this.state.hasStore);
     return (
       <>
-        <ShopHeader onNew={ this.onNewStoreClick } />
+        <ShopHeader onNew={ this.onNewStoreClick } storeName={this.state.storeName} hasStore={this.state.hasStore}/>
         {this.state.storeCreation ? (
           <Container className="mt--7" fluid>
             {this.renderStoreCreation()}
           </Container>
         ) : (null)}
+        {this.state.hasStore ? (
+            <Container className="mt--7" fluid>
+              <Card className="bg-secondary shadow">
+                <CardHeader className="bg-white border-0">
+                  <Row className="align-items-center">
+                    <Col xs="8">
+                      <h3 className="mb-0">My Store</h3>
+                    </Col>
+                    <Col className="text-right" xs="4">
+                      <Button
+                          color="primary"
+                          href="#pablo"
+                          onClick={ (e) => this.setAddProductFlag }
+                          size="large"
+                      >
+                        + Add a new product
+                      </Button>
+                    </Col>
+                  </Row>
+                </CardHeader>
+              <CardBody>
+                {'asfsfdasdfas'}
+              {this.state.isAddProduct ? <AddProduct/> : (null)}
+              </CardBody>
+              </Card>
+            </Container>
+        ): null}
 
       </>
     );

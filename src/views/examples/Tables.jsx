@@ -135,7 +135,7 @@ class Tables extends React.Component {
           lng: 21.231513
         }
       ],
-      isListSelected: true,
+      isListSelected: 'list',
       quantities: [],
       isError: false,
       areButtonsDisabled: this.props.user === undefined

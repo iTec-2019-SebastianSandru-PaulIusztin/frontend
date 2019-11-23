@@ -30,8 +30,17 @@ class AdminNavbar extends React.Component {
       searchCategory: '',
       searchLocation: '',
       isError: false,
-      anonUser: this.props.user === undefined
+      anonUser: this.props.user === undefined || (this.props.user.is_loggedin === false),
+      userName: ''
     };
+  }
+
+  componentDidMount() {
+    if(this.props.user === undefined){
+      this.setState({userName: 'Anonymous'})
+    } else {
+      this.setState({userName: this.props.user.email})
+    }
   }
 
   renderError = () => (
@@ -181,7 +190,7 @@ class AdminNavbar extends React.Component {
                     </span>
                     <Media className="ml-2 d-none d-lg-block">
                       <span className="mb-0 text-sm font-weight-bold">
-                        Sebastian Sandru
+                        {this.state.userName}
                       </span>
                     </Media>
                   </Media>

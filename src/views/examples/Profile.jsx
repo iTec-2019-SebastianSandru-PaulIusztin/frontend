@@ -113,7 +113,7 @@ class Profile extends React.Component {
     const { user } = this.props;
     return (
       <>
-        <UserHeader onSave={ this.onSaveClicked } />
+        <UserHeader onSave={ this.onSaveClicked } userName={this.state.name}/>
 
         {/* Page content */}
         <Container className="mt--7" fluid>

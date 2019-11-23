@@ -11,8 +11,12 @@ class ShopHeader extends React.Component {
     };
   }
     onNewStoreClick = () => {
-      this.props.onNew();
-    }
+      if(this.props.hasStore){
+
+      }else {
+        this.props.onNew();
+      }
+  };
 
   render() {
     return (
@@ -24,7 +28,7 @@ class ShopHeader extends React.Component {
               <Row>
                 <Col lg="6" xl="3">
                   <Card
-                      style={{cursor: "pointer"}}
+                      style={this.props.hasStore ? {} : {cursor: "pointer"}}
                     className="card-stats mb-4 mb-xl-0"
                   >
                     <CardBody>
@@ -37,7 +41,7 @@ class ShopHeader extends React.Component {
                                                         Shop
                           </CardTitle>
                           <span className="h2 font-weight-bold mb-0">
-                            {`Add a new store`}
+                            {this.props.hasStore ? this.props.storeName : `Add a new store + `}
                           </span>
                         </div>
                         <Col className="col-auto">

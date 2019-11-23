@@ -16,7 +16,7 @@ class UserHeader extends React.Component {
           <Container className="d-flex align-items-center" fluid>
             <Row>
               <Col lg="7" md="10">
-                <h1 className="display-2 text-white">Hello Sebastian</h1>
+                <h1 className="display-2 text-white">{`Hello ${this.props.userName}`}</h1>
                 <Button
                   color="info"
                   href="#pablo"
