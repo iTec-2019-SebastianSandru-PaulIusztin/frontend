@@ -8,19 +8,26 @@ class Header extends React.Component {
     super(props);
     this.state = {
       isListSelected: true,
-      isGridSelected: false
+      isGridSelected: false,
+      isMapSelected: false
     };
   }
 
   onSelectList = (_) => {
-    this.setState({ isListSelected: true, isGridSelected: false });
-    this.props.onChangeTab(true);
+    this.setState({ isListSelected: true, isGridSelected: false, isMapSelected: false });
+    this.props.onChangeTab('list');
   };
 
     onSelectGrid = (_) => {
-      this.setState({ isListSelected: false, isGridSelected: true });
-      this.props.onChangeTab(false);
+      this.setState({ isListSelected: false, isGridSelected: true, isMapSelected: false });
+      this.props.onChangeTab('grid');
     };
+
+
+  onSelectMap = (_) => {
+    this.setState({ isListSelected: false, isGridSelected: false, isMapSelected: true });
+    this.props.onChangeTab('map');
+  };
 
 
     render() {
@@ -81,6 +88,34 @@ class Header extends React.Component {
                           <Col className="col-auto">
                             <div className="icon icon-shape bg-warning text-white rounded-circle shadow">
                               <i className="fas fa-chart-pie" />
+                            </div>
+                          </Col>
+                        </Row>
+                      </CardBody>
+                    </Card>
+                  </Col>
+                  <Col lg="6" xl="3">
+                    <Card
+                        className="card-stats mb-4 mb-xl-0"
+                        style={ !this.state.isMapSelected ? { backgroundColor: 'rgba(255, 255, 255, 0.5)', cursor: "pointer" } : {cursor: "pointer"} }
+                        onClick={ this.onSelectMap }
+                    >
+                      <CardBody>
+                        <Row>
+                          <div className="col">
+                            <CardTitle
+                                tag="h5"
+                                className="text-uppercase text-muted mb-0"
+                            >
+                              View
+                            </CardTitle>
+                            <span className="h2 font-weight-bold mb-0">
+                            MAP VIEW
+                            </span>
+                          </div>
+                          <Col className="col-auto">
+                            <div className="icon icon-shape bg-warning text-white rounded-circle shadow">
+                              <i className="fas fa-map-pin" />
                             </div>
                           </Col>
                         </Row>

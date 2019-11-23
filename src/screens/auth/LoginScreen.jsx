@@ -13,6 +13,28 @@ class LoginScreen extends React.Component {
     };
   }
 
+  componentWillReceiveProps (newProps) {
+    if( newProps.is_loggedin !== this.props.is_loggedin ) {
+      if (newProps.is_loggedin !== undefined) {
+        if (newProps.is_loggedin) {
+          this.props.history.replace('/admin/index');
+        }
+        else {
+          this.setState({ isError: true });
+        }
+      }
+    }
+  }
+
+  componentDidMount() {
+    const token = this.props.location.pathname.split('/')[this.props.location.pathname.split('/').length - 1];
+    // call redux use token here
+    if (token !== 'login') {
+      setToken(token);
+    }
+  }
+
+
     onSubmitClicked = (value) => {
       const { dispatch } = this.props;
       const { name, password } = value;

@@ -1,6 +1,7 @@
 import RegisterScreen from './screens/auth/RegisterScreen';
 import LoginScreen from './screens/auth/LoginScreen';
 import Tables from './views/examples/Tables';
+import Shopcart from "./views/examples/Shopcart";
 
 const routes = [
   {
@@ -11,9 +12,11 @@ const routes = [
     layout: '/admin'
   },
   {
-    path: '/maps',
-    name: 'Maps',
-    icon: 'ni ni-pin-3 text-orange',
+    path: '/shop/cart',
+    name: 'Shop Cart',
+    component: Shopcart,
+
+    icon: 'ni ni-money-coins text-orange',
     layout: '/admin'
   },
   {
@@ -23,8 +26,8 @@ const routes = [
     layout: '/admin'
   },
   {
-    path: '/tables',
-    name: 'Tables',
+    path: '/products',
+    name: 'Products',
     icon: 'ni ni-bullet-list-67 text-red',
     layout: '/admin'
   },
