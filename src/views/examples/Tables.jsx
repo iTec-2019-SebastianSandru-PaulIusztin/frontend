@@ -24,6 +24,8 @@ import {
 // core components
 import Header from '../../components/Headers/Header';
 import Maps from './Map';
+import {auth} from "../../redux";
+import {connect} from "react-redux";
 
 
 class Tables extends React.Component {
@@ -135,7 +137,8 @@ class Tables extends React.Component {
       ],
       isListSelected: true,
       quantities: [],
-      isError: false
+      isError: false,
+      areButtonsDisabled: this.props.user === undefined
     };
   }
 
@@ -218,15 +221,14 @@ class Tables extends React.Component {
             >
               <i className="fas fa-ellipsis-v" />
             </DropdownToggle>
-
-            <DropdownMenu className="dropdown-menu-arrow" right>
-              <DropdownItem
-                href="#pablo"
+            <Button
+                disabled={this.state.areButtonsDisabled}
                 onClick={ (e) => this.getItem(e, index) }
-              >
-                  Add to cart
-              </DropdownItem>
-            </DropdownMenu>
+                color="primary"
+                type="button"
+            >
+              Add to cart
+            </Button>
           </UncontrolledDropdown>
         </td>
       </tr>
@@ -375,6 +377,7 @@ class Tables extends React.Component {
         <Button
           onClick={ (e) => this.getItem(e, index) }
           color="secondary"
+          disabled={this.state.areButtonsDisabled}
           type="button"
         >
           Add to cart
@@ -438,4 +441,10 @@ class Tables extends React.Component {
   }
 }
 
-export default Tables;
+function mapStateToProps(state) {
+  return {
+    user: auth.getCurrentUser(state)
+  };
+}
+
+export default connect(mapStateToProps)(Tables);

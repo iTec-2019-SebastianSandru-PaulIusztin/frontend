@@ -9,6 +9,6 @@ const API_SPEC = {
   options: {}
 };
 
-const BASE_URL = 'https://add26e8b.ngrok.io/api/';
+const BASE_URL = 'https://aa2adbc9.ngrok.io/api/';
 
 export default createAPI(BASE_URL, API_SPEC);
