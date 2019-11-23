@@ -23,6 +23,7 @@ import {
 } from 'reactstrap';
 // core components
 import Header from '../../components/Headers/Header';
+import Maps from './Map';
 
 
 class Tables extends React.Component {
@@ -37,7 +38,9 @@ class Tables extends React.Component {
           price: 121,
           quantity: 12,
           location: '341fsafsdf',
-          storeName: 'fadsfasdfasdfSTORE'
+          storeName: 'fadsfasdfasdfSTORE',
+          lat: 45.737465,
+          lng: 21.192758
         },
         {
           name: 'nume2-produs',
@@ -45,7 +48,9 @@ class Tables extends React.Component {
           price: 121,
           quantity: 1,
           location: '341fsafsdf',
-          storeName: 'fadsfasdfasdfSTORE'
+          storeName: 'fadsfasdfasdfSTORE',
+          lat: 45.747066,
+          lng: 21.269838
         },
         {
           name: 'nume3-produs',
@@ -53,7 +58,9 @@ class Tables extends React.Component {
           price: 121,
           quantity: 2,
           location: '341fsafsdf',
-          storeName: 'fadsfasdfasdfSTORE'
+          storeName: 'fadsfasdfasdfSTORE',
+          lat: 45.761322,
+          lng: 21.279116
         },
         {
           name: 'nume4-produs',
@@ -61,7 +68,9 @@ class Tables extends React.Component {
           price: 121,
           quantity: 3,
           location: '341fsafsdf',
-          storeName: 'fadsfasdfasdfSTORE'
+          storeName: 'fadsfasdfasdfSTORE',
+          lat: 45.765037,
+          lng: 21.231543
         },
         {
           name: 'nume5-produs',
@@ -69,7 +78,9 @@ class Tables extends React.Component {
           price: 121,
           quantity: 5,
           location: '341fsafsdf',
-          storeName: 'fadsfasdfasdfSTORE'
+          storeName: 'fadsfasdfasdfSTORE',
+          lat: 45.765037,
+          lng: 21.231543
         },
         {
           name: 'nume6-produs',
@@ -77,7 +88,9 @@ class Tables extends React.Component {
           price: 121,
           quantity: 9,
           location: '341fsafsdf',
-          storeName: 'fadsfasdfasdfSTORE'
+          storeName: 'fadsfasdfasdfSTORE',
+          lat: 45.765037,
+          lng: 21.231543
         },
         {
           name: 'nume7-produs',
@@ -85,7 +98,9 @@ class Tables extends React.Component {
           price: 121,
           quantity: 1,
           location: '341fsafsdf',
-          storeName: 'fadsfasdfasdfSTORE'
+          storeName: 'fadsfasdfasdfSTORE',
+          lat: 45.765037,
+          lng: 21.231543
         },
         {
           name: 'nume8-produs',
@@ -93,7 +108,9 @@ class Tables extends React.Component {
           price: 121,
           quantity: 1,
           location: '341fsafsdf',
-          storeName: 'fadsfasdfasdfSTORE'
+          storeName: 'fadsfasdfasdfSTORE',
+          lat: 45.765037,
+          lng: 21.231543
         },
         {
           name: 'nume9-produs',
@@ -101,7 +118,9 @@ class Tables extends React.Component {
           price: 121,
           quantity: 1,
           location: '341fsafsdf',
-          storeName: 'fadsfasdfasdfSTORE'
+          storeName: 'fadsfasdfasdfSTORE',
+          lat: 45.765037,
+          lng: 21.231543
         },
         {
           name: 'nume10-produs',
@@ -109,12 +128,14 @@ class Tables extends React.Component {
           price: 121,
           quantity: 1,
           location: '341fsafsdf',
-          storeName: 'fadsfasdfasdfSTORE'
+          storeName: 'fadsfasdfasdfSTORE',
+          lat: 45.762037,
+          lng: 21.231513
         }
       ],
       isListSelected: true,
       quantities: [],
-      isError: false,
+      isError: false
     };
   }
 
@@ -124,11 +145,11 @@ class Tables extends React.Component {
   }
 
   renderError = () => (
-      <Alert color="warning">
-        <strong>Error !</strong>
-        {' '}
+    <Alert color="warning">
+      <strong>Error !</strong>
+      {' '}
         Bad Quantity !
-      </Alert>
+    </Alert>
   );
 
 
@@ -136,11 +157,12 @@ class Tables extends React.Component {
     e.preventDefault();
     // REDUX HERE
     const item = this.state.items[index];
-    if(item.quantity < parseInt(this.state.quantities[index].quantity, 10)){
-      this.setState({isError: true});
+    if (item.quantity < parseInt(this.state.quantities[index].quantity, 10)) {
+      this.setState({ isError: true });
       window.scrollTo(0, 0);
-      setTimeout(() => this.setState({isError: false}),4000);
-    } else {
+      setTimeout(() => this.setState({ isError: false }), 4000);
+    }
+    else {
       console.log(this.state.items[index], this.state.quantities[index].quantity);
     }
   };
@@ -213,11 +235,14 @@ class Tables extends React.Component {
 
 
   onOtherThingSelected = (isListSelected) => {
-    if (isListSelected) {
-      this.setState({ isListSelected: true });
+    if (isListSelected === 'list') {
+      this.setState({ isListSelected: 'list' });
+    }
+    else if (isListSelected === 'map') {
+      this.setState({ isListSelected: 'map' });
     }
     else {
-      this.setState({ isListSelected: false });
+      this.setState({ isListSelected: 'grid' });
     }
   };
 
@@ -339,7 +364,6 @@ class Tables extends React.Component {
               <h3 className="mb-0">{`${storeName} ,${location}`}</h3>
             </div>
             <Input
-              value={ this.state.quantities[index].quantity }
               onChange={ (e) => this.updateQuantity(e, index) }
               placeholder="How many"
               type="number"
@@ -406,8 +430,8 @@ class Tables extends React.Component {
         <Header onChangeTab={ this.onOtherThingSelected } />
         {/* Page content */}
 
-        { this.state.isListSelected ? (this.renderTable()
-        ) : (this.renderGrid())
+        { this.state.isListSelected === 'list' ? (this.renderTable())
+          : (this.state.isListSelected === 'map' ? (<Maps data = {this.state.items} />) : (this.renderGrid()))
         }
       </>
     );

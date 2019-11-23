@@ -42,7 +42,7 @@ class Login extends React.Component {
       setTimeout(() => this.setState({ isError: false }), 4000);
     }
     else {
-      this.props.onSubmitClickedPhase2(this.state);
+      this.props.onSubmitClicked(this.state);
     }
   };
 

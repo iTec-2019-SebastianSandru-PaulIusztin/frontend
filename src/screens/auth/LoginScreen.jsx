@@ -10,13 +10,26 @@ export default class RegisterScreen extends React.Component {
     };
   }
 
-  componentWillMount() {
+ /* componentWillMount() {
     if (this.props.is_loggedin !== undefined) {
       if (this.props.is_loggedin) {
         this.props.history.replace('/admin/index');
       }
       else {
         this.setState({ isError: true });
+      }
+    }
+  }
+*/
+  componentWillReceiveProps (newProps) {
+    if( newProps.is_loggedin !== this.props.is_loggedin ) {
+      if (newProps.is_loggedin !== undefined) {
+        if (newProps.is_loggedin) {
+          this.props.history.replace('/admin/index');
+        }
+        else {
+          this.setState({ isError: true });
+        }
       }
     }
   }
