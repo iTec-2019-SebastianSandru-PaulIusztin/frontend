@@ -30,6 +30,8 @@ export const UPDATE_CURRENT_USER = '@ auth / UPDATE_CURRENT_USER';
 export const UPDATE_CURRENT_USER_SUCCEDED = '@ auth / UPDATE_CURRENT_USER_SUCCEDED';
 export const UPDATE_CURRENT_USER_FAILED = '@ auth / UPDATE_CURRENT_USER_FAILED';
 
+export const REFRESH_CURRENT_USER = '@ auth / REFRESH_CURRENT_USER';
+
 export const logout = () => ({ type: LOGOUT });
 export const signup = (payload) => ({ type: SIGNUP, payload });
 export const login = (payload) => ({ type: LOGIN, payload });
@@ -104,7 +106,7 @@ export function* saga() {
   yield takeLatest(VERIFY, verifyHandler);
   yield takeEvery([LOGIN_SUCCEEDED, IS_AUTHENTICATED], grantAccess);
   yield takeLatest(UPDATE_CURRENT_USER, updateCurrentUserHandler);
-  yield takeLatest(ACCESS_GRANTED, getCurrentUserHanlder);
+  yield takeLatest([ACCESS_GRANTED, REFRESH_CURRENT_USER], getCurrentUserHanlder);
   yield takeLatest(ACCESS_GRANTED, initalize)
 }
 
