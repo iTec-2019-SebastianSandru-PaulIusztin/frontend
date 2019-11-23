@@ -6,14 +6,16 @@ export default class RegisterScreen extends React.Component {
     super(props);
   }
 
-
-
     onSubmitClicked = (value) => {
-    // redux here
-    console.log(value);
-  };
+      const { name, password } = value;
+      const payload = {
+        email: name,
+        password1: password,
+        password2: password
+      };
+    };
 
-  render() {
-    return <Register onSubmitClicked={ this.onSubmitClicked } />;
-  }
+    render() {
+      return <Register onSubmitClicked={ this.onSubmitClicked } />;
+    }
 }
