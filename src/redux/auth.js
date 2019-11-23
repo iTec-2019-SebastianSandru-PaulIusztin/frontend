@@ -3,7 +3,7 @@ import { createSelector } from 'reselect'
 
 import { api } from '../redux';
 import { getCredentials, getToken, setCredentials, setToken, clear } from '../core/storage'
-import { stat } from 'fs';
+import Geocode from "react-geocode";
 
 //
 // ACTIONS
@@ -105,6 +105,7 @@ export function* saga() {
   yield takeEvery([LOGIN_SUCCEEDED, IS_AUTHENTICATED], grantAccess);
   yield takeLatest(UPDATE_CURRENT_USER, updateCurrentUserHandler);
   yield takeLatest(ACCESS_GRANTED, getCurrentUserHanlder);
+  yield takeLatest(ACCESS_GRANTED, initalize)
 }
 
 function* checkAuthentication() {
@@ -229,6 +230,10 @@ function* updateCurrentUserHandler({ payload }) {
 function* getCurrentUserHanlder() {
   const getUserUrl = api.buildURL('buyer', { id: 'me' });
   yield put(api.get(getUserUrl));
+}
+
+function* initalize() {
+  Geocode.setApiKey('AIzaSyDpX55p7sSCdvPgNXplw835klLKJPydUT4')
 }
 
 //
