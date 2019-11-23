@@ -34,7 +34,7 @@ class Header extends React.Component {
                   <Col lg="6" xl="3">
                     <Card
                       className="card-stats mb-4 mb-xl-0"
-                      style={ !this.state.isListSelected ? { backgroundColor: 'rgba(255, 255, 255, 0.5)' } : null }
+                      style={ !this.state.isListSelected ? { backgroundColor: 'rgba(255, 255, 255, 0.5)', cursor: "pointer" } : {cursor: "pointer"} }
                       onClick={ this.onSelectList }
                     >
                       <CardBody>
@@ -62,7 +62,7 @@ class Header extends React.Component {
                   <Col lg="6" xl="3">
                     <Card
                       className="card-stats mb-4 mb-xl-0"
-                      style={ !this.state.isGridSelected ? { backgroundColor: 'rgba(255, 255, 255, 0.5)' } : null }
+                      style={ !this.state.isGridSelected ? { backgroundColor: 'rgba(255, 255, 255, 0.5)', cursor: "pointer" } : {cursor: "pointer"} }
                       onClick={ this.onSelectGrid }
                     >
                       <CardBody>
