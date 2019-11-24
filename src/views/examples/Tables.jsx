@@ -34,7 +34,7 @@ class Tables extends React.Component {
     // name, owner, price, location, storeName
     this.state = {
       items: [],
-      isListSelected: true,
+      isListSelected: 'list',
       quantities: [],
       isError: false,
       areButtonsDisabled: this.props.user === undefined

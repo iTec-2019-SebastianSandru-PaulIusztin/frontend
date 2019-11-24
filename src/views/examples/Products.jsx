@@ -2,7 +2,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Geocode from 'react-geocode';
 
-import { Button, Card, CardBody, CardHeader, Col, Container, Form, FormGroup, Input, Row } from 'reactstrap';
+import {
+  Button,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Col,
+  Container,
+  Form,
+  FormGroup,
+  Input,
+  Media,
+  Row
+} from 'reactstrap';
 import ShopHeader from '../../components/Headers/ShopHeader';
 import { auth, shops } from '../../redux';
 import AddProduct from "./AddProduct";
@@ -82,6 +95,74 @@ class Products extends React.Component {
 
   onStoreCancelClick = () => {
     this.setState({ storeCreation: false });
+  };
+
+  renderGridItem = ({ name, owner, price, location, storeName }, index) => (
+      <Col key={ index } className="col-sm" style={ { padding: 24 } }>
+        <Card className="shadow">
+          <CardHeader className="border-0">
+            <h1 className="mb-0">{name}</h1>
+          </CardHeader>
+          <Media className="align-items-center">
+
+            <img
+                alt="..."
+                src={ require('../../assets/img/theme/bootstrap.jpg') }
+            />
+            <div style={ { display: 'flex', flexDirection: 'column' } }>
+              <div style={ { paddingBottom: '8px' } }>
+                <h3 className="mb-0">{owner}</h3>
+              </div>
+              <div style={ { paddingBottom: '8px' } }>
+                <h3 className="mb-0">{`${price} lei / Kg`}</h3>
+              </div>
+              <div style={ { paddingBottom: '8px' } }>
+                <h3 className="mb-0">{`${storeName} ,${location}`}</h3>
+              </div>
+            </div>
+          </Media>
+        </Card>
+      </Col>
+  );
+
+  transformForGridRecursive(list, isTakingTwo, result = []) {
+    if (list.length === 0) {
+      return result;
+    }
+    if (isTakingTwo) {
+      const newList = [];
+      newList.push(list.shift());
+      if (list.length > 0) newList.push(list.shift());
+      result.push(newList);
+      this.transformForGridRecursive(list, !isTakingTwo, result);
+    }
+    else {
+      const newList = [];
+      newList.push(list.shift());
+      if (list.length > 0) newList.push(list.shift());
+      if (list.length > 0) newList.push(list.shift());
+      result.push(newList);
+      this.transformForGridRecursive(list, !isTakingTwo, result);
+    }
+  }
+
+  // [ [1,2], [3,4,5], [1,2] ]
+  renderGrid = () => {
+    const newList = [];
+    const stateItems = [...this.props.shop.products];
+    this.transformForGridRecursive(stateItems, true, newList);
+    let itemId = 0;
+    return (
+        <Container>
+          {this.state.isError ? this.renderError() : null}
+
+          {newList.map((list, firstIndex) => (
+              <Row key={ firstIndex }>
+                {list.map((item, index) => this.renderGridItem({ ...item }, itemId++))}
+              </Row>
+          ))}
+        </Container>
+    );
   };
 
   componentDidMount() {
@@ -267,6 +348,16 @@ class Products extends React.Component {
               <CardBody>
               {this.state.isAddProduct ? <AddProduct/> : (null)}
               </CardBody>
+
+              <CardFooter className="bg-white border-0">
+                  <Row className="align-items-center">
+                    <Col xs="8">
+                      <h3 className="mb-0">My Store</h3>
+                    </Col>
+                  </Row>
+                {this.renderGrid()}
+              </CardFooter>
+
               </Card>
             </Container>
         ): null}
