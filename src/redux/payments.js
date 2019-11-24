@@ -1,12 +1,13 @@
 import { takeLatest, put, call, race, take, takeEvery } from 'redux-saga/effects';
 import { createSelector } from 'reselect'
 
-import { api } from '../redux';
+import { api, auth } from '../redux';
 
 //
 // ACTIONS
 
 export const CREATE_PAYMENT = '@ payments / CREATE_PAYMENT'
+export const GET_PAYMETNS = '@ payments / GET_PAYMETNS'
 export const YOUR_PAYMENT_CREATED_SUCCESSFULLY = '@ payments / YOUR_PAYMENT_CREATED_SUCCESSFULLY'
 
 export const createPayment = (payload) => ({type: CREATE_PAYMENT, payload})
@@ -33,6 +34,7 @@ export function reducer(state = initialState, action = {}) {
 
 export function* saga() {
     yield takeLatest(CREATE_PAYMENT, createPaymentHandler)
+    yield takeLatest(auth.ACCESS_GRANTED, getPaymentsHandler)
 }
 
 function* createPaymentHandler({ payload }) {
@@ -48,3 +50,17 @@ function* createPaymentHandler({ payload }) {
       yield put({type: YOUR_PAYMENT_CREATED_SUCCESSFULLY, payload: success.payload})
   }
 }
+
+function* getPaymentsHandler() {
+    const shopURL = api.buildURL('payments');
+   yield put(api.get(shopURL));
+}
+
+//
+// SELECTORS
+
+export const getState = (state) => (state.payments)
+export const getEntities = createSelector(
+    getState,
+    (state) =>  state.entities && state.entities.undefined 
+)
