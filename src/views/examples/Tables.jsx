@@ -24,7 +24,7 @@ import {
 // core components
 import Header from '../../components/Headers/Header';
 import Maps from './Map';
-import {auth} from "../../redux";
+import { auth, products } from "../../redux";
 import {connect} from "react-redux";
 
 
@@ -33,108 +33,7 @@ class Tables extends React.Component {
     super(props);
     // name, owner, price, location, storeName
     this.state = {
-      items: [
-        {
-          name: 'nume1-produs',
-          owner: 'numeOnwer',
-          price: 121,
-          quantity: 12,
-          location: '341fsafsdf',
-          storeName: 'fadsfasdfasdfSTORE',
-          lat: 45.737465,
-          lng: 21.192758
-        },
-        {
-          name: 'nume2-produs',
-          owner: 'numeOnwer',
-          price: 121,
-          quantity: 1,
-          location: '341fsafsdf',
-          storeName: 'fadsfasdfasdfSTORE',
-          lat: 45.747066,
-          lng: 21.269838
-        },
-        {
-          name: 'nume3-produs',
-          owner: 'numeOnwer',
-          price: 121,
-          quantity: 2,
-          location: '341fsafsdf',
-          storeName: 'fadsfasdfasdfSTORE',
-          lat: 45.761322,
-          lng: 21.279116
-        },
-        {
-          name: 'nume4-produs',
-          owner: 'numeOnwer',
-          price: 121,
-          quantity: 3,
-          location: '341fsafsdf',
-          storeName: 'fadsfasdfasdfSTORE',
-          lat: 45.765037,
-          lng: 21.231543
-        },
-        {
-          name: 'nume5-produs',
-          owner: 'numeOnwer',
-          price: 121,
-          quantity: 5,
-          location: '341fsafsdf',
-          storeName: 'fadsfasdfasdfSTORE',
-          lat: 45.765037,
-          lng: 21.231543
-        },
-        {
-          name: 'nume6-produs',
-          owner: 'numeOnwer',
-          price: 121,
-          quantity: 9,
-          location: '341fsafsdf',
-          storeName: 'fadsfasdfasdfSTORE',
-          lat: 45.765037,
-          lng: 21.231543
-        },
-        {
-          name: 'nume7-produs',
-          owner: 'numeOnwer',
-          price: 121,
-          quantity: 1,
-          location: '341fsafsdf',
-          storeName: 'fadsfasdfasdfSTORE',
-          lat: 45.765037,
-          lng: 21.231543
-        },
-        {
-          name: 'nume8-produs',
-          owner: 'numeOnwer',
-          price: 121,
-          quantity: 1,
-          location: '341fsafsdf',
-          storeName: 'fadsfasdfasdfSTORE',
-          lat: 45.765037,
-          lng: 21.231543
-        },
-        {
-          name: 'nume9-produs',
-          owner: 'numeOnwer',
-          price: 121,
-          quantity: 1,
-          location: '341fsafsdf',
-          storeName: 'fadsfasdfasdfSTORE',
-          lat: 45.765037,
-          lng: 21.231543
-        },
-        {
-          name: 'nume10-produs',
-          owner: 'numeOnwer',
-          price: 121,
-          quantity: 1,
-          location: '341fsafsdf',
-          storeName: 'fadsfasdfasdfSTORE',
-          lat: 45.762037,
-          lng: 21.231513
-        }
-      ],
+      items: [],
       isListSelected: true,
       quantities: [],
       isError: false,
@@ -143,7 +42,7 @@ class Tables extends React.Component {
   }
 
   componentDidMount() {
-    const quantities = this.state.items.map((item) => ({ itemIndex: this.state.items.indexOf(item), quantity: 0 }));
+    const quantities = this.props.prod.map((item) => ({ itemIndex: this.props.prod.indexOf(item), quantity: 0 }));
     this.setState({ quantities: [...quantities] });
   }
 
@@ -159,14 +58,14 @@ class Tables extends React.Component {
   getItem = (e, index) => {
     e.preventDefault();
     // REDUX HERE
-    const item = this.state.items[index];
+    const item = this.props.prod[index];
     if (item.quantity < parseInt(this.state.quantities[index].quantity, 10)) {
       this.setState({ isError: true });
       window.scrollTo(0, 0);
       setTimeout(() => this.setState({ isError: false }), 4000);
     }
     else {
-      console.log(this.state.items[index], this.state.quantities[index].quantity);
+      console.log(this.props.prod[index], this.state.quantities[index].quantity);
     }
   };
 
@@ -272,7 +171,7 @@ class Tables extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                {this.state.items.map((item, index) => this.createItemInTable({ ...item }, index))}
+                {this.props.prod.map((item, index) => this.createItemInTable({ ...item }, index))}
               </tbody>
             </Table>
             <CardFooter className="py-4">
@@ -410,7 +309,7 @@ class Tables extends React.Component {
   // [ [1,2], [3,4,5], [1,2] ]
   renderGrid = () => {
     const newList = [];
-    const stateItems = [...this.state.items];
+    const stateItems = [...this.props.prod];
     this.transformForGridRecursive(stateItems, true, newList);
     let itemId = 0;
     return (
@@ -434,7 +333,7 @@ class Tables extends React.Component {
         {/* Page content */}
 
         { this.state.isListSelected === 'list' ? (this.renderTable())
-          : (this.state.isListSelected === 'map' ? (<Maps data = {this.state.items} />) : (this.renderGrid()))
+          : (this.state.isListSelected === 'map' ? (<Maps data = {this.props.prod} />) : (this.renderGrid()))
         }
       </>
     );
@@ -442,8 +341,29 @@ class Tables extends React.Component {
 }
 
 function mapStateToProps(state) {
+  const prod = products.getEntities(state)
+  const mappedProducts = []
+
+  for(let key in prod) {
+    const item = prod[key]
+    if(item) {
+      mappedProducts.push({
+        name: item.category && item.category.name,
+        owner: item.seller.name,
+        price: item.price,
+        quentity: item.counter,
+        location: item.seller.address.city,
+        seller_id: item.seller.id,
+        storeName: item.store_name,
+        lat: item.lat,
+        lng: item.lng
+      })
+    }
+  }
+
   return {
-    user: auth.getCurrentUser(state)
+    user: auth.getCurrentUser(state),
+    prod: mappedProducts
   };
 }
 
