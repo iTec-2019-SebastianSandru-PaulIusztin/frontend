@@ -14,8 +14,10 @@ import {
   Row,
   Col
 } from 'reactstrap';
+import Files from 'react-files';
 import UserHeader from '../../components/Headers/UserHeader';
 import { auth } from '../../redux';
+
 // core components
 
 class Profile extends React.Component {
@@ -34,12 +36,45 @@ class Profile extends React.Component {
     console.log(this.props.user);
   }
 
+  componentDidMount() {
+    this.setData();
+  }
+
+  setData = () => {
+    const { user } = this.props;
+    if (user.address === undefined || user.address === null) {
+      const sellerUser = user.seller;
+      this.setState({
+        phoneNumber: sellerUser.phone,
+        name: sellerUser.name,
+        address: {
+          country: sellerUser.address.country,
+          county: sellerUser.address.county,
+          city: sellerUser.address.city,
+          street: sellerUser.address.street
+        }
+      });
+    } else {
+      this.setState({
+        phoneNumber: user.phone,
+        name: user.first_name,
+        address: {
+          country: user.address.country,
+          county: user.address.county,
+          city: user.address.city,
+          street: user.address.street
+        }
+      });
+    }
+  }
+
   onSaveClicked = () => {
     console.log(this.state);
     // dispatch here
   }
 
   updateName = (e) => {
+    console.log(e.target.value);
     this.setState({ name: e.target.value });
   };
 
@@ -66,16 +101,62 @@ class Profile extends React.Component {
     this.setState({ address: { ...this.state.address, street: e.target.value } });
   };
 
+  onFilesChange = (files) => {
+    console.log(files);
+  }
+
+  onFilesError = (error, file) => {
+    console.log(`error code ${error.code}: ${error.message}`);
+  }
 
   render() {
     const { user } = this.props;
     return (
       <>
-        <UserHeader />
+        <UserHeader onSave={ this.onSaveClicked } userName={this.state.name}/>
 
         {/* Page content */}
         <Container className="mt--7" fluid>
           <Row>
+            <Col className="order-xl-2 mb-5 mb-xl-0" xl="4">
+              <Card className="card-profile shadow">
+                <Row className="justify-content-center">
+                  <Col className="order-lg-2" lg="3">
+                    <div className="card-profile-image">
+                      <a href="#pablo" onClick={ (e) => e.preventDefault() }>
+                        <img
+                          alt="..."
+                          className="rounded-circle"
+                          src={ require('../../assets/img/theme/team-4-800x800.jpg') }
+                        />
+                      </a>
+                    </div>
+                  </Col>
+                </Row>
+                <CardHeader className="text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+                  <div className="d-flex justify-content-between" />
+                </CardHeader>
+                <CardBody className="pt-0 pt-md-4" />
+                <Files
+                  style={ {
+                    textAlign: 'center',
+                    paddingTop: '5vh',
+                    paddingBottom: '5vh'
+                  } }
+                  className="files-dropzone"
+                  onChange={ this.onFilesChange }
+                  onError={ this.onFilesError }
+                  accepts={ ['image/png', '.pdf', 'audio/*'] }
+                  multiple
+                  maxFiles={ 3 }
+                  maxFileSize={ 10000000 }
+                  minFileSize={ 0 }
+                  clickable
+                >
+                  Drop files here or click to upload
+                </Files>
+              </Card>
+            </Col>
             <Col className="order-xl-1" xl="8">
               <Card className="bg-secondary shadow">
                 <CardHeader className="bg-white border-0">
@@ -97,12 +178,15 @@ class Profile extends React.Component {
                 </CardHeader>
                 <CardBody>
                   <Form>
+
                     <h6 className="heading-small text-muted mb-4">
                       User information
                     </h6>
                     <div className="pl-lg-4">
+
                       <Row>
                         <Col lg="6">
+
                           <FormGroup>
                             <label
                               className="form-control-label"
@@ -112,8 +196,10 @@ class Profile extends React.Component {
                             </label>
                             <Input
                               className="form-control-alternative"
-                              onChange={(e) => this.updateName(e)}
-                              defaultValue={ user.first_name }
+                              onChange={ (e) => this.updateName(e) }
+                              value={ this.state.name }
+
+                              defaultValue={ this.state.name }
                               id="input-username"
                               placeholder="Username"
                               type="text"
@@ -150,7 +236,7 @@ class Profile extends React.Component {
                             </label>
                             <Input
                               className="form-control-alternative"
-                              defaultValue={ user.first_name.split(' ')[0] }
+                              defaultValue={ this.state.name.split(' ')[0] }
                               id="input-first-name"
                               placeholder="First name"
                               type="text"
@@ -167,7 +253,7 @@ class Profile extends React.Component {
                             </label>
                             <Input
                               className="form-control-alternative"
-                              defaultValue={ user.first_name.split(' ')[1] }
+                              defaultValue={ this.state.name.split(' ')[1] }
                               id="input-last-name"
                               placeholder="Last name"
                               type="text"
@@ -184,8 +270,10 @@ class Profile extends React.Component {
                             </label>
                             <Input
                               className="form-control-alternative"
-                              defaultValue={ user.phone }
-                              onChange={(e) => this.updatePhoneNumber(e)}
+                              defaultValue={  this.state.phoneNumber  }
+                              value={ this.state.phoneNumber }
+
+                              onChange={ (e) => this.updatePhoneNumber(e) }
 
                               id="input-last-name"
                               placeholder="Last name"
@@ -212,9 +300,10 @@ class Profile extends React.Component {
                             </label>
                             <Input
                               className="form-control-alternative"
-                              onChange={(e) => this.updateAddressStreet(e)}
+                              onChange={ (e) => this.updateAddressStreet(e) }
+                              value={ this.state.address.street }
 
-                              defaultValue={ user.address.street }
+                              defaultValue={ this.state.address.street }
                               id="input-address"
                               placeholder="Home Address"
                               type="text"
@@ -233,9 +322,10 @@ class Profile extends React.Component {
                             </label>
                             <Input
                               className="form-control-alternative"
-                              onChange={(e) => this.updateAddressCountry(e)}
+                              onChange={ (e) => this.updateAddressCountry(e) }
+                              value={ this.state.address.country }
 
-                              defaultValue={ user.address.country }
+                              defaultValue={ this.state.address.country }
                               id="input-city"
                               placeholder="City"
                               type="text"
@@ -252,9 +342,10 @@ class Profile extends React.Component {
                             </label>
                             <Input
                               className="form-control-alternative"
-                              onChange={(e) => this.updateAddressCounty(e)}
+                              onChange={ (e) => this.updateAddressCounty(e) }
+                              value={ this.state.address.county }
 
-                              defaultValue={ user.address.county }
+                              defaultValue={ this.state.address.county }
                               id="input-country"
                               placeholder="Country"
                               type="text"
@@ -271,9 +362,9 @@ class Profile extends React.Component {
                             </label>
                             <Input
                               className="form-control-alternative"
-                              onChange={(e) => this.updateAddressCity(e)}
-
-                              defaultValue={ user.address.city }
+                              onChange={ (e) => this.updateAddressCity(e) }
+                              value={ this.state.address.city }
+                              defaultValue={ this.state.address.county }
                               id="input-country"
                               placeholder="Country"
                               type="text"
