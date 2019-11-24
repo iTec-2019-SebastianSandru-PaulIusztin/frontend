@@ -26,6 +26,7 @@ export const VERIFY_FAILED = '@ auth / VERIFY_FAILED';
 
 export const ACCESS_GRANTED = '@ auth / ACCESS_GRANTED';
 
+export const UPDATE_CURRENT_REGISTERED_USER = '@ auth / UPDATE_CURRENT_REGISTERED_USER';
 export const UPDATE_CURRENT_USER = '@ auth / UPDATE_CURRENT_USER';
 export const UPDATE_CURRENT_USER_SUCCEDED = '@ auth / UPDATE_CURRENT_USER_SUCCEDED';
 export const UPDATE_CURRENT_USER_FAILED = '@ auth / UPDATE_CURRENT_USER_FAILED';
@@ -38,6 +39,7 @@ export const login = (payload) => ({ type: LOGIN, payload });
 export const verify = (code) => ({type: VERIFY, payload: { code } })
 
 export const updateCurrentUser = (payload) => ({type: UPDATE_CURRENT_USER, payload}) 
+export const updateCurrentRegisteredUser = (payload) => ({type: UPDATE_CURRENT_REGISTERED_USER, payload}) 
 
 //
 // REDUCERS
@@ -106,6 +108,7 @@ export function* saga() {
   yield takeLatest(VERIFY, verifyHandler);
   yield takeEvery([LOGIN_SUCCEEDED, IS_AUTHENTICATED], grantAccess);
   yield takeLatest(UPDATE_CURRENT_USER, updateCurrentUserHandler);
+  yield takeLatest(UPDATE_CURRENT_REGISTERED_USER, updateCurrentRegisteredUserHandler)
   yield takeLatest([ACCESS_GRANTED, REFRESH_CURRENT_USER], getCurrentUserHanlder);
   yield takeLatest(ACCESS_GRANTED, initalize)
 }
@@ -219,6 +222,44 @@ function* updateCurrentUserHandler({ payload }) {
   const { success } = yield race({
     success: take([api.buyer.CREATE_SUCCEEDED, api.buyer.UPDATE_SUCCEEDED]),
     failure: take([api.buyer.CREATE_FAILED, api.buyer.UPDATE_FAILED])
+  });
+
+  if (success) {
+    yield put({ type: UPDATE_CURRENT_USER_SUCCEDED, payload: success.payload });
+  }
+  else {
+    yield put({ type: UPDATE_CURRENT_USER_FAILED });
+  }
+}
+
+function* updateCurrentRegisteredUserHandler({ payload }) {
+  const { address, name, phoneNumber, isSeller, photo} = payload
+  if(!isSeller) {
+    const payload = {
+      first_name: name,
+      last_name: name,
+      address,
+      phone: phoneNumber,
+      photo
+    }
+
+    const buyerURL = api.buildURL('buyer', { id: 'me' });
+    yield put(api.update(buyerURL, payload));
+  } else {
+    const payload = {
+      name,
+      phone: phoneNumber,
+      address,
+      photo
+    }
+
+    const sellerURL = api.buildURL('buyer', { id: 'seller' });
+    yield put(api.update(sellerURL, payload));
+  }
+
+  const { success } = yield race({
+    success: take(api.buyer.UPDATE_SUCCEEDED),
+    failure: take(api.buyer.UPDATE_FAILED)
   });
 
   if (success) {
