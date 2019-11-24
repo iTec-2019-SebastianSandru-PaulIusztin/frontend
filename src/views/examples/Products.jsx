@@ -44,9 +44,9 @@ class Products extends React.Component {
       },
       storeName: '',
       hasStore: false,
-      isAddProduct: false
+      isAddProduct: false,
+      imgSrc: require('../../assets/img/theme/bootstrap.jpg')
     };
-    console.log(this.props.shop);
   }
 
   toggleNavs = (e, index) => {
@@ -122,7 +122,7 @@ class Products extends React.Component {
     this.setState({ storeCreation: false });
   };
 
-  renderGridItem = ({ name, owner, price, location, storeName }, index) => (
+  renderGridItem = ({ name, owner, price, location, storeName, imgSrc }, index) => (
     <Col key={ index } className="col-sm" style={ { padding: 24 } }>
       <Card className="shadow">
         <CardHeader className="border-0">
@@ -132,7 +132,7 @@ class Products extends React.Component {
 
           <img
             alt="..."
-            src={ require('../../assets/img/theme/bootstrap.jpg') }
+            src={ imgSrc }
           />
           <div style={ { display: 'flex', flexDirection: 'column' } }>
             <div style={ { paddingBottom: '8px' } }>
@@ -174,7 +174,11 @@ class Products extends React.Component {
   // [ [1,2], [3,4,5], [1,2] ]
   renderGrid = () => {
     const newList = [];
-    const stateItems = [...this.props.shop.products];
+    const { shop } = this.props
+    if(shop) {
+      const { products } = shop
+      if(products) {
+    const stateItems = [...products];
     this.transformForGridRecursive(stateItems, true, newList);
     let itemId = 0;
     return (
@@ -188,6 +192,8 @@ class Products extends React.Component {
         ))}
       </Container>
     );
+        }
+    }
   };
 
   componentDidMount() {
@@ -395,9 +401,39 @@ class Products extends React.Component {
 
 
 function mapStateToProps(state) {
+  const apiShop = shops.getCurrentShop(state)
+  const mappedProducts = [];
+  let shop = {}
+
+  if(apiShop && apiShop.products) {
+    for (const key in apiShop.products) {
+      const item = apiShop.products[key]
+      if (item) {
+        mappedProducts.push({
+          id: item.id,
+          name: item.category && item.category.name,
+          owner: item.seller.name,
+          price: item.price,
+          quantity: item.counter,
+          location: item.seller.address.city,
+          seller_id: item.seller.id,
+          storeName: item.store_name,
+          lat: item.lat,
+          lng: item.lng,
+          imgSrc: item.photos[0] ? item.photos[0].photo :require('../../assets/img/theme/bootstrap.jpg')
+        });
+      }
+    }
+
+    shop = {
+      ...apiShop,
+      products: mappedProducts
+    }
+  }
+
   return {
     user: auth.getCurrentUser(state),
-    shop: shops.getCurrentShop(state)
+    shop
   };
 }
 

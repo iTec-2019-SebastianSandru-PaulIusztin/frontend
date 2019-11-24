@@ -76,7 +76,7 @@ class Tables extends React.Component {
     this.props.history.replace(`/admin/details/${sellerId}`);
   };
 
-  createItemInTable({ name, owner, price, location, storeName, seller_id }, index) {
+  createItemInTable({ name, owner, price, location, storeName, seller_id, imgSrc }, index) {
     return (
       <tr
         key={ index }
@@ -254,7 +254,7 @@ class Tables extends React.Component {
     this.setState({ quantities: newQuantities });
   };
 
-  renderGridItem = ({ name, owner, price, location, storeName, seller_id }, index) => (
+  renderGridItem = ({ name, owner, price, location, storeName, seller_id, imgSrc }, index) => (
     <Col key={ index } className="col-sm" style={ { padding: 24 } }>
       <Card className="shadow">
         <CardHeader className="border-0">
@@ -266,7 +266,7 @@ class Tables extends React.Component {
 
           <img
             alt="..."
-            src={ require('../../assets/img/theme/bootstrap.jpg') }
+            src={ imgSrc }
           />
           <div
               onClick={ (e) => this.goToDetails(seller_id) }
@@ -362,6 +362,7 @@ function mapStateToProps(state) {
 
   for (const key in prod) {
     const item = prod[key];
+    console.log(item)
     if (item) {
       mappedProducts.push({
         id: item.id,
@@ -373,7 +374,8 @@ function mapStateToProps(state) {
         seller_id: item.seller.id,
         storeName: item.store_name,
         lat: item.lat,
-        lng: item.lng
+        lng: item.lng,
+        imgSrc: item.photos[0] ? item.photos[0].photo :require('../../assets/img/theme/bootstrap.jpg')
       });
     }
   }

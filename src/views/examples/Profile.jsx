@@ -44,8 +44,7 @@ class Profile extends React.Component {
 
   setData = () => {
     const { user } = this.props;
-    console.log(user)
-    if (user.address === undefined || user.address === null) {
+    if (user.is_seller) {
       const sellerUser = user.seller;
       this.setState({
         phoneNumber: sellerUser.phone,
@@ -55,7 +54,8 @@ class Profile extends React.Component {
           county: sellerUser.address.county,
           city: sellerUser.address.city,
           street: sellerUser.address.street
-        }
+        },
+        imgSrc: sellerUser.photo
       });
     }
     else {
@@ -67,7 +67,8 @@ class Profile extends React.Component {
           county: user.address.county,
           city: user.address.city,
           street: user.address.street
-        }
+        },
+        imgSrc: user.photo
       });
     }
   }
