@@ -228,14 +228,11 @@ class AddProduct extends React.Component {
             </Col>
             <div style={{margin:'auto',display: 'flex',alignItems: 'center', flexDirection: 'column'}}>
                 <img
-                    style={{maxWidth: '400px'}}
+                    style={{maxWidth: '400px', paddingTop: '20px'}}
                     alt="..."
                     className="rounded-circle"
                     src={ this.state.imgSrc }
                 />
-              <input type="file"
-                     id="image"
-                     accept="image/png, image/jpeg"  onChange={this.onFilesChange} required/>
                 <Files
                 style={ {
                   textAlign: 'center',

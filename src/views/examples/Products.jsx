@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Geocode from 'react-geocode';
+import classnames from 'classnames';
+import { Line, Bar } from 'react-chartjs-2';
 
 import {
   Button,
@@ -10,6 +12,9 @@ import {
   CardHeader,
   Col,
   Container,
+  NavItem,
+  NavLink,
+  Nav,
   Form,
   FormGroup,
   Input,
@@ -18,13 +23,19 @@ import {
 } from 'reactstrap';
 import ShopHeader from '../../components/Headers/ShopHeader';
 import { auth, shops } from '../../redux';
-import AddProduct from "./AddProduct";
+import {
+  chartExample1,
+  chartExample2
+} from '../charts';
+import AddProduct from './AddProduct';
 
 class Products extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       storeCreation: false,
+      activeNav: 1,
+      chartExample1Data: "data1",
       address: {
         country: '',
         county: '',
@@ -33,10 +44,25 @@ class Products extends React.Component {
       },
       storeName: '',
       hasStore: false,
-      isAddProduct: false,
+      isAddProduct: false
     };
     console.log(this.props.shop);
   }
+
+  toggleNavs = (e, index) => {
+    e.preventDefault();
+    this.setState({
+      activeNav: index,
+      chartExample1Data:
+          this.state.chartExample1Data === "data1" ? "data2" : "data1"
+    });
+    let wow = () => {
+      console.log(this.state);
+    };
+    wow.bind(this);
+    setTimeout(() => wow(), 1000);
+    // this.chartReference.update();
+  };
 
     onStoreSaveClick = () => {
       const { dispatch } = this.props;
@@ -88,9 +114,8 @@ class Products extends React.Component {
   };
 
   setAddProductFlag = () => {
-    console.log('here')
+    console.log('here');
     this.setState({ isAddProduct: !this.state.isAddProduct });
-
   };
 
   onStoreCancelClick = () => {
@@ -98,31 +123,31 @@ class Products extends React.Component {
   };
 
   renderGridItem = ({ name, owner, price, location, storeName }, index) => (
-      <Col key={ index } className="col-sm" style={ { padding: 24 } }>
-        <Card className="shadow">
-          <CardHeader className="border-0">
-            <h1 className="mb-0">{name}</h1>
-          </CardHeader>
-          <Media className="align-items-center">
+    <Col key={ index } className="col-sm" style={ { padding: 24 } }>
+      <Card className="shadow">
+        <CardHeader className="border-0">
+          <h1 className="mb-0">{name}</h1>
+        </CardHeader>
+        <Media className="align-items-center">
 
-            <img
-                alt="..."
-                src={ require('../../assets/img/theme/bootstrap.jpg') }
-            />
-            <div style={ { display: 'flex', flexDirection: 'column' } }>
-              <div style={ { paddingBottom: '8px' } }>
-                <h3 className="mb-0">{owner}</h3>
-              </div>
-              <div style={ { paddingBottom: '8px' } }>
-                <h3 className="mb-0">{`${price} lei / Kg`}</h3>
-              </div>
-              <div style={ { paddingBottom: '8px' } }>
-                <h3 className="mb-0">{`${storeName} ,${location}`}</h3>
-              </div>
+          <img
+            alt="..."
+            src={ require('../../assets/img/theme/bootstrap.jpg') }
+          />
+          <div style={ { display: 'flex', flexDirection: 'column' } }>
+            <div style={ { paddingBottom: '8px' } }>
+              <h3 className="mb-0">{owner}</h3>
             </div>
-          </Media>
-        </Card>
-      </Col>
+            <div style={ { paddingBottom: '8px' } }>
+              <h3 className="mb-0">{`${price} lei / Kg`}</h3>
+            </div>
+            <div style={ { paddingBottom: '8px' } }>
+              <h3 className="mb-0">{`${storeName} ,${location}`}</h3>
+            </div>
+          </div>
+        </Media>
+      </Card>
+    </Col>
   );
 
   transformForGridRecursive(list, isTakingTwo, result = []) {
@@ -153,23 +178,24 @@ class Products extends React.Component {
     this.transformForGridRecursive(stateItems, true, newList);
     let itemId = 0;
     return (
-        <Container>
-          {this.state.isError ? this.renderError() : null}
+      <Container>
+        {this.state.isError ? this.renderError() : null}
 
-          {newList.map((list, firstIndex) => (
-              <Row key={ firstIndex }>
-                {list.map((item, index) => this.renderGridItem({ ...item }, itemId++))}
-              </Row>
-          ))}
-        </Container>
+        {newList.map((list, firstIndex) => (
+          <Row key={ firstIndex }>
+            {list.map((item, index) => this.renderGridItem({ ...item }, itemId++))}
+          </Row>
+        ))}
+      </Container>
     );
   };
 
   componentDidMount() {
-    if(this.props.shop === undefined || this.props.shop === null) {
-      this.setState({hasStore: false});
-    } else {
-      this.setState({hasStore: true, storeName: this.props.shop.name});
+    if (this.props.shop === undefined || this.props.shop === null) {
+      this.setState({ hasStore: false });
+    }
+    else {
+      this.setState({ hasStore: true, storeName: this.props.shop.name });
     }
   }
 
@@ -319,48 +345,48 @@ class Products extends React.Component {
     console.log(this.state.hasStore);
     return (
       <>
-        <ShopHeader onNew={ this.onNewStoreClick } storeName={this.state.storeName} hasStore={this.state.hasStore}/>
+        <ShopHeader onNew={ this.onNewStoreClick } storeName={ this.state.storeName } hasStore={ this.state.hasStore } />
         {this.state.storeCreation ? (
           <Container className="mt--7" fluid>
             {this.renderStoreCreation()}
           </Container>
         ) : (null)}
         {this.state.hasStore ? (
-            <Container className="mt--7" fluid>
-              <Card className="bg-secondary shadow">
-                <CardHeader className="bg-white border-0">
-                  <Row className="align-items-center">
-                    <Col xs="8">
-                      <h3 className="mb-0">My Store</h3>
-                    </Col>
-                    <Col className="text-right" xs="4">
-                      <Button
-                          color="primary"
-                          href="#pablo"
-                          onClick={ (e) => this.setAddProductFlag() }
-                          size="large"
-                      >
+          <Container className="mt--7" fluid>
+            <Card className="bg-secondary shadow">
+              <CardHeader className="bg-white border-0">
+                <Row className="align-items-center">
+                  <Col xs="8">
+                    <h3 className="mb-0">My Store</h3>
+                  </Col>
+                  <Col className="text-right" xs="4">
+                    <Button
+                      color="primary"
+                      href="#pablo"
+                      onClick={ (e) => this.setAddProductFlag() }
+                      size="large"
+                    >
                         Add
-                      </Button>
-                    </Col>
-                  </Row>
-                </CardHeader>
+                    </Button>
+                  </Col>
+                </Row>
+              </CardHeader>
               <CardBody>
-              {this.state.isAddProduct ? <AddProduct/> : (null)}
+                {this.state.isAddProduct ? <AddProduct /> : (null)}
               </CardBody>
 
               <CardFooter className="bg-white border-0">
-                  <Row className="align-items-center">
-                    <Col xs="8">
-                      <h3 className="mb-0">My Store</h3>
-                    </Col>
-                  </Row>
+                <Row className="align-items-center">
+                  <Col xs="8">
+                    <h3 className="mb-0">My Store</h3>
+                  </Col>
+                </Row>
                 {this.renderGrid()}
               </CardFooter>
 
-              </Card>
-            </Container>
-        ): null}
+            </Card>
+          </Container>
+        ) : null}
 
       </>
     );

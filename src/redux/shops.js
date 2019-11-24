@@ -128,6 +128,6 @@ export const getCurrentCartProducts = createSelector(
   (state) => state && state.items
 )
 export const getSellerCartProducts = createSelector(
-  getCurrentCart,
+  getState,
   (state) => state && state.seller_shop
 )

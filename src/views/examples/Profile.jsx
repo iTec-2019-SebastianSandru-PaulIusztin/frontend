@@ -44,6 +44,7 @@ class Profile extends React.Component {
 
   setData = () => {
     const { user } = this.props;
+    console.log(user)
     if (user.address === undefined || user.address === null) {
       const sellerUser = user.seller;
       this.setState({
