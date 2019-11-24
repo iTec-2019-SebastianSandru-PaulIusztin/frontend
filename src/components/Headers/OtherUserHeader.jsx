@@ -1,16 +1,15 @@
 import React from 'react';
 
 // reactstrap components
-import {Card, CardBody, CardTitle, Container, Row, Col, Button} from 'reactstrap';
+import { Card, CardBody, CardTitle, Container, Row, Col } from 'reactstrap';
 
-class SimpleHeader extends React.Component {
+class OtherUserHeader extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
 
     };
   }
-
 
   render() {
     return (
@@ -31,32 +30,22 @@ class SimpleHeader extends React.Component {
                               tag="h5"
                               className="text-uppercase text-muted mb-0"
                             >
-                                                        Total Cost
+                                                        Shop
                             </CardTitle>
                             <span className="h2 font-weight-bold mb-0">
-                              {`${this.props.totalPrice} RON`}
+                              store name
                             </span>
                           </div>
                         <Col className="col-auto">
                             <div className="icon icon-shape bg-danger text-white rounded-circle shadow">
-                              <i className="fas fa-chart-bar" />
+                              <i className="fas fa-shopping-bag" />
                             </div>
                           </Col>
-
                       </Row>
-                        <Button
-                            style={{marginTop: '16px'}}
-                            color="danger"
-                            onClick={ (e) => this.props.buy() }
-                            size="large"
-                        >
-                            Buy
-                        </Button>
                     </CardBody>
                   </Card>
                 </Col>
               </Row>
-
             </div>
           </Container>
         </div>
@@ -65,4 +54,4 @@ class SimpleHeader extends React.Component {
   }
 }
 
-export default SimpleHeader;
+export default OtherUserHeader;

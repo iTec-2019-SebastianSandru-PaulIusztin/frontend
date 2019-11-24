@@ -4,6 +4,7 @@ import Tables from './views/examples/Tables';
 import Shopcart from "./views/examples/Shopcart";
 import Profile from "./views/examples/Profile";
 import Products from "./views/examples/Products";
+import OtherUser from "./views/examples/OtherUser";
 
 const routes = [
   {
@@ -25,6 +26,14 @@ const routes = [
     path: '/user-profile',
     name: 'User Profile',
     component: Profile,
+
+    icon: 'ni ni-single-02 text-yellow',
+    layout: '/admin'
+  },
+  {
+    path: '/details',
+    name: 'details',
+    component: OtherUser,
 
     icon: 'ni ni-single-02 text-yellow',
     layout: '/admin'

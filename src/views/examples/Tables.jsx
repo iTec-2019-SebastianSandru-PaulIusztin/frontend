@@ -22,10 +22,10 @@ import {
   UncontrolledTooltip, Input, Col, Button, Alert
 } from 'reactstrap';
 // core components
+import { connect } from 'react-redux';
 import Header from '../../components/Headers/Header';
 import Maps from './Map';
-import { auth, products } from "../../redux";
-import {connect} from "react-redux";
+import { auth, products } from '../../redux';
 
 
 class Tables extends React.Component {
@@ -69,15 +69,26 @@ class Tables extends React.Component {
     }
   };
 
-  createItemInTable({ name, owner, price, location, storeName }, index) {
+  goToDetails = (sellerId) => {
+    console.log('fsadfsadf');
+    console.log(this.props.prod);
+    this.props.history.replace(`/admin/details/${sellerId}`);
+  };
+
+  createItemInTable({ name, owner, price, location, storeName, seller_id }, index) {
     return (
-      <tr key={ index }>
+      <tr
+        key={ index }
+      >
         {/** IMAGE AND NAME * */}
 
         <th scope="row">
-          <Media className="align-items-center">
+          <Media
+              onClick={ (e) => this.goToDetails(seller_id) }
+              style={ { cursor: 'pointer' } }
+              className="align-items-center">
             <img
-              alt="..."
+                alt="..."
               src={ require('../../assets/img/theme/bootstrap.jpg') }
             />
             <Media>
@@ -88,16 +99,28 @@ class Tables extends React.Component {
           </Media>
         </th>
         {/** PRICE PER KG* */}
-        <td>{`${price}lei`}</td>
         <td>
-          <Badge color="" className="badge-dot mr-4">
+          <div onClick={ (e) => this.goToDetails(seller_id) }
+               style={ { cursor: 'pointer' } }>
+          {`${price}lei`}
+          </div>
+          </td>
+        <td>
+          <Badge onClick={ (e) => this.goToDetails(seller_id) }
+                 style={ { cursor: 'pointer' } }
+                 color="" className="badge-dot mr-4">
             <i className="bg-warning" />
             {location}
           </Badge>
         </td>
         <td>
           {/** NAME AND STORE * */}
-          { `${owner} ${storeName}`}
+          <div onClick={ (e) => this.goToDetails(seller_id) }
+               style={ { cursor: 'pointer' } }>
+            {' '}
+            { `${owner} ${storeName}`}
+          </div>
+
         </td>
 
         {/**       DROP DOWN * */}
@@ -109,26 +132,14 @@ class Tables extends React.Component {
           />
         </td>
         <td className="text-right">
-          <UncontrolledDropdown>
-            <DropdownToggle
-              className="btn-icon-only text-light"
-              href="#pablo"
-              role="button"
-              size="sm"
-              color=""
-              onClick={ (e) => e.preventDefault() }
-            >
-              <i className="fas fa-ellipsis-v" />
-            </DropdownToggle>
-            <Button
-                disabled={this.state.areButtonsDisabled}
-                onClick={ (e) => this.getItem(e, index) }
-                color="primary"
-                type="button"
-            >
+          <Button
+            disabled={ this.state.areButtonsDisabled }
+            onClick={ (e) => this.getItem(e, index) }
+            color="primary"
+            type="button"
+          >
               Add to cart
-            </Button>
-          </UncontrolledDropdown>
+          </Button>
         </td>
       </tr>
     );
@@ -276,7 +287,7 @@ class Tables extends React.Component {
         <Button
           onClick={ (e) => this.getItem(e, index) }
           color="secondary"
-          disabled={this.state.areButtonsDisabled}
+          disabled={ this.state.areButtonsDisabled }
           type="button"
         >
           Add to cart
@@ -333,7 +344,7 @@ class Tables extends React.Component {
         {/* Page content */}
 
         { this.state.isListSelected === 'list' ? (this.renderTable())
-          : (this.state.isListSelected === 'map' ? (<Maps data = {this.props.prod} />) : (this.renderGrid()))
+          : (this.state.isListSelected === 'map' ? (<Maps data={ this.props.prod } />) : (this.renderGrid()))
         }
       </>
     );
@@ -341,12 +352,12 @@ class Tables extends React.Component {
 }
 
 function mapStateToProps(state) {
-  const prod = products.getEntities(state)
-  const mappedProducts = []
+  const prod = products.getEntities(state);
+  const mappedProducts = [];
 
-  for(let key in prod) {
-    const item = prod[key]
-    if(item) {
+  for (const key in prod) {
+    const item = prod[key];
+    if (item) {
       mappedProducts.push({
         name: item.category && item.category.name,
         owner: item.seller.name,
@@ -357,7 +368,7 @@ function mapStateToProps(state) {
         storeName: item.store_name,
         lat: item.lat,
         lng: item.lng
-      })
+      });
     }
   }
 

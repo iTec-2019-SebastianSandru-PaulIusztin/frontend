@@ -2,8 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a76a8e1-4334-42b9-bf08-a7301c0db210" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/Headers/OtherUserHeader.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/examples/OtherUser.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Headers/SimpleHeader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Headers/SimpleHeader.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/examples/AddProduct.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/examples/AddProduct.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/examples/Products.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/examples/Products.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/examples/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/examples/Profile.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/examples/Tables.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/examples/Tables.jsx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -18,177 +26,34 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/examples/Tables.jsx">
+        <entry file="file://$PROJECT_DIR$/src/views/examples/OtherUser.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="244" selection-start-line="244" selection-end-line="325" selection-end-column="4" />
+            <state relative-caret-position="302">
+              <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
               <folding>
-                <element signature="n#!!block;n#constructor#0;n#Tables#0" />
-                <element signature="e#680#834#0" />
-                <element signature="n#!!block;n#componentDidMount#0;n#Tables#0" />
-                <element signature="e#1063#1165#0" />
-                <element signature="e#1199#1605#0" />
-                <element signature="e#1361#1502#0" />
-                <element signature="e#1512#1601#0" />
-                <element signature="n#!!block;n#createItemInTable#0;n#Tables#0" />
-                <element signature="e#1701#3379#0" />
-                <element signature="e#1729#1752#0" />
-                <element signature="e#1763#2119#0" />
-                <element signature="e#1790#2105#0" />
-                <element signature="e#1841#1954#0" />
-                <element signature="e#1967#2086#0" />
-                <element signature="e#1989#2065#0" />
-                <element signature="e#2129#2149#0" />
-                <element signature="e#2192#2347#0" />
-                <element signature="e#2207#2333#0" />
-                <element signature="e#2356#2447#0" />
-                <element signature="e#2372#2395#0" />
-                <element signature="e#2458#2482#0" />
-                <element signature="e#2492#2663#0" />
-                <element signature="e#2507#2649#0" />
-                <element signature="e#2672#3367#0" />
-                <element signature="e#2710#3353#0" />
-                <element signature="e#2745#3060#0" />
-                <element signature="e#3073#3319#0" />
-                <element signature="e#3438#3696#0" />
-                <element signature="e#3475#3531#0" />
-                <element signature="e#3571#3626#0" />
-                <element signature="e#3636#3692#0" />
-                <element signature="e#3727#6866#0" />
-                <element signature="e#3770#3781#0" />
-                <element signature="e#3845#6849#0" />
-                <element signature="e#3859#6836#0" />
-                <element signature="e#3891#6821#0" />
-                <element signature="e#3929#4040#0" />
-                <element signature="e#4053#4673#0" />
-                <element signature="e#4129#4508#0" />
-                <element signature="e#4177#4485#0" />
-                <element signature="e#4523#4652#0" />
-                <element signature="e#4686#6803#0" />
-                <element signature="e#4730#6777#0" />
-                <element signature="e#4769#6756#0" />
-                <element signature="e#4942#5365#0" />
-                <element signature="e#5000#5329#0" />
-                <element signature="e#5384#5673#0" />
-                <element signature="e#5440#5637#0" />
-                <element signature="e#5692#6055#0" />
-                <element signature="e#5729#6019#0" />
-                <element signature="e#6074#6344#0" />
-                <element signature="e#6111#6308#0" />
-                <element signature="e#6363#6726#0" />
-                <element signature="e#6400#6690#0" />
-                <element signature="e#6906#7192#0" />
-                <element signature="e#7276#8557#0" />
-                <element signature="e#7347#8546#0" />
-                <element signature="e#7381#7479#0" />
-                <element signature="e#7488#8310#0" />
-                <element signature="e#7538#7645#0" />
-                <element signature="e#7656#8292#0" />
-                <element signature="e#7729#7836#0" />
-                <element signature="e#7849#7970#0" />
-                <element signature="e#7983#8112#0" />
-                <element signature="e#8125#8275#0" />
-                <element signature="e#8320#8532#0" />
-                <element signature="n#!!block;n#transformForGridRecursive#0;n#Tables#0" />
-                <element signature="e#8653#8681#0" />
-                <element signature="e#8703#8919#0" />
-                <element signature="e#8929#9200#0" />
-                <element signature="e#9258#9747#0" />
-                <element signature="e#9431#9736#0" />
-                <element signature="e#9580#9705#0" />
-                <element signature="n#!!block;n#render#0;n#Tables#0" />
-                <element signature="e#9782#10076#0" />
-                <element signature="e#9856#9874#0" />
-                <element signature="n#!!block;n#mapStateToProps#0" />
-                <element signature="e#10220#10613#0" />
-                <element signature="e#10262#10609#0" />
-                <element signature="e#10290#10602#0" />
-                <element signature="e#10624#10692#0" />
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/examples/Shopcart.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="437">
+              <caret line="217" column="29" lean-forward="true" selection-start-line="217" selection-start-column="29" selection-end-line="217" selection-end-column="29" />
+              <folding>
+                <element signature="e#1#27#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/views/examples/Products.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="350" selection-start-line="350" selection-end-line="350" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/examples/Register.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="93" selection-start-line="63" selection-start-column="1" selection-end-line="93" />
-              <folding>
-                <element signature="e#53#227#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/examples/AddProduct.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="97" column="16" selection-start-line="97" selection-start-column="16" selection-end-line="97" selection-end-column="16" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/redux/api.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="14" column="43" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Headers/SimpleHeader.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="31" column="66" selection-start-line="31" selection-start-column="66" selection-end-line="31" selection-end-column="66" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Headers/ShopHeader.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
-              <caret line="30" column="52" lean-forward="true" selection-start-line="30" selection-start-column="52" selection-end-line="30" selection-end-column="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Navbars/AdminNavbar.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="292">
-              <caret line="54" column="19" lean-forward="true" selection-start-line="54" selection-start-column="19" selection-end-line="54" selection-end-column="19" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Headers/UserHeader.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="19" column="23" lean-forward="true" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+            <state relative-caret-position="448">
+              <caret line="47" column="52" selection-start-line="47" selection-start-column="52" selection-end-line="47" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -197,10 +62,77 @@
         <entry file="file://$PROJECT_DIR$/src/views/examples/Profile.jsx">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="212">
-              <caret line="112" column="1" lean-forward="true" selection-start-line="112" selection-start-column="1" selection-end-line="118" selection-end-column="3" />
+              <caret line="179" column="19" lean-forward="true" selection-start-line="179" selection-start-column="19" selection-end-line="186" selection-end-column="31" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
                 <element signature="e#92#221#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/redux/products.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="41" column="51" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="51" />
+              <folding>
+                <element signature="e#0#90#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/redux/shops.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="580">
+              <caret line="35" column="40" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="40" />
+              <folding>
+                <element signature="e#0#82#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/redux/api.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="8" column="15" lean-forward="true" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/redux/auth.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#82#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/redux/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/screens/auth/RegisterScreen.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="514">
+              <caret line="27" column="5" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="27" selection-end-column="5" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -217,36 +149,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Last Name</find>
-      <find>Edit</find>
-      <find>Hello Sebastian</find>
-      <find>storeName</find>
-      <find>storeCreation</find>
-      <find>addProdu</find>
-      <find>default</find>
-      <find>Add new</find>
-      <find>Search</find>
-      <find>Sebastian</find>
-      <find>isAddProduct</find>
-      <find>setAddProductFlag</find>
-      <find>My Profile</find>
-      <find>USER INFOMR</find>
-      <find>Button</find>
-      <find>button</find>
-      <find>Subcategory</find>
-      <find>onFileChange</find>
       <find>require</find>
       <find>onSave</find>
       <find>avatar</find>
       <find>imgSrc</find>
       <find>flex</find>
-      <find>Files</find>
       <find>&lt;img</find>
       <find>addproduc</find>
       <find>isListSelected</find>
       <find>grid</find>
       <find>props.prod</find>
       <find>CardFooter</find>
+      <find>Files</find>
+      <find>upload</find>
+      <find>redux</find>
+      <find>list</find>
+      <find>createTa</find>
+      <find>renderGr</find>
+      <find>getItem</find>
+      <find>render</find>
+      <find>setState</find>
+      <find>this.props.history.replace</find>
+      <find>this.props.history</find>
+      <find>history.replace</find>
+      <find>add</find>
+      <find>goToDetails</find>
+      <find>goTo</find>
+      <find>items</find>
+      <find>create</find>
+      <find>sellerId</find>
+      <find>&lt;button</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -290,18 +222,20 @@
         <option value="$PROJECT_DIR$/src/views/examples/Shopcart.jsx" />
         <option value="$PROJECT_DIR$/src/screens/auth/LoginScreen.jsx" />
         <option value="$PROJECT_DIR$/src/views/examples/Register.jsx" />
-        <option value="$PROJECT_DIR$/src/routes.js" />
-        <option value="$PROJECT_DIR$/src/components/Headers/SimpleHeader.jsx" />
-        <option value="$PROJECT_DIR$/src/components/Sidebar/Sidebar.jsx" />
         <option value="$PROJECT_DIR$/src/components/Navbars/AdminNavbar.jsx" />
         <option value="$PROJECT_DIR$/src/components/Headers/UserHeader.jsx" />
         <option value="$PROJECT_DIR$/src/components/Headers/ShopHeader.jsx" />
         <option value="$PROJECT_DIR$/src/views/addProduct.jsx" />
         <option value="$PROJECT_DIR$/src/views/examples/Profile.jsx" />
         <option value="$PROJECT_DIR$/src/views/examples/AddProduct.jsx" />
+        <option value="$PROJECT_DIR$/src/routes.js" />
+        <option value="$PROJECT_DIR$/src/components/Sidebar/Sidebar.jsx" />
+        <option value="$PROJECT_DIR$/src/components/Headers/OtherUserHeader.jsx" />
         <option value="$PROJECT_DIR$/src/views/examples/Tables.jsx" />
-        <option value="$PROJECT_DIR$/src/redux/api.js" />
         <option value="$PROJECT_DIR$/src/views/examples/Products.jsx" />
+        <option value="$PROJECT_DIR$/src/redux/api.js" />
+        <option value="$PROJECT_DIR$/src/views/examples/OtherUser.jsx" />
+        <option value="$PROJECT_DIR$/src/components/Headers/SimpleHeader.jsx" />
       </list>
     </option>
   </component>
@@ -486,7 +420,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82470000" />
+    <option name="totallyTimeSpent" value="87287000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="71" y="-7" width="1472" height="878" extended-state="6" />
@@ -523,64 +457,6 @@
     </ignored-roots>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/core/navigation/DecisionRoute.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="26" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/scss/core/tables/_table.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="78" column="1" selection-start-line="78" selection-start-column="1" selection-end-line="78" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/scss/core/cards/_card-stats.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/css/argon-dashboard-react.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret column="157815" selection-start-column="157815" selection-end-column="157815" />
-          <folding>
-            <element signature="e#61641#61841#2" expanded="true" />
-            <element signature="e#62069#62218#2" expanded="true" />
-            <element signature="e#62732#62878#2" expanded="true" />
-            <element signature="e#63183#63349#1" expanded="true" />
-            <element signature="e#74066#74306#2" expanded="true" />
-            <element signature="e#75229#75476#2" expanded="true" />
-            <element signature="e#103517#103707#2" expanded="true" />
-            <element signature="e#103753#103943#2" expanded="true" />
-            <element signature="e#203495#203695#2" expanded="true" />
-            <element signature="e#204925#205125#2" expanded="true" />
-            <element signature="e#205607#205753#2" expanded="true" />
-            <element signature="e#220943#221190#2" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Index.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
-          <folding>
-            <element signature="e#297#446#0" expanded="true" />
-            <element signature="e#467#571#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/img/brand/argon-react-white.png" />
-    <entry file="file://$PROJECT_DIR$/src/assets/img/brand/argon-react.png" />
     <entry file="file://$PROJECT_DIR$/src/assets/img/brand/blue.png" />
     <entry file="file://$PROJECT_DIR$/src/assets/img/brand/favicon.png" />
     <entry file="file://$PROJECT_DIR$/src/assets/img/brand/template.jpg" />
@@ -717,16 +593,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/examples/Shopcart.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="217" column="30" selection-start-line="217" selection-start-column="30" selection-end-line="217" selection-end-column="30" />
-          <folding>
-            <element signature="e#1#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Navbars/AuthNavbar.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-900" />
@@ -743,44 +609,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="212">
           <caret line="103" column="18" selection-start-line="103" selection-start-column="18" selection-end-line="105" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Sidebar/Sidebar.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="268" selection-start-line="268" selection-end-line="274" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-            <element signature="e#248#611#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/screens/auth/RegisterScreen.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="56" column="17" selection-start-line="56" selection-start-column="17" selection-end-line="56" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Headers/UserHeader.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="19" column="23" lean-forward="true" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -804,35 +632,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Headers/SimpleHeader.jsx">
+    <entry file="file://$PROJECT_DIR$/src/redux/createAPI.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="31" column="66" selection-start-line="31" selection-start-column="66" selection-end-line="31" selection-end-column="66" />
+        <state relative-caret-position="222">
+          <caret line="126" column="12" lean-forward="true" selection-start-line="126" selection-start-column="12" selection-end-line="126" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="33" column="19" lean-forward="true" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Sidebar/Sidebar.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="75" column="64" selection-start-line="75" selection-start-column="64" selection-end-line="75" selection-end-column="64" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#248#611#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Headers/UserHeader.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Headers/ShopHeader.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="30" column="52" lean-forward="true" selection-start-line="30" selection-start-column="52" selection-end-line="30" selection-end-column="52" />
+        <state relative-caret-position="600">
+          <caret line="30" column="52" selection-end-line="65" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/examples/Profile.jsx">
+    <entry file="file://$PROJECT_DIR$/src/components/Headers/OtherUserHeader.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="112" column="1" lean-forward="true" selection-start-line="112" selection-start-column="1" selection-end-line="118" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-            <element signature="e#92#221#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="100">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/examples/AddProduct.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="97" column="16" selection-start-line="97" selection-start-column="16" selection-end-line="97" selection-end-column="16" />
+        <state relative-caret-position="120">
+          <caret line="102" column="24" selection-start-line="102" selection-start-column="24" selection-end-line="102" selection-end-column="24" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -841,108 +693,114 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/examples/Tables.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="244" selection-start-line="244" selection-end-line="325" selection-end-column="4" />
+        <state relative-caret-position="292">
+          <caret line="123" column="13" lean-forward="true" selection-start-line="123" selection-start-column="13" selection-end-line="123" selection-end-column="13" />
           <folding>
-            <element signature="n#!!block;n#constructor#0;n#Tables#0" />
-            <element signature="e#680#834#0" />
-            <element signature="n#!!block;n#componentDidMount#0;n#Tables#0" />
-            <element signature="e#1063#1165#0" />
-            <element signature="e#1199#1605#0" />
-            <element signature="e#1361#1502#0" />
-            <element signature="e#1512#1601#0" />
-            <element signature="n#!!block;n#createItemInTable#0;n#Tables#0" />
-            <element signature="e#1701#3379#0" />
-            <element signature="e#1729#1752#0" />
-            <element signature="e#1763#2119#0" />
-            <element signature="e#1790#2105#0" />
-            <element signature="e#1841#1954#0" />
-            <element signature="e#1967#2086#0" />
-            <element signature="e#1989#2065#0" />
-            <element signature="e#2129#2149#0" />
-            <element signature="e#2192#2347#0" />
-            <element signature="e#2207#2333#0" />
-            <element signature="e#2356#2447#0" />
-            <element signature="e#2372#2395#0" />
-            <element signature="e#2458#2482#0" />
-            <element signature="e#2492#2663#0" />
-            <element signature="e#2507#2649#0" />
-            <element signature="e#2672#3367#0" />
-            <element signature="e#2710#3353#0" />
-            <element signature="e#2745#3060#0" />
-            <element signature="e#3073#3319#0" />
-            <element signature="e#3438#3696#0" />
-            <element signature="e#3475#3531#0" />
-            <element signature="e#3571#3626#0" />
-            <element signature="e#3636#3692#0" />
-            <element signature="e#3727#6866#0" />
-            <element signature="e#3770#3781#0" />
-            <element signature="e#3845#6849#0" />
-            <element signature="e#3859#6836#0" />
-            <element signature="e#3891#6821#0" />
-            <element signature="e#3929#4040#0" />
-            <element signature="e#4053#4673#0" />
-            <element signature="e#4129#4508#0" />
-            <element signature="e#4177#4485#0" />
-            <element signature="e#4523#4652#0" />
-            <element signature="e#4686#6803#0" />
-            <element signature="e#4730#6777#0" />
-            <element signature="e#4769#6756#0" />
-            <element signature="e#4942#5365#0" />
-            <element signature="e#5000#5329#0" />
-            <element signature="e#5384#5673#0" />
-            <element signature="e#5440#5637#0" />
-            <element signature="e#5692#6055#0" />
-            <element signature="e#5729#6019#0" />
-            <element signature="e#6074#6344#0" />
-            <element signature="e#6111#6308#0" />
-            <element signature="e#6363#6726#0" />
-            <element signature="e#6400#6690#0" />
-            <element signature="e#6906#7192#0" />
-            <element signature="e#7276#8557#0" />
-            <element signature="e#7347#8546#0" />
-            <element signature="e#7381#7479#0" />
-            <element signature="e#7488#8310#0" />
-            <element signature="e#7538#7645#0" />
-            <element signature="e#7656#8292#0" />
-            <element signature="e#7729#7836#0" />
-            <element signature="e#7849#7970#0" />
-            <element signature="e#7983#8112#0" />
-            <element signature="e#8125#8275#0" />
-            <element signature="e#8320#8532#0" />
-            <element signature="n#!!block;n#transformForGridRecursive#0;n#Tables#0" />
-            <element signature="e#8653#8681#0" />
-            <element signature="e#8703#8919#0" />
-            <element signature="e#8929#9200#0" />
-            <element signature="e#9258#9747#0" />
-            <element signature="e#9431#9736#0" />
-            <element signature="e#9580#9705#0" />
-            <element signature="n#!!block;n#render#0;n#Tables#0" />
-            <element signature="e#9782#10076#0" />
-            <element signature="e#9856#9874#0" />
-            <element signature="n#!!block;n#mapStateToProps#0" />
-            <element signature="e#10220#10613#0" />
-            <element signature="e#10262#10609#0" />
-            <element signature="e#10290#10602#0" />
-            <element signature="e#10624#10692#0" />
+            <element signature="e#371#409#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/examples/Products.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="340" column="37" selection-start-line="340" selection-start-column="37" selection-end-line="340" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/screens/auth/RegisterScreen.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="514">
+          <caret line="27" column="5" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="27" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/redux/products.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="41" column="51" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#90#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/redux/shops.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="580">
+          <caret line="35" column="40" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#82#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/redux/api.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="14" column="43" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
+        <state relative-caret-position="160">
+          <caret line="8" column="15" lean-forward="true" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/examples/Products.jsx">
+    <entry file="file://$PROJECT_DIR$/src/redux/auth.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="350" selection-start-line="350" selection-end-line="350" />
+        <state>
+          <folding>
+            <element signature="e#0#82#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/redux/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/examples/OtherUser.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/examples/Profile.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="179" column="19" lean-forward="true" selection-start-line="179" selection-start-column="19" selection-end-line="186" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#92#221#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/examples/Shopcart.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="217" column="29" lean-forward="true" selection-start-line="217" selection-start-column="29" selection-end-line="217" selection-end-column="29" />
+          <folding>
+            <element signature="e#1#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Headers/SimpleHeader.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="47" column="52" selection-start-line="47" selection-start-column="52" selection-end-line="47" selection-end-column="52" />
         </state>
       </provider>
     </entry>

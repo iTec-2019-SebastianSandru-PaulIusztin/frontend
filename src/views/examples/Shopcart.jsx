@@ -11,8 +11,8 @@ import {
   Media, Pagination, PaginationItem, PaginationLink, Row, Table,
   UncontrolledDropdown
 } from 'reactstrap';
-import Header from "../../components/Headers/Header";
-import SimpleHeader from "../../components/Headers/SimpleHeader";
+import Header from '../../components/Headers/Header';
+import SimpleHeader from '../../components/Headers/SimpleHeader';
 
 class Shopcart extends React.Component {
   constructor(props) {
@@ -121,15 +121,19 @@ class Shopcart extends React.Component {
         //   lng: 21.231513
         // }
       ],
-        totalPrice: 0
+      totalPrice: 0
     };
   }
 
   componentDidMount() {
-      this.setState({totalPrice: this.getTotalPriceOfItems()});
+    this.setState({ totalPrice: this.getTotalPriceOfItems() });
   }
 
-    createItemInTable({ name, owner, price, location, storeName, quantity }, index) {
+  buy = () => {
+    // REDUX HERE
+  }
+
+  createItemInTable({ name, owner, price, location, storeName, quantity }, index) {
     return (
       <tr key={ index }>
         {/** IMAGE AND NAME * */}
@@ -169,12 +173,12 @@ class Shopcart extends React.Component {
     );
   }
 
-  getTotalPriceOfItems(){
-      let price = 0;
-      for(const item of this.state.items){
-          price+=item.price;
-      }
-      return price;
+  getTotalPriceOfItems() {
+    let price = 0;
+    for (const item of this.state.items) {
+      price += item.price;
+    }
+    return price;
   }
 
     renderTable = () => (
@@ -215,10 +219,12 @@ class Shopcart extends React.Component {
 
     render() {
       return (
-          <>        <SimpleHeader totalPrice={this.state.totalPrice} onChangeTab={ this.onOtherThingSelected } />
+        <>
+          {' '}
+          <SimpleHeader buy={ this.buy } totalPrice={ this.state.totalPrice } onChangeTab={ this.onOtherThingSelected } />
 
-              {this.renderTable()}
-          </>
+          {this.renderTable()}
+        </>
       );
     }
 }

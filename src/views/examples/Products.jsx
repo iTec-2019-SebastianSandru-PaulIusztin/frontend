@@ -340,7 +340,7 @@ class Products extends React.Component {
                           onClick={ (e) => this.setAddProductFlag() }
                           size="large"
                       >
-                        + Add a new product
+                        Add
                       </Button>
                     </Col>
                   </Row>

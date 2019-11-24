@@ -5,7 +5,8 @@ const API_SPEC = {
     auth: '/auth/email/:id?/',
     buyer: '/buyer/:id?/',
     shops: '/stores/:id?/',
-    products: '/products/:id?/'
+    products: '/products/:id?/',
+    sellers: '/sellers/:id?/'
   },
   mappings: {},
   options: {}

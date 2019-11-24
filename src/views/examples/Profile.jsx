@@ -111,6 +111,7 @@ class Profile extends React.Component {
   };
 
   onFilesChange = (files) => {
+    console.log(files[0]);
     this.setState({ avatar: files[0], imgSrc: files[0].preview.url });
   }
 

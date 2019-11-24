@@ -99,8 +99,6 @@ class AddProduct extends React.Component {
   createProduct = (e) => {
     const { dispatch, shop } = this.props
     const { quantity, category, file, price, subCategory } = this.state
-    console.log(file)
-
     const payload = {
       counter: quantity,
       product_type: 'kg',
@@ -108,11 +106,11 @@ class AddProduct extends React.Component {
       description: 'Bio',
       origin_type: 'agricultural',
       category: { name: category },
-      subcategories: [{ name: subCategory}],
-      photos: [{ photo: file.preview }]
+      subcategories: [{ name: subCategory }],
+      photos: [file]
     }
 
-    dispatch(products.addProduct(payload)) 
+    dispatch(products.addProduct(payload))
   }
 
 
@@ -120,8 +118,9 @@ class AddProduct extends React.Component {
     this.setState({ category: e.target.value });
   }
 
-  onFilesChange = (files) => {
-    this.setState({ file: files[0], imgSrc: files[0].preview.url });
+  onFilesChange = (e) => {
+    console.log(e.target.files[0]);
+    this.setState({ file: e.target.files[0], imgSrc: e.target.files[0].preview });
   }
 
   onFilesError = (error, file) => {
@@ -234,6 +233,9 @@ class AddProduct extends React.Component {
                     className="rounded-circle"
                     src={ this.state.imgSrc }
                 />
+              <input type="file"
+                     id="image"
+                     accept="image/png, image/jpeg"  onChange={this.onFilesChange} required/>
                 <Files
                 style={ {
                   textAlign: 'center',

@@ -73,7 +73,7 @@ class Sidebar extends React.Component {
     const { user } = this.props;
     if (user === undefined){
       if (prop.path === '/login' || prop.path === '/register' || prop.path === '/products' ||
-        prop.path === '/user-profile' || prop.path === '/shop/cart') {
+        prop.path === '/user-profile' || prop.path === '/details' || prop.path === '/shop/cart') {
     }else {
         return (
             <NavItem key={ key }>
@@ -90,7 +90,7 @@ class Sidebar extends React.Component {
         );
       }
     } else if ((user.is_seller !== undefined || user.is_seller !== null) && user.is_seller) {
-      if (prop.path === '/login' || prop.path === '/register') {
+      if (prop.path === '/login' || prop.path === '/details' || prop.path === '/register') {
 
       }
       else {
@@ -109,7 +109,7 @@ class Sidebar extends React.Component {
         );
       }
     }
-    else if (prop.path === '/login' || prop.path === '/register' || prop.path === '/products') {
+    else if (prop.path === '/login' ||  prop.path === '/register' || prop.path === '/products' || prop.path === '/details' ) {
 
     }
     else {
