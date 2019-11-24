@@ -117,9 +117,9 @@ class AddProduct extends React.Component {
     this.setState({ category: e.target.value });
   }
 
-  onFilesChange = (e) => {
-    console.log(e.target.files[0]);
-    this.setState({ file: e.target.files[0], imgSrc: e.target.files[0].preview });
+  onFilesChange = (files) => {
+    console.log(files);
+    this.setState({ file: files[0], imgSrc: files[0].preview.url });
   }
 
   onFilesError = (error, file) => {
