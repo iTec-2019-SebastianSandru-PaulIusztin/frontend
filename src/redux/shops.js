@@ -60,6 +60,7 @@ function* getCurrentShopHandler() {
   });
 
   if(success) {
+      console.log('SHOP: ' , success.payload)
       yield put({type: GET_CURRENT_SHOP_SUCCEEDED, payload: success.payload})
   }
 }

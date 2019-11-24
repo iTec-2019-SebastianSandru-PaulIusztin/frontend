@@ -39,7 +39,7 @@ export function reducer(state = initialState, action = {}) {
 
 export function* saga() {
     yield takeLatest([auth.ACCESS_GRANTED, GET_PRODUCTS], getProductsHandler);
-    yield takeLatest(ADD_PRODUCT, getProductsHandler);
+    yield takeLatest(ADD_PRODUCT, addProductHandler);
 }
 
 function* addProductHandler({ payload }) {

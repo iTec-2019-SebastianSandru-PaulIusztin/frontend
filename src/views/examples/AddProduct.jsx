@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import {Button, CardBody, Col, Form, FormGroup, Input, Row} from 'reactstrap';
 import Files from "react-files";
 
+import { products, shops } from '../../redux'
+
 const vegetables = [
   'artichoke',
   'aubergine (eggplant)',
@@ -86,6 +88,7 @@ class AddProduct extends React.Component {
     this.state = {
       category: '',
       subCategory: '',
+      file: '',
       imgSrc: require('../../assets/img/theme/team-4-800x800.jpg'),
       price: '',
       quantity: ''
@@ -94,8 +97,22 @@ class AddProduct extends React.Component {
 
 
   createProduct = (e) => {
-    //redux here
-    console.log(this.state)
+    const { dispatch, shop } = this.props
+    const { quantity, category, file, price, subCategory } = this.state
+    console.log(file)
+
+    const payload = {
+      counter: quantity,
+      product_type: 'kg',
+      price,
+      description: 'Bio',
+      origin_type: 'agricultural',
+      category: { name: category },
+      subcategories: [{ name: subCategory}],
+      photos: [{ photo: file.preview }]
+    }
+
+    dispatch(products.addProduct(payload)) 
   }
 
 
@@ -104,7 +121,7 @@ class AddProduct extends React.Component {
   }
 
   onFilesChange = (files) => {
-    this.setState({ imgSrc: files[0].preview.url });
+    this.setState({ file: files[0], imgSrc: files[0].preview.url });
   }
 
   onFilesError = (error, file) => {
@@ -116,11 +133,11 @@ class AddProduct extends React.Component {
   }
 
   updateQuantity = (e) => {
-    this.setState({ subCategory: e.target.value });
+    this.setState({ quantity: e.target.value });
   }
 
   updateSubcategory = (e) => {
-    this.setState({ quantity: e.target.value });
+    this.setState({ subCategory: e.target.value });
   }
 
   render() {
@@ -251,5 +268,10 @@ class AddProduct extends React.Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    shop: shops.getCurrentShop(state)
+  }
+}
 
-export default connect()(AddProduct);
+export default connect(mapStateToProps)(AddProduct);
