@@ -6,21 +6,28 @@ import CardBody from 'reactstrap/es/CardBody';
 import CardHeader from 'reactstrap/es/CardHeader';
 import CardFooter from 'reactstrap/es/CardFooter';
 import { connect } from 'react-redux';
-import {auth} from "../../redux";
+import {auth, shops} from "../../redux";
+import * as payments from "../../redux/payments";
 
 class UserHeader extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      payments: []
+    };
   }
 
-  renderHistoryItem({ shipMentName, status }, index) {
+  componentDidMount() {
+    console.log(this.props.payments);
+    this.setState({payments: this.props.payments});
+  }
+
+  renderHistoryItem(payment, index) {
     return (
       <div>
 
-        <hr className="my-4" />
         <h6 className="heading-small text-muted mb-4">
-          {`Shipment ${index} with name "${shipMentName}" is still ${status}`}
+          {`Shipment ${index} with quantity ${payment.payment_products.length} has ${payment.status} status`}
         </h6>
 
       </div>
@@ -47,17 +54,14 @@ class UserHeader extends React.Component {
                 >
                   Edit profile
                 </Button>
-                <Card style={ { marginTop: '16px' } } className="bg-secondary shadow">
+                <Card style={ { marginTop: '16px',    width: 'max-content'} } className="bg-secondary shadow">
                   <CardHeader>
                     <h3 className="mb-0">Shipment </h3>
                   </CardHeader>
                   <CardBody className="pt-0 pt-md-4">
-                    <h4 className="heading-small text-muted mb-4">
-                      Shipment Name
-                    </h4>
-                    {[{shipMentName: 'Shipmentul 1', status: 'Pending'},{shipMentName: 'Shipmentul 2', status: 'Active'}].map((item,index)=> (
+                    {this.props.payments !== undefined ? (this.props.payments.map((item,index)=> (
                       this.renderHistoryItem(item, index)
-                      ))}
+                      ))) : null}
                   </CardBody>
                 </Card>
               </Col>
@@ -72,8 +76,21 @@ class UserHeader extends React.Component {
 
 
 function mapStateToProps(state) {
+  const payment = payments.getEntities(state);
+  const mappedProducts = [];
+  if (payment) {
+    for (const key in payment) {
+      const item = payment[key]
+      if (item) {
+        mappedProducts.push({
+          ...item
+        });
+      }
+    }
+  }
+  console.log(mappedProducts);
   return {
-    user: auth.getCurrentUser(state)
+    payments: mappedProducts
   };
 }
 
