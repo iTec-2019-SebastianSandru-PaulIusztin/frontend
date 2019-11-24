@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Card, CardBody, CardHeader, Col, Container, Form, FormGroup, Input, Media, Row } from 'reactstrap';
 import { connect } from 'react-redux';
 import OtherUserHeader from '../../components/Headers/OtherUserHeader';
-import { auth } from '../../redux';
+import { auth, shops } from '../../redux';
 
 class OtherUser extends React.Component {
   constructor(props) {
@@ -10,7 +10,6 @@ class OtherUser extends React.Component {
     this.state = {
 
     };
-    console.log('fdsfasd');
   }
 
   componentDidMount() {
@@ -19,6 +18,7 @@ class OtherUser extends React.Component {
     const id = this.props.location.pathname.split('/')[this.props.location.pathname.split('/').length - 1];
 
     if (id !== 'details') {
+      dispatch(shops.getSellerShop(id))
     }
     else {
     }
@@ -99,6 +99,12 @@ class OtherUser extends React.Component {
         </>
       );
     }
+}
+
+function mapStateToProps(state) {
+  return {
+    shop: shops.getSellerCartProducts(state)
+  }
 }
 
 export default connect()(OtherUser);

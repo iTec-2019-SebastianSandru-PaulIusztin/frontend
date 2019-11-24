@@ -35,7 +35,7 @@ class Shopcart extends React.Component {
   buy = () => {
     const { dispatch, prod } = this.props
     const payload = {
-      payment_products: prod.map((item) => item.id)
+      payment_products: prod.map((item) => ({ product_id: item.id,  counter: Math.floor(Math.random() * item.quantity * 0.40)}) )
     }
     dispatch(payments.createPayment(payload))
   }
@@ -83,6 +83,7 @@ class Shopcart extends React.Component {
   getTotalPriceOfItems() {
     let price = 0;
     const { prod } = this.props;
+
     if (prod) {
       for (const item of prod) {
         price += item.price;
@@ -141,24 +142,25 @@ class Shopcart extends React.Component {
 
 function mapStateToProps(state) {
   const prod = shops.getCurrentCartProducts(state);
-  console.log(prod);
   const mappedProducts = [];
 
-  for (const key in prod) {
-    const item = prod[key];
-    if (item) {
-      mappedProducts.push({
-        id: item.id,
-        name: item.category && item.category.name,
-        owner: item.seller.name,
-        price: item.price,
-        quentity: item.counter,
-        location: item.seller.address.city,
-        seller_id: item.seller.id,
-        storeName: item.store_name,
-        lat: item.lat,
-        lng: item.lng
-      });
+  if(prod) {
+    for (const key in prod) {
+      const item = prod[key].product
+      if (item) {
+        mappedProducts.push({
+          id: item.id,
+          name: item.category && item.category.name,
+          owner: item.seller.name,
+          price: item.price,
+          quantity: item.counter,
+          location: item.seller.address.city,
+          seller_id: item.seller.id,
+          storeName: item.store_name,
+          lat: item.lat,
+          lng: item.lng
+        });
+      }
     }
   }
 
