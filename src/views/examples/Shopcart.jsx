@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { connect } from 'react-redux';
 
 import {
   Badge, Card, CardFooter, CardHeader,
@@ -14,112 +15,14 @@ import {
 import Header from '../../components/Headers/Header';
 import SimpleHeader from '../../components/Headers/SimpleHeader';
 
+import { shops } from '../../redux';
+
 class Shopcart extends React.Component {
   constructor(props) {
     super(props);
     // name, owner, price, location, storeName
     this.state = {
       items: [
-        // {
-        //   name: 'nume1-produs',
-        //   owner: 'numeOnwer',
-        //   price: 121,
-        //   quantity: 12,
-        //   location: '341fsafsdf',
-        //   storeName: 'fadsfasdfasdfSTORE',
-        //   lat: 45.737465,
-        //   lng: 21.192758
-        // },
-        // {
-        //   name: 'nume2-produs',
-        //   owner: 'numeOnwer',
-        //   price: 121,
-        //   quantity: 1,
-        //   location: '341fsafsdf',
-        //   storeName: 'fadsfasdfasdfSTORE',
-        //   lat: 45.747066,
-        //   lng: 21.269838
-        // },
-        // {
-        //   name: 'nume3-produs',
-        //   owner: 'numeOnwer',
-        //   price: 121,
-        //   quantity: 2,
-        //   location: '341fsafsdf',
-        //   storeName: 'fadsfasdfasdfSTORE',
-        //   lat: 45.761322,
-        //   lng: 21.279116
-        // },
-        // {
-        //   name: 'nume4-produs',
-        //   owner: 'numeOnwer',
-        //   price: 121,
-        //   quantity: 3,
-        //   location: '341fsafsdf',
-        //   storeName: 'fadsfasdfasdfSTORE',
-        //   lat: 45.765037,
-        //   lng: 21.231543
-        // },
-        // {
-        //   name: 'nume5-produs',
-        //   owner: 'numeOnwer',
-        //   price: 121,
-        //   quantity: 5,
-        //   location: '341fsafsdf',
-        //   storeName: 'fadsfasdfasdfSTORE',
-        //   lat: 45.765037,
-        //   lng: 21.231543
-        // },
-        // {
-        //   name: 'nume6-produs',
-        //   owner: 'numeOnwer',
-        //   price: 121,
-        //   quantity: 9,
-        //   location: '341fsafsdf',
-        //   storeName: 'fadsfasdfasdfSTORE',
-        //   lat: 45.765037,
-        //   lng: 21.231543
-        // },
-        // {
-        //   name: 'nume7-produs',
-        //   owner: 'numeOnwer',
-        //   price: 121,
-        //   quantity: 1,
-        //   location: '341fsafsdf',
-        //   storeName: 'fadsfasdfasdfSTORE',
-        //   lat: 45.765037,
-        //   lng: 21.231543
-        // },
-        // {
-        //   name: 'nume8-produs',
-        //   owner: 'numeOnwer',
-        //   price: 121,
-        //   quantity: 1,
-        //   location: '341fsafsdf',
-        //   storeName: 'fadsfasdfasdfSTORE',
-        //   lat: 45.765037,
-        //   lng: 21.231543
-        // },
-        // {
-        //   name: 'nume9-produs',
-        //   owner: 'numeOnwer',
-        //   price: 121,
-        //   quantity: 1,
-        //   location: '341fsafsdf',
-        //   storeName: 'fadsfasdfasdfSTORE',
-        //   lat: 45.765037,
-        //   lng: 21.231543
-        // },
-        // {
-        //   name: 'nume10-produs',
-        //   owner: 'numeOnwer',
-        //   price: 121,
-        //   quantity: 1,
-        //   location: '341fsafsdf',
-        //   storeName: 'fadsfasdfasdfSTORE',
-        //   lat: 45.762037,
-        //   lng: 21.231513
-        // }
       ],
       totalPrice: 0
     };
@@ -175,8 +78,11 @@ class Shopcart extends React.Component {
 
   getTotalPriceOfItems() {
     let price = 0;
-    for (const item of this.state.items) {
-      price += item.price;
+    const { prod } = this.props;
+    if (prod) {
+      for (const item of prod) {
+        price += item.price;
+      }
     }
     return price;
   }
@@ -205,7 +111,7 @@ class Shopcart extends React.Component {
                   </tr>
                 </thead>
                 <tbody>
-                  {this.state.items.map((item, index) => this.createItemInTable({ ...item }, index))}
+                  {this.props.prod && this.props.prod.map((item, index) => this.createItemInTable({ ...item }, index))}
                 </tbody>
               </Table>
               <CardFooter className="py-4">
@@ -229,4 +135,32 @@ class Shopcart extends React.Component {
     }
 }
 
-export default Shopcart;
+function mapStateToProps(state) {
+  const prod = shops.getCurrentCartProducts(state);
+  console.log(prod);
+  const mappedProducts = [];
+
+  for (const key in prod) {
+    const item = prod[key];
+    if (item) {
+      mappedProducts.push({
+        id: item.id,
+        name: item.category && item.category.name,
+        owner: item.seller.name,
+        price: item.price,
+        quentity: item.counter,
+        location: item.seller.address.city,
+        seller_id: item.seller.id,
+        storeName: item.store_name,
+        lat: item.lat,
+        lng: item.lng
+      });
+    }
+  }
+
+  return {
+    prod: mappedProducts
+  };
+}
+
+export default connect(mapStateToProps)(Shopcart);

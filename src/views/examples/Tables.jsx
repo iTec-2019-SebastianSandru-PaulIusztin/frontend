@@ -25,7 +25,8 @@ import {
 import { connect } from 'react-redux';
 import Header from '../../components/Headers/Header';
 import Maps from './Map';
-import { auth, products } from '../../redux';
+import { auth, products, shops } from "../../redux";
+import {connect} from "react-redux";
 
 
 class Tables extends React.Component {
@@ -57,7 +58,7 @@ class Tables extends React.Component {
 
   getItem = (e, index) => {
     e.preventDefault();
-    // REDUX HERE
+
     const item = this.props.prod[index];
     if (item.quantity < parseInt(this.state.quantities[index].quantity, 10)) {
       this.setState({ isError: true });
@@ -65,7 +66,8 @@ class Tables extends React.Component {
       setTimeout(() => this.setState({ isError: false }), 4000);
     }
     else {
-      console.log(this.props.prod[index], this.state.quantities[index].quantity);
+      const { dispatch } = this.props
+      dispatch(shops.addToCart(item))
     }
   };
 
@@ -359,6 +361,7 @@ function mapStateToProps(state) {
     const item = prod[key];
     if (item) {
       mappedProducts.push({
+        id: item.id,
         name: item.category && item.category.name,
         owner: item.seller.name,
         price: item.price,

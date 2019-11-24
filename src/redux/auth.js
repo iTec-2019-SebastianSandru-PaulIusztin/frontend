@@ -1,7 +1,7 @@
 import { takeLatest, put, call, race, take, takeEvery } from 'redux-saga/effects';
 import { createSelector } from 'reselect'
 
-import { api } from '../redux';
+import { api, shops } from '../redux';
 import { getCredentials, getToken, setCredentials, setToken, clear } from '../core/storage'
 import Geocode from "react-geocode";
 
@@ -277,6 +277,10 @@ function* getCurrentUserHanlder() {
 
 function* initalize() {
   Geocode.setApiKey('AIzaSyDpX55p7sSCdvPgNXplw835klLKJPydUT4')
+
+  const getUserUrl = api.buildURL('buyer', { id: 'shop-cart' });
+  yield put(api.create(getUserUrl));
+  yield put(shops.getCart())
 }
 
 //
