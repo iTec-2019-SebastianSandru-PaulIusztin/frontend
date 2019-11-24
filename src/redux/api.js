@@ -6,7 +6,8 @@ const API_SPEC = {
     buyer: '/buyer/:id?/',
     shops: '/stores/:id?/',
     products: '/products/:id?/',
-    sellers: '/sellers/:id?/'
+    sellers: '/sellers/:id?/',
+    payments: '/payments/:id?/'
   },
   mappings: {},
   options: {}
