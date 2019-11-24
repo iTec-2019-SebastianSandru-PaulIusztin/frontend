@@ -90,7 +90,7 @@ class Tables extends React.Component {
               className="align-items-center">
             <img
                 alt="..."
-              src={ require('../../assets/img/theme/bootstrap.jpg') }
+              src={ imgSrc }
             />
             <Media>
               <span className="mb-0 text-sm">
