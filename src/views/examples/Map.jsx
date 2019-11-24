@@ -293,7 +293,7 @@ class Maps extends React.Component {
                           <Media className="align-items-center">
                             <img
                               alt="..."
-                              src={ require('../../assets/img/theme/bootstrap.jpg') }
+                              src={ item.imgSrc }
                             />
                             <div style={ { display: 'flex', flexDirection: 'column' } }>
                               <div style={ { paddingBottom: '8px' } }>
