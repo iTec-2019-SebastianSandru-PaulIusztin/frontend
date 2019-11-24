@@ -21,23 +21,33 @@ class OtherUser extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      itemID: 0,
     };
   }
+
+
 
   componentDidMount() {
     const { dispatch } = this.props;
 
     const id = this.props.location.pathname.split('/')[this.props.location.pathname.split('/').length - 1];
-
+  console.log(id);
     if (id !== 'details') {
-      dispatch(shops.getSellerShop(id))
+      dispatch(shops.getSellerShop(id.split("=")[0]));
+      this.setState({itemID: id.split("=")[1]});
     }
     else {
     }
   }
 
-    renderGridItem = ({ name, owner, price, location, storeName }, index) => (
+  goToDetails = (sellerId, id) => {
+
+    console.log('fsadfsadf');
+    console.log(this.props.prod);
+    this.props.history.replace(`/admin/details/${sellerId}=${id}`);
+  };
+
+    renderGridItem = ({ name, owner, price, location, storeName, seller_id, id }, index) => (
       <Col key={ index } className="col-sm" style={ { padding: 24 } }>
         <Card className="shadow">
           <CardHeader className="border-0">
@@ -46,9 +56,11 @@ class OtherUser extends React.Component {
           <Media className="align-items-center">
 
             <img
-              alt="..."
-              src={ require('../../assets/img/theme/bootstrap.jpg') }
-            />
+                style={{cursor: 'pointer'}}
+                onClick={ (e) => this.goToDetails(seller_id, id) }
+                className="align-items-center"
+              src={ require('../../assets/img/theme/bootstrap.jpg') }>
+            </img>
             <div style={ { display: 'flex', flexDirection: 'column' } }>
               <div style={ { paddingBottom: '8px' } }>
                 <h3 className="mb-0">{owner}</h3>
@@ -110,35 +122,50 @@ class OtherUser extends React.Component {
       }
     };
 
-    renderItem = () => (
-      <div>
+    renderItem = () => {
+      if(this.props.shop === undefined || this.props.shop.products===undefined){
+        return (<></>)
+      }
+      console.log(this.props.shop.products[5]);
+      const itemID = (this.props.location.pathname.split('/')[this.props.location.pathname.split('/').length - 1].split("=")[1]);
+      let foundItem;
+      for(const item of this.props.shop.products){
+        if(item.id === itemID){
+          foundItem = item;
+          console.log('fdsfasfasdfas')
+          break;
+        }
+      }
+
+      console.log(foundItem);
+      return (<div>
         <Media className="align-items-center">
 
           <img
-            alt="..."
-            src={ require('../../assets/img/theme/bootstrap.jpg') }
+              alt="..."
+              src={require('../../assets/img/theme/bootstrap.jpg')}
           />
-          <div style={ { display: 'flex', flexDirection: 'column', margin: 'auto', width: '50vh' } }>
-            <div style={ { paddingBottom: '8px' } }>
+          <div style={{display: 'flex', flexDirection: 'column', margin: 'auto', width: '50vh'}}>
+            <div style={{paddingBottom: '8px'}}>
               <h1 className="mb-0">Paul Iusztin</h1>
             </div>
-            <div style={ { paddingBottom: '8px' } }>
+            <div style={{paddingBottom: '8px'}}>
               <h4 className="mb-0">100 RON</h4>
             </div>
-            <div style={ { paddingBottom: '8px' } }>
+            <div style={{paddingBottom: '8px'}}>
               <h4 className="mb-2">detaliafdetaliafdetaliafdetaliafdetaliafdetaliafdetaliafdetaliafdetaliafdetaliafdetaliafdetaliafdetaliafdetaliafdetaliafdetaliaf</h4>
             </div>
             <Input
-              placeholder="How many"
-              className="mb-5"
-              type="number"
+                placeholder="How many"
+                className="mb-5"
+                type="number"
             />
             <Button
 
-              color="danger"
-              type="button"
+                color="danger"
+                type="button"
             >
-                  Add to cart
+              Add to cart
             </Button>
 
           </div>
@@ -146,9 +173,9 @@ class OtherUser extends React.Component {
         </Media>
 
 
-      </div>
+      </div>)
 
-    )
+    }
 
     renderCard = () => (
       <Card className="bg-secondary shadow">

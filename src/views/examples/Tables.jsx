@@ -70,13 +70,17 @@ class Tables extends React.Component {
     }
   };
 
-  goToDetails = (sellerId) => {
+  goToDetails = (sellerId, id) => {
     console.log('fsadfsadf');
     console.log(this.props.prod);
-    this.props.history.replace(`/admin/details/${sellerId}`);
+    this.props.history.replace(`/admin/details/${sellerId}=${id}`);
   };
 
+<<<<<<< HEAD
   createItemInTable({ name, owner, price, location, storeName, seller_id, imgSrc }, index) {
+=======
+  createItemInTable({ name, owner, price, location, storeName, seller_id, id }, index) {
+>>>>>>> 01eb3c966e4c837ca093acb01e331bc7a28a6617
     return (
       <tr
         key={ index }
@@ -85,7 +89,7 @@ class Tables extends React.Component {
 
         <th scope="row">
           <Media
-              onClick={ (e) => this.goToDetails(seller_id) }
+              onClick={ (e) => this.goToDetails(seller_id, id ) }
               style={ { cursor: 'pointer' } }
               className="align-items-center">
             <img
@@ -101,13 +105,13 @@ class Tables extends React.Component {
         </th>
         {/** PRICE PER KG* */}
         <td>
-          <div onClick={ (e) => this.goToDetails(seller_id) }
+          <div onClick={ (e) => this.goToDetails(seller_id, id) }
                style={ { cursor: 'pointer' } }>
           {`${price}lei`}
           </div>
           </td>
         <td>
-          <Badge onClick={ (e) => this.goToDetails(seller_id) }
+          <Badge onClick={ (e) => this.goToDetails(seller_id, id ) }
                  style={ { cursor: 'pointer' } }
                  color="" className="badge-dot mr-4">
             <i className="bg-warning" />
@@ -116,7 +120,7 @@ class Tables extends React.Component {
         </td>
         <td>
           {/** NAME AND STORE * */}
-          <div onClick={ (e) => this.goToDetails(seller_id) }
+          <div onClick={ (e) => this.goToDetails(seller_id, id ) }
                style={ { cursor: 'pointer' } }>
             {' '}
             { `${owner} ${storeName}`}
@@ -254,7 +258,11 @@ class Tables extends React.Component {
     this.setState({ quantities: newQuantities });
   };
 
+<<<<<<< HEAD
   renderGridItem = ({ name, owner, price, location, storeName, seller_id, imgSrc }, index) => (
+=======
+  renderGridItem = ({ name, owner, price, location, storeName, seller_id}, index) => (
+>>>>>>> 01eb3c966e4c837ca093acb01e331bc7a28a6617
     <Col key={ index } className="col-sm" style={ { padding: 24 } }>
       <Card className="shadow">
         <CardHeader className="border-0">
@@ -369,7 +377,7 @@ function mapStateToProps(state) {
         name: item.category && item.category.name,
         owner: item.seller.name,
         price: item.price,
-        quentity: item.counter,
+        quantity: item.counter,
         location: item.seller.address.city,
         seller_id: item.seller.id,
         storeName: item.store_name,

@@ -1,9 +1,39 @@
 import React from 'react';
 
 // reactstrap components
-import { Button, Container, Row, Col } from 'reactstrap';
+import { Button, Container, Row, Col, Card, Form } from 'reactstrap';
+import CardBody from 'reactstrap/es/CardBody';
+import CardHeader from 'reactstrap/es/CardHeader';
+import CardFooter from 'reactstrap/es/CardFooter';
+import { connect } from 'react-redux';
+import {auth, shops} from "../../redux";
+import * as payments from "../../redux/payments";
 
 class UserHeader extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      payments: []
+    };
+  }
+
+  componentDidMount() {
+    console.log(this.props.payments);
+    this.setState({payments: this.props.payments});
+  }
+
+  renderHistoryItem(payment, index) {
+    return (
+      <div>
+
+        <h6 className="heading-small text-muted mb-4">
+          {`Shipment ${index} with quantity ${payment.payment_products.length} has ${payment.status} status`}
+        </h6>
+
+      </div>
+    );
+  }
+
   render() {
     return (
       <>
@@ -24,8 +54,19 @@ class UserHeader extends React.Component {
                 >
                   Edit profile
                 </Button>
+                <Card style={ { marginTop: '16px',    width: 'max-content'} } className="bg-secondary shadow">
+                  <CardHeader>
+                    <h3 className="mb-0">Shipment </h3>
+                  </CardHeader>
+                  <CardBody className="pt-0 pt-md-4">
+                    {this.props.payments !== undefined ? (this.props.payments.map((item,index)=> (
+                      this.renderHistoryItem(item, index)
+                      ))) : null}
+                  </CardBody>
+                </Card>
               </Col>
             </Row>
+
           </Container>
         </div>
       </>
@@ -33,4 +74,24 @@ class UserHeader extends React.Component {
   }
 }
 
-export default UserHeader;
+
+function mapStateToProps(state) {
+  const payment = payments.getEntities(state);
+  const mappedProducts = [];
+  if (payment) {
+    for (const key in payment) {
+      const item = payment[key]
+      if (item) {
+        mappedProducts.push({
+          ...item
+        });
+      }
+    }
+  }
+  console.log(mappedProducts);
+  return {
+    payments: mappedProducts
+  };
+}
+
+export default connect(mapStateToProps)(UserHeader);
