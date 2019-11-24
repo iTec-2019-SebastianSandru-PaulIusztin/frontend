@@ -1,9 +1,32 @@
 import React from 'react';
 
 // reactstrap components
-import { Button, Container, Row, Col } from 'reactstrap';
+import { Button, Container, Row, Col, Card, Form } from 'reactstrap';
+import CardBody from 'reactstrap/es/CardBody';
+import CardHeader from 'reactstrap/es/CardHeader';
+import CardFooter from 'reactstrap/es/CardFooter';
+import { connect } from 'react-redux';
+import {auth} from "../../redux";
 
 class UserHeader extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  renderHistoryItem({ shipMentName, status }, index) {
+    return (
+      <div>
+
+        <hr className="my-4" />
+        <h6 className="heading-small text-muted mb-4">
+          {`Shipment ${index} with name "${shipMentName}" is still ${status}`}
+        </h6>
+
+      </div>
+    );
+  }
+
   render() {
     return (
       <>
@@ -24,8 +47,22 @@ class UserHeader extends React.Component {
                 >
                   Edit profile
                 </Button>
+                <Card style={ { marginTop: '16px' } } className="bg-secondary shadow">
+                  <CardHeader>
+                    <h3 className="mb-0">Shipment </h3>
+                  </CardHeader>
+                  <CardBody className="pt-0 pt-md-4">
+                    <h4 className="heading-small text-muted mb-4">
+                      Shipment Name
+                    </h4>
+                    {[{shipMentName: 'Shipmentul 1', status: 'Pending'},{shipMentName: 'Shipmentul 2', status: 'Active'}].map((item,index)=> (
+                      this.renderHistoryItem(item, index)
+                      ))}
+                  </CardBody>
+                </Card>
               </Col>
             </Row>
+
           </Container>
         </div>
       </>
@@ -33,4 +70,11 @@ class UserHeader extends React.Component {
   }
 }
 
-export default UserHeader;
+
+function mapStateToProps(state) {
+  return {
+    user: auth.getCurrentUser(state)
+  };
+}
+
+export default connect(mapStateToProps)(UserHeader);

@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {Button, CardBody, Col, Form, FormGroup, Input, Row} from 'reactstrap';
-import Files from "react-files";
+import { Button, CardBody, Col, Form, FormGroup, Input, Row } from 'reactstrap';
+import Files from 'react-files';
 
-import { products, shops } from '../../redux'
+import { products, shops } from '../../redux';
 
 const vegetables = [
   'artichoke',
@@ -97,8 +97,8 @@ class AddProduct extends React.Component {
 
 
   createProduct = (e) => {
-    const { dispatch, shop } = this.props
-    const { quantity, category, file, price, subCategory } = this.state
+    const { dispatch, shop } = this.props;
+    const { quantity, category, file, price, subCategory } = this.state;
     const payload = {
       counter: quantity,
       product_type: 'kg',
@@ -107,10 +107,9 @@ class AddProduct extends React.Component {
       origin_type: 'agricultural',
       category: { name: category },
       subcategories: [{ name: subCategory }],
-      photos: [file]
-    }
+    };
 
-    dispatch(products.addProduct(payload))
+    dispatch(products.addProduct(payload));
   }
 
 
@@ -166,7 +165,7 @@ class AddProduct extends React.Component {
                   type="select"
                 >
                   <option>Tomatoes</option>
-                  {vegetables.map((item, index) =><option key = {index}>{item}</option> )}
+                  {vegetables.map((item, index) => <option key={ index }>{item}</option>)}
                 </Input>
               </FormGroup>
             </Col>
@@ -226,14 +225,14 @@ class AddProduct extends React.Component {
                 />
               </FormGroup>
             </Col>
-            <div style={{margin:'auto',display: 'flex',alignItems: 'center', flexDirection: 'column'}}>
-                <img
-                    style={{maxWidth: '400px', paddingTop: '20px'}}
-                    alt="..."
-                    className="rounded-circle"
-                    src={ this.state.imgSrc }
-                />
-                <Files
+            <div style={ { margin: 'auto', display: 'flex', alignItems: 'center', flexDirection: 'column' } }>
+              <img
+                style={ { maxWidth: '400px', paddingTop: '20px' } }
+                alt="..."
+                className="rounded-circle"
+                src={ this.state.imgSrc }
+              />
+              <Files
                 style={ {
                   textAlign: 'center',
                   paddingTop: '5vh',
@@ -248,17 +247,17 @@ class AddProduct extends React.Component {
                 maxFileSize={ 10000000 }
                 minFileSize={ 0 }
                 clickable
-            >
+              >
               Drop files here or click to upload
-            </Files>
+              </Files>
             </div>
 
           </Row>
         </div>
         <Button
-            color="secondary"
-            type="button"
-            onClick={(e)=> this.createProduct()}
+          color="secondary"
+          type="button"
+          onClick={ (e) => this.createProduct() }
         >
           Add Product
         </Button>
@@ -270,7 +269,7 @@ class AddProduct extends React.Component {
 function mapStateToProps(state) {
   return {
     shop: shops.getCurrentShop(state)
-  }
+  };
 }
 
 export default connect(mapStateToProps)(AddProduct);
