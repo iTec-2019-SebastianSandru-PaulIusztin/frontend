@@ -15,7 +15,7 @@ import {
 } from 'reactstrap';
 import { connect } from 'react-redux';
 import OtherUserHeader from '../../components/Headers/OtherUserHeader';
-import { auth } from '../../redux';
+import { auth, shops } from '../../redux';
 
 class OtherUser extends React.Component {
   constructor(props) {
@@ -23,7 +23,6 @@ class OtherUser extends React.Component {
     this.state = {
 
     };
-    console.log('fdsfasd');
   }
 
   componentDidMount() {
@@ -32,6 +31,7 @@ class OtherUser extends React.Component {
     const id = this.props.location.pathname.split('/')[this.props.location.pathname.split('/').length - 1];
 
     if (id !== 'details') {
+      dispatch(shops.getSellerShop(id))
     }
     else {
     }
@@ -87,21 +87,27 @@ class OtherUser extends React.Component {
     }
 
     renderGrid = () => {
-      const newList = [];
-      const stateItems = [...this.props.shop.products];
-      this.transformForGridRecursive(stateItems, true, newList);
-      let itemId = 0;
-      return (
-        <Container>
-          {this.state.isError ? this.renderError() : null}
+      const { shop } = this.props
+      if(shop) {
+        const { products } = shop
+        if(products) {
+          const newList = [];
+          const stateItems = [...products];
+          this.transformForGridRecursive(stateItems, true, newList);
+          let itemId = 0;
+          return (
+            <Container>
+              {this.state.isError ? this.renderError() : null}
 
-          {newList.map((list, firstIndex) => (
-            <Row key={ firstIndex }>
-              {list.map((item, index) => this.renderGridItem({ ...item }, itemId++))}
-            </Row>
-          ))}
-        </Container>
-      );
+              {newList.map((list, firstIndex) => (
+                <Row key={ firstIndex }>
+                  {list.map((item, index) => this.renderGridItem({ ...item }, itemId++))}
+                </Row>
+              ))}
+            </Container>
+          );
+            }
+      }
     };
 
     renderItem = () => (
@@ -183,10 +189,46 @@ class OtherUser extends React.Component {
           <Container className="mt--7" fluid>
 
             {this.renderCard()}
+            {this.renderGrid()}
           </Container>
         </>
       );
     }
 }
 
-export default connect()(OtherUser);
+function mapStateToProps(state) {
+  const apiShop = shops.getSellerCartProducts(state)
+  const mappedProducts = [];
+  let shop = {}
+
+  if(apiShop && apiShop.products) {
+    for (const key in apiShop.products) {
+      const item = apiShop.products[key]
+      if (item) {
+        mappedProducts.push({
+          id: item.id,
+          name: item.category && item.category.name,
+          owner: item.seller.name,
+          price: item.price,
+          quantity: item.counter,
+          location: item.seller.address.city,
+          seller_id: item.seller.id,
+          storeName: item.store_name,
+          lat: item.lat,
+          lng: item.lng
+        });
+      }
+    }
+
+    shop = {
+      ...apiShop,
+      products: mappedProducts
+    }
+  }
+
+  return {
+    shop
+  }
+}
+
+export default connect(mapStateToProps)(OtherUser);

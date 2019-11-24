@@ -44,6 +44,7 @@ export const verify = (code) => ({type: VERIFY, payload: { code } })
 
 export const updateCurrentUser = (payload) => ({type: UPDATE_CURRENT_USER, payload}) 
 export const updateCurrentRegisteredUser = (payload) => ({type: UPDATE_CURRENT_REGISTERED_USER, payload}) 
+export const refresh = () => ({type: REFRESH_CURRENT_USER})
 
 //
 // REDUCERS
@@ -288,6 +289,18 @@ function* getCurrentUserHanlder() {
   }
   else {
     yield put({ type: GET_CURRENT_USER_FAILED });
+  }
+
+  const shopURL = api.buildURL('buyer', { id: 'shop-cart' });
+    yield put(api.get(shopURL));
+
+  const { success1 } = yield race({
+    success1: take(api.buyer.GET_SUCCEEDED),
+    failure: take(api.buyer.GET_FAILED)
+  });
+
+  if(success1) {
+      yield put({type: shops.GET_CART_SUCCEEDED, payload: success1.payload})
   }
 }
 
