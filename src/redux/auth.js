@@ -33,6 +33,10 @@ export const UPDATE_CURRENT_USER_FAILED = '@ auth / UPDATE_CURRENT_USER_FAILED';
 
 export const REFRESH_CURRENT_USER = '@ auth / REFRESH_CURRENT_USER';
 
+export const GET_CURRENT_USER_SUCCEEDED = '@ auth / GET_CURRENT_USER_SUCCEEDED'
+export const GET_CURRENT_USER_FAILED = '@ auth / GET_CURRENT_USER_FAILED'
+
+
 export const logout = () => ({ type: LOGOUT });
 export const signup = (payload) => ({ type: SIGNUP, payload });
 export const login = (payload) => ({ type: LOGIN, payload });
@@ -78,10 +82,10 @@ export function reducer(state = initialState, action = {}) {
         ...state,
         is_signup: false
       };
-    case api.buyer.GET_SUCCEEDED:
+    case GET_CURRENT_USER_SUCCEEDED:
       const user_id = Object.keys(action.payload.data)[0]
       const user = action.payload.data[user_id]
-
+      console.log(action)
       return {
         ...state,
         user
@@ -273,6 +277,18 @@ function* updateCurrentRegisteredUserHandler({ payload }) {
 function* getCurrentUserHanlder() {
   const getUserUrl = api.buildURL('buyer', { id: 'me' });
   yield put(api.get(getUserUrl));
+
+  const { success } = yield race({
+    success: take(api.buyer.GET_SUCCEEDED),
+    failure: take(api.buyer.GET_FAILED)
+  });
+
+  if (success) {
+    yield put({ type: GET_CURRENT_USER_SUCCEEDED, payload: success.payload });
+  }
+  else {
+    yield put({ type: GET_CURRENT_USER_FAILED });
+  }
 }
 
 function* initalize() {

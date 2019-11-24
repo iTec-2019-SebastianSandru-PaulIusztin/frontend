@@ -15,7 +15,7 @@ import {
 import Header from '../../components/Headers/Header';
 import SimpleHeader from '../../components/Headers/SimpleHeader';
 
-import { shops } from '../../redux';
+import { shops, payments } from '../../redux';
 
 class Shopcart extends React.Component {
   constructor(props) {
@@ -33,7 +33,11 @@ class Shopcart extends React.Component {
   }
 
   buy = () => {
-    // REDUX HERE
+    const { dispatch, prod } = this.props
+    const payload = {
+      payment_products: prod.map((item) => item.id)
+    }
+    dispatch(payments.createPayment(payload))
   }
 
   createItemInTable({ name, owner, price, location, storeName, quantity }, index) {
