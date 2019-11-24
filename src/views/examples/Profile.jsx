@@ -25,7 +25,9 @@ class Profile extends React.Component {
     super(props);
     this.state = {
       name: '',
+      avatar: '',
       phoneNumber: '',
+      imgSrc: require('../../assets/img/theme/team-4-800x800.jpg'),
       address: {
         country: '',
         county: '',
@@ -54,7 +56,8 @@ class Profile extends React.Component {
           street: sellerUser.address.street
         }
       });
-    } else {
+    }
+    else {
       this.setState({
         phoneNumber: user.phone,
         name: user.first_name,
@@ -87,6 +90,7 @@ class Profile extends React.Component {
     this.setState({ phoneNumber: e.target.value });
   };
 
+
   updateAddressCountry = (e) => {
     this.setState({ address: { ...this.state.address, country: e.target.value } });
   };
@@ -107,7 +111,7 @@ class Profile extends React.Component {
   };
 
   onFilesChange = (files) => {
-    console.log(files);
+    this.setState({ avatar: files[0], imgSrc: files[0].preview.url });
   }
 
   onFilesError = (error, file) => {
@@ -118,7 +122,7 @@ class Profile extends React.Component {
     const { user } = this.props;
     return (
       <>
-        <UserHeader onSave={ this.onSaveClicked } userName={this.state.name}/>
+        <UserHeader onSave={ this.onSaveClicked } userName={ this.state.name } />
 
         {/* Page content */}
         <Container className="mt--7" fluid>
@@ -132,9 +136,10 @@ class Profile extends React.Component {
                         <img
                           alt="..."
                           className="rounded-circle"
-                          src={ require('../../assets/img/theme/team-4-800x800.jpg') }
+                          src={ this.state.imgSrc }
                         />
                       </a>
+
                     </div>
                   </Col>
                 </Row>
@@ -142,6 +147,7 @@ class Profile extends React.Component {
                   <div className="d-flex justify-content-between" />
                 </CardHeader>
                 <CardBody className="pt-0 pt-md-4" />
+
                 <Files
                   style={ {
                     textAlign: 'center',

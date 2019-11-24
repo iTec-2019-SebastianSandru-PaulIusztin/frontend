@@ -75,7 +75,9 @@ class Products extends React.Component {
   };
 
   setAddProductFlag = () => {
-    this.setState({isAddProduct: !this.state.isAddProduct});
+    console.log('here')
+    this.setState({ isAddProduct: !this.state.isAddProduct });
+
   };
 
   onStoreCancelClick = () => {
@@ -254,7 +256,7 @@ class Products extends React.Component {
                       <Button
                           color="primary"
                           href="#pablo"
-                          onClick={ (e) => this.setAddProductFlag }
+                          onClick={ (e) => this.setAddProductFlag() }
                           size="large"
                       >
                         + Add a new product
@@ -263,7 +265,6 @@ class Products extends React.Component {
                   </Row>
                 </CardHeader>
               <CardBody>
-                {'asfsfdasdfas'}
               {this.state.isAddProduct ? <AddProduct/> : (null)}
               </CardBody>
               </Card>

@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a76a8e1-4334-42b9-bf08-a7301c0db210" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/views/examples/AddProduct.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Headers/ShopHeader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Headers/ShopHeader.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Headers/UserHeader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Headers/UserHeader.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Navbars/AdminNavbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbars/AdminNavbar.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/examples/AddProduct.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/examples/AddProduct.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/examples/Products.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/examples/Products.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/examples/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/examples/Profile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/examples/Tables.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/examples/Tables.jsx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -26,8 +21,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/examples/Tables.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="137" column="27" selection-start-line="137" selection-start-column="27" selection-end-line="137" selection-end-column="27" />
+            <state relative-caret-position="152">
+              <caret line="376" column="8" lean-forward="true" selection-start-line="376" selection-start-column="8" selection-end-line="383" selection-end-column="17" />
               <folding>
                 <element signature="e#54#351#0" expanded="true" />
                 <element signature="e#371#424#0" expanded="true" />
@@ -36,11 +31,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/examples/Products.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="534">
-              <caret line="265" column="32" selection-start-line="265" selection-start-column="32" selection-end-line="265" selection-end-column="32" />
+            <state relative-caret-position="308">
+              <caret line="267" column="48" lean-forward="true" selection-start-line="267" selection-start-column="48" selection-end-line="267" selection-end-column="48" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -49,10 +44,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/examples/Register.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="93" selection-start-line="63" selection-start-column="1" selection-end-line="93" />
+              <folding>
+                <element signature="e#53#227#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/views/examples/AddProduct.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="448">
-              <caret line="108" selection-start-line="108" selection-end-line="108" />
+            <state relative-caret-position="262">
+              <caret line="97" column="16" lean-forward="true" selection-start-line="97" selection-start-column="16" selection-end-line="97" selection-end-column="16" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -64,7 +71,16 @@
         <entry file="file://$PROJECT_DIR$/src/redux/api.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
-              <caret line="12" column="48" lean-forward="true" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
+              <caret line="12" column="43" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Headers/SimpleHeader.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="212">
+              <caret line="31" column="66" selection-start-line="31" selection-start-column="66" selection-end-line="31" selection-end-column="66" />
             </state>
           </provider>
         </entry>
@@ -81,8 +97,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Navbars/AdminNavbar.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="192" column="44" selection-start-line="192" selection-start-column="44" selection-end-line="192" selection-end-column="44" />
+            <state relative-caret-position="272">
+              <caret line="53" column="19" lean-forward="true" selection-start-line="53" selection-start-column="19" selection-end-line="53" selection-end-column="19" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
                 <element signature="e#133#377#0" expanded="true" />
@@ -103,8 +119,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/examples/Profile.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="285" column="43" lean-forward="true" selection-start-line="178" selection-start-column="16" selection-end-line="285" selection-end-column="43" />
+            <state relative-caret-position="212">
+              <caret line="107" column="1" lean-forward="true" selection-start-line="107" selection-start-column="1" selection-end-line="113" selection-end-column="3" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
                 <element signature="e#92#221#0" expanded="true" />
@@ -124,36 +140,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>First Na</find>
-      <find>address</find>
-      <find>.split</find>
-      <find>email</find>
-      <find>&lt;input</find>
-      <find>Edit profile</find>
-      <find>UserHead</find>
-      <find>updateName</find>
-      <find>user.phone</find>
-      <find>require</find>
-      <find>Files</find>
-      <find>defaultValue</find>
-      <find>setData</find>
-      <find>phone</find>
       <find>PhoneNumber</find>
       <find>Phone</find>
       <find>First Name</find>
       <find>Last Name</find>
       <find>Edit</find>
-      <find>My Profile</find>
       <find>Hello Sebastian</find>
-      <find>Sebastian</find>
       <find>storeName</find>
       <find>storeCreation</find>
       <find>addProdu</find>
       <find>isListSelected</find>
-      <find>USER INFOMR</find>
       <find>default</find>
       <find>Add new</find>
+      <find>Search</find>
+      <find>Sebastian</find>
       <find>isAddProduct</find>
+      <find>setAddProductFlag</find>
+      <find>My Profile</find>
+      <find>USER INFOMR</find>
+      <find>Button</find>
+      <find>button</find>
+      <find>Subcategory</find>
+      <find>onFileChange</find>
+      <find>require</find>
+      <find>onSave</find>
+      <find>avatar</find>
+      <find>imgSrc</find>
+      <find>flex</find>
+      <find>Files</find>
+      <find>&lt;img</find>
+      <find>addproduc</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -201,14 +217,14 @@
         <option value="$PROJECT_DIR$/src/components/Headers/SimpleHeader.jsx" />
         <option value="$PROJECT_DIR$/src/components/Sidebar/Sidebar.jsx" />
         <option value="$PROJECT_DIR$/src/components/Navbars/AdminNavbar.jsx" />
-        <option value="$PROJECT_DIR$/src/views/examples/Profile.jsx" />
         <option value="$PROJECT_DIR$/src/components/Headers/UserHeader.jsx" />
         <option value="$PROJECT_DIR$/src/components/Headers/ShopHeader.jsx" />
         <option value="$PROJECT_DIR$/src/views/examples/Tables.jsx" />
-        <option value="$PROJECT_DIR$/src/redux/api.js" />
         <option value="$PROJECT_DIR$/src/views/addProduct.jsx" />
-        <option value="$PROJECT_DIR$/src/views/examples/AddProduct.jsx" />
         <option value="$PROJECT_DIR$/src/views/examples/Products.jsx" />
+        <option value="$PROJECT_DIR$/src/redux/api.js" />
+        <option value="$PROJECT_DIR$/src/views/examples/Profile.jsx" />
+        <option value="$PROJECT_DIR$/src/views/examples/AddProduct.jsx" />
       </list>
     </option>
   </component>
@@ -393,7 +409,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75777000" />
+    <option name="totallyTimeSpent" value="80340000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="71" y="-7" width="1472" height="878" extended-state="6" />
@@ -684,6 +700,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Headers/UserHeader.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="19" column="23" lean-forward="true" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Navbars/AdminNavbar.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="53" column="19" lean-forward="true" selection-start-line="53" selection-start-column="19" selection-end-line="53" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#133#377#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/examples/Register.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -694,42 +728,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Headers/SimpleHeader.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="31" column="66" selection-start-line="31" selection-start-column="66" selection-end-line="31" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Navbars/AdminNavbar.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="192" column="44" selection-start-line="192" selection-start-column="44" selection-end-line="192" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-            <element signature="e#133#377#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Headers/UserHeader.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="19" column="23" lean-forward="true" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Headers/ShopHeader.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="30" column="52" lean-forward="true" selection-start-line="30" selection-start-column="52" selection-end-line="30" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/examples/Tables.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="137" column="27" selection-start-line="137" selection-start-column="27" selection-end-line="137" selection-end-column="27" />
+        <state relative-caret-position="152">
+          <caret line="376" column="8" lean-forward="true" selection-start-line="376" selection-start-column="8" selection-end-line="383" selection-end-column="17" />
           <folding>
             <element signature="e#54#351#0" expanded="true" />
             <element signature="e#371#424#0" expanded="true" />
@@ -740,14 +742,28 @@
     <entry file="file://$PROJECT_DIR$/src/redux/api.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="12" column="48" lean-forward="true" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
+          <caret line="12" column="43" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Headers/SimpleHeader.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="31" column="66" selection-start-line="31" selection-start-column="66" selection-end-line="31" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Headers/ShopHeader.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="30" column="52" lean-forward="true" selection-start-line="30" selection-start-column="52" selection-end-line="30" selection-end-column="52" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/examples/Profile.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="285" column="43" lean-forward="true" selection-start-line="178" selection-start-column="16" selection-end-line="285" selection-end-column="43" />
+        <state relative-caret-position="212">
+          <caret line="107" column="1" lean-forward="true" selection-start-line="107" selection-start-column="1" selection-end-line="113" selection-end-column="3" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
             <element signature="e#92#221#0" expanded="true" />
@@ -755,20 +771,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/examples/AddProduct.jsx">
+    <entry file="file://$PROJECT_DIR$/src/views/examples/Products.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="108" selection-start-line="108" selection-end-line="108" />
+        <state relative-caret-position="308">
+          <caret line="267" column="48" lean-forward="true" selection-start-line="267" selection-start-column="48" selection-end-line="267" selection-end-column="48" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/examples/Products.jsx">
+    <entry file="file://$PROJECT_DIR$/src/views/examples/AddProduct.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="534">
-          <caret line="265" column="32" selection-start-line="265" selection-start-column="32" selection-end-line="265" selection-end-column="32" />
+        <state relative-caret-position="262">
+          <caret line="97" column="16" lean-forward="true" selection-start-line="97" selection-start-column="16" selection-end-line="97" selection-end-column="16" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
