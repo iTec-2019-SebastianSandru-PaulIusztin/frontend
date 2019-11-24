@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Geocode from "react-geocode";
 
 import { Link } from 'react-router-dom';
 // reactstrap components
@@ -19,7 +20,7 @@ import {
   Container,
   Media, Button, Modal, Alert
 } from 'reactstrap';
-import { auth } from '../../redux';
+import { auth, products } from '../../redux';
 
 class AdminNavbar extends React.Component {
   constructor(props) {
@@ -53,7 +54,7 @@ class AdminNavbar extends React.Component {
 
   search = (e) => {
     // REDUX HERE
-    if (this.state.searchInput === '') {
+    if (this.state.searchInput === '' && this.state.searchCategory === '' && this.state.searchLocation === '') {
       this.setState({ isError: true });
       setTimeout(() => {
         this.setState({ isError: false });
@@ -61,12 +62,26 @@ class AdminNavbar extends React.Component {
     }
     else {
       this.setState({ isAdvancedSearch: false });
-      console.log(this.state);
+      if(this.state.searchLocation !== '') {
+        const { dispatch } = this.props
+        Geocode.fromAddress(`${this.state.searchLocation}`).then(
+          response => {
+            const { lat, lng } = response.results[0].geometry.location;
+            dispatch(products.getProducts({latlng: `${lat}#${lng}`}))
+          },
+          error => {
+            console.error(error);
+          }
+        );
+      }
     }
   };
 
   updateSearchCategory = (e) => {
     this.setState({ searchCategory: e.target.value });
+
+    const { dispatch } = this.props
+    dispatch(products.getProducts({category: e.target.value})) 
   };
 
 
@@ -77,6 +92,9 @@ class AdminNavbar extends React.Component {
 
   updateSearchInput = (e) => {
     this.setState({ searchInput: e.target.value });
+
+    const { dispatch } = this.props
+    dispatch(products.getProducts({search: e.target.value}))
   };
 
   enterAdvancedSearch = () => {

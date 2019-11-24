@@ -37,7 +37,6 @@ export function* saga() {
 }
 
 function* addShopHandler({ payload }) {
-  console.log(payload)
   const shopURL = api.buildURL('shops');
   yield put(api.create(shopURL, payload));
 

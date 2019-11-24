@@ -72,8 +72,13 @@ class Profile extends React.Component {
   }
 
   onSaveClicked = () => {
-    console.log(this.state);
-    // dispatch here
+    const { user, dispatch } = this.props;
+    const payload = {
+      ...this.state,
+      isSeller: user.is_seller
+    }
+
+    dispatch(auth.updateCurrentRegisteredUser(payload))
   }
 
   updateName = (e) => {
