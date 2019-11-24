@@ -254,19 +254,23 @@ class Tables extends React.Component {
     this.setState({ quantities: newQuantities });
   };
 
-  renderGridItem = ({ name, owner, price, location, storeName }, index) => (
+  renderGridItem = ({ name, owner, price, location, storeName, seller_id }, index) => (
     <Col key={ index } className="col-sm" style={ { padding: 24 } }>
       <Card className="shadow">
         <CardHeader className="border-0">
           <h1 className="mb-0">{name}</h1>
         </CardHeader>
-        <Media className="align-items-center">
+        <Media style={{cursor: 'pointer'}}
+               onClick={ (e) => this.goToDetails(seller_id) }
+               className="align-items-center">
 
           <img
             alt="..."
             src={ require('../../assets/img/theme/bootstrap.jpg') }
           />
-          <div style={ { display: 'flex', flexDirection: 'column' } }>
+          <div
+              onClick={ (e) => this.goToDetails(seller_id) }
+              style={ { display: 'flex', cursor: 'pointer', flexDirection: 'column'  } }>
             <div style={ { paddingBottom: '8px' } }>
               <h3 className="mb-0">{owner}</h3>
             </div>
