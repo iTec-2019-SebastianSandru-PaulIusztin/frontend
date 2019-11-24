@@ -76,7 +76,7 @@ class Tables extends React.Component {
     this.props.history.replace(`/admin/details/${sellerId}=${id}`);
   };
 
-  createItemInTable({ name, owner, price, location, storeName, seller_id, imgSrc }, index) {
+  createItemInTable({ name, owner, price, location, storeName, seller_id, imgSrc, id }, index) {
     return (
       <tr
         key={ index }
@@ -254,7 +254,7 @@ class Tables extends React.Component {
     this.setState({ quantities: newQuantities });
   };
 
-  renderGridItem = ({ name, owner, price, location, storeName, seller_id, imgSrc }, index) => (
+  renderGridItem = ({ name, owner, price, location, storeName, seller_id, imgSrc, id }, index) => (
     <Col key={ index } className="col-sm" style={ { padding: 24 } }>
       <Card className="shadow">
         <CardHeader className="border-0">
