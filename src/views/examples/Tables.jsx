@@ -26,7 +26,6 @@ import { connect } from 'react-redux';
 import Header from '../../components/Headers/Header';
 import Maps from './Map';
 import { auth, products, shops } from "../../redux";
-import {connect} from "react-redux";
 
 
 class Tables extends React.Component {

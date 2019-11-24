@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a76a8e1-4334-42b9-bf08-a7301c0db210" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/redux/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/shops.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/shops.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/examples/Shopcart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/examples/Shopcart.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/examples/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/examples/Profile.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/examples/Tables.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/examples/Tables.jsx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -22,17 +19,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/examples/Tables.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="27" selection-start-line="27" selection-end-line="27" />
+            <state relative-caret-position="86">
+              <caret line="28" selection-start-line="28" selection-end-line="28" />
+              <folding>
+                <element signature="e#371#409#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/views/examples/OtherUser.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
+            <state relative-caret-position="320">
+              <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -43,8 +43,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/examples/Shopcart.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1861">
-              <caret line="34" column="15" lean-forward="true" selection-start-line="34" selection-start-column="15" selection-end-line="34" selection-end-column="15" />
+            <state relative-caret-position="279">
+              <caret line="87" column="3" lean-forward="true" selection-start-line="87" selection-start-column="3" selection-end-line="87" selection-end-column="3" />
               <folding>
                 <element signature="e#1#27#0" expanded="true" />
               </folding>
@@ -64,23 +64,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/examples/Profile.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="179" column="19" lean-forward="true" selection-start-line="179" selection-start-column="19" selection-end-line="186" selection-end-column="31" />
+            <state relative-caret-position="417">
+              <caret line="401" column="21" selection-start-line="401" selection-start-column="21" selection-end-line="401" selection-end-column="21" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
                 <element signature="e#92#221#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/redux/products.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="41" column="51" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="51" />
-              <folding>
-                <element signature="e#0#90#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -98,7 +86,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/redux/api.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="300">
@@ -110,9 +98,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/redux/auth.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="448">
+              <caret line="300" column="1" lean-forward="true" selection-start-line="300" selection-start-column="1" selection-end-line="300" selection-end-column="1" />
               <folding>
                 <element signature="e#0#82#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/screens/auth/LoginScreen.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="148">
+              <caret line="29" column="10" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -168,8 +169,8 @@
       <find>items</find>
       <find>create</find>
       <find>sellerId</find>
-      <find>&lt;button</find>
       <find>buy</find>
+      <find>&lt;button</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -216,7 +217,6 @@
         <option value="$PROJECT_DIR$/src/components/Headers/UserHeader.jsx" />
         <option value="$PROJECT_DIR$/src/components/Headers/ShopHeader.jsx" />
         <option value="$PROJECT_DIR$/src/views/addProduct.jsx" />
-        <option value="$PROJECT_DIR$/src/views/examples/Profile.jsx" />
         <option value="$PROJECT_DIR$/src/views/examples/AddProduct.jsx" />
         <option value="$PROJECT_DIR$/src/routes.js" />
         <option value="$PROJECT_DIR$/src/components/Sidebar/Sidebar.jsx" />
@@ -224,9 +224,10 @@
         <option value="$PROJECT_DIR$/src/views/examples/Products.jsx" />
         <option value="$PROJECT_DIR$/src/views/examples/OtherUser.jsx" />
         <option value="$PROJECT_DIR$/src/components/Headers/SimpleHeader.jsx" />
+        <option value="$PROJECT_DIR$/src/redux/api.js" />
         <option value="$PROJECT_DIR$/src/views/examples/Shopcart.jsx" />
         <option value="$PROJECT_DIR$/src/views/examples/Tables.jsx" />
-        <option value="$PROJECT_DIR$/src/redux/api.js" />
+        <option value="$PROJECT_DIR$/src/views/examples/Profile.jsx" />
       </list>
     </option>
   </component>
@@ -411,7 +412,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87557000" />
+    <option name="totallyTimeSpent" value="89459000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="71" y="-7" width="1472" height="878" extended-state="6" />
@@ -574,16 +575,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/screens/auth/LoginScreen.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="29" column="10" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Navbars/AuthNavbar.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-900" />
@@ -722,41 +713,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/redux/auth.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#82#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/redux/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <folding>
             <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/examples/OtherUser.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/examples/Profile.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="179" column="19" lean-forward="true" selection-start-line="179" selection-start-column="19" selection-end-line="186" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-            <element signature="e#92#221#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -768,10 +729,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/redux/api.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/examples/Shopcart.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1861">
-          <caret line="34" column="15" lean-forward="true" selection-start-line="34" selection-start-column="15" selection-end-line="34" selection-end-column="15" />
+        <state relative-caret-position="279">
+          <caret line="87" column="3" lean-forward="true" selection-start-line="87" selection-start-column="3" selection-end-line="87" selection-end-column="3" />
           <folding>
             <element signature="e#1#27#0" expanded="true" />
           </folding>
@@ -780,15 +748,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/examples/Tables.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
+        <state relative-caret-position="86">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="e#371#409#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/redux/api.js">
+    <entry file="file://$PROJECT_DIR$/src/views/examples/Profile.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="417">
+          <caret line="401" column="21" selection-start-line="401" selection-start-column="21" selection-end-line="401" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#92#221#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/redux/auth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="300" column="1" lean-forward="true" selection-start-line="300" selection-start-column="1" selection-end-line="300" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#82#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/screens/auth/LoginScreen.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="29" column="10" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/examples/OtherUser.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
