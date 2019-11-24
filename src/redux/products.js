@@ -39,6 +39,21 @@ export function reducer(state = initialState, action = {}) {
 
 export function* saga() {
     yield takeLatest([auth.ACCESS_GRANTED, GET_PRODUCTS], getProductsHandler);
+    yield takeLatest(ADD_PRODUCT, addProductHandler);
+}
+
+function* addProductHandler({ payload }) {
+  const productURL = api.buildURL('products');
+  yield put(api.create(productURL, payload));
+
+  const { success } = yield race({
+    success: take(api.products.CREATE_SUCCEEDED),
+    failure: take(api.products.CREATE_FAILED)
+  });
+
+  if (success) {
+    yield getProductsHandler();
+  }
 }
 
 function* getProductsHandler() {

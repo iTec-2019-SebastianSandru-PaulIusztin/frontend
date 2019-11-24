@@ -20,106 +20,106 @@ class Shopcart extends React.Component {
     // name, owner, price, location, storeName
     this.state = {
       items: [
-        {
-          name: 'nume1-produs',
-          owner: 'numeOnwer',
-          price: 121,
-          quantity: 12,
-          location: '341fsafsdf',
-          storeName: 'fadsfasdfasdfSTORE',
-          lat: 45.737465,
-          lng: 21.192758
-        },
-        {
-          name: 'nume2-produs',
-          owner: 'numeOnwer',
-          price: 121,
-          quantity: 1,
-          location: '341fsafsdf',
-          storeName: 'fadsfasdfasdfSTORE',
-          lat: 45.747066,
-          lng: 21.269838
-        },
-        {
-          name: 'nume3-produs',
-          owner: 'numeOnwer',
-          price: 121,
-          quantity: 2,
-          location: '341fsafsdf',
-          storeName: 'fadsfasdfasdfSTORE',
-          lat: 45.761322,
-          lng: 21.279116
-        },
-        {
-          name: 'nume4-produs',
-          owner: 'numeOnwer',
-          price: 121,
-          quantity: 3,
-          location: '341fsafsdf',
-          storeName: 'fadsfasdfasdfSTORE',
-          lat: 45.765037,
-          lng: 21.231543
-        },
-        {
-          name: 'nume5-produs',
-          owner: 'numeOnwer',
-          price: 121,
-          quantity: 5,
-          location: '341fsafsdf',
-          storeName: 'fadsfasdfasdfSTORE',
-          lat: 45.765037,
-          lng: 21.231543
-        },
-        {
-          name: 'nume6-produs',
-          owner: 'numeOnwer',
-          price: 121,
-          quantity: 9,
-          location: '341fsafsdf',
-          storeName: 'fadsfasdfasdfSTORE',
-          lat: 45.765037,
-          lng: 21.231543
-        },
-        {
-          name: 'nume7-produs',
-          owner: 'numeOnwer',
-          price: 121,
-          quantity: 1,
-          location: '341fsafsdf',
-          storeName: 'fadsfasdfasdfSTORE',
-          lat: 45.765037,
-          lng: 21.231543
-        },
-        {
-          name: 'nume8-produs',
-          owner: 'numeOnwer',
-          price: 121,
-          quantity: 1,
-          location: '341fsafsdf',
-          storeName: 'fadsfasdfasdfSTORE',
-          lat: 45.765037,
-          lng: 21.231543
-        },
-        {
-          name: 'nume9-produs',
-          owner: 'numeOnwer',
-          price: 121,
-          quantity: 1,
-          location: '341fsafsdf',
-          storeName: 'fadsfasdfasdfSTORE',
-          lat: 45.765037,
-          lng: 21.231543
-        },
-        {
-          name: 'nume10-produs',
-          owner: 'numeOnwer',
-          price: 121,
-          quantity: 1,
-          location: '341fsafsdf',
-          storeName: 'fadsfasdfasdfSTORE',
-          lat: 45.762037,
-          lng: 21.231513
-        }
+        // {
+        //   name: 'nume1-produs',
+        //   owner: 'numeOnwer',
+        //   price: 121,
+        //   quantity: 12,
+        //   location: '341fsafsdf',
+        //   storeName: 'fadsfasdfasdfSTORE',
+        //   lat: 45.737465,
+        //   lng: 21.192758
+        // },
+        // {
+        //   name: 'nume2-produs',
+        //   owner: 'numeOnwer',
+        //   price: 121,
+        //   quantity: 1,
+        //   location: '341fsafsdf',
+        //   storeName: 'fadsfasdfasdfSTORE',
+        //   lat: 45.747066,
+        //   lng: 21.269838
+        // },
+        // {
+        //   name: 'nume3-produs',
+        //   owner: 'numeOnwer',
+        //   price: 121,
+        //   quantity: 2,
+        //   location: '341fsafsdf',
+        //   storeName: 'fadsfasdfasdfSTORE',
+        //   lat: 45.761322,
+        //   lng: 21.279116
+        // },
+        // {
+        //   name: 'nume4-produs',
+        //   owner: 'numeOnwer',
+        //   price: 121,
+        //   quantity: 3,
+        //   location: '341fsafsdf',
+        //   storeName: 'fadsfasdfasdfSTORE',
+        //   lat: 45.765037,
+        //   lng: 21.231543
+        // },
+        // {
+        //   name: 'nume5-produs',
+        //   owner: 'numeOnwer',
+        //   price: 121,
+        //   quantity: 5,
+        //   location: '341fsafsdf',
+        //   storeName: 'fadsfasdfasdfSTORE',
+        //   lat: 45.765037,
+        //   lng: 21.231543
+        // },
+        // {
+        //   name: 'nume6-produs',
+        //   owner: 'numeOnwer',
+        //   price: 121,
+        //   quantity: 9,
+        //   location: '341fsafsdf',
+        //   storeName: 'fadsfasdfasdfSTORE',
+        //   lat: 45.765037,
+        //   lng: 21.231543
+        // },
+        // {
+        //   name: 'nume7-produs',
+        //   owner: 'numeOnwer',
+        //   price: 121,
+        //   quantity: 1,
+        //   location: '341fsafsdf',
+        //   storeName: 'fadsfasdfasdfSTORE',
+        //   lat: 45.765037,
+        //   lng: 21.231543
+        // },
+        // {
+        //   name: 'nume8-produs',
+        //   owner: 'numeOnwer',
+        //   price: 121,
+        //   quantity: 1,
+        //   location: '341fsafsdf',
+        //   storeName: 'fadsfasdfasdfSTORE',
+        //   lat: 45.765037,
+        //   lng: 21.231543
+        // },
+        // {
+        //   name: 'nume9-produs',
+        //   owner: 'numeOnwer',
+        //   price: 121,
+        //   quantity: 1,
+        //   location: '341fsafsdf',
+        //   storeName: 'fadsfasdfasdfSTORE',
+        //   lat: 45.765037,
+        //   lng: 21.231543
+        // },
+        // {
+        //   name: 'nume10-produs',
+        //   owner: 'numeOnwer',
+        //   price: 121,
+        //   quantity: 1,
+        //   location: '341fsafsdf',
+        //   storeName: 'fadsfasdfasdfSTORE',
+        //   lat: 45.762037,
+        //   lng: 21.231513
+        // }
       ],
         totalPrice: 0
     };
