@@ -47,7 +47,7 @@ class OtherUser extends React.Component {
     this.props.history.replace(`/admin/details/${sellerId}=${id}`);
   };
 
-    renderGridItem = ({ name, owner, price, location, storeName, seller_id, id }, index) => (
+    renderGridItem = ({ name, owner, price, location, storeName, seller_id, id, imgSrc }, index) => (
       <Col key={ index } className="col-sm" style={ { padding: 24 } }>
         <Card className="shadow">
           <CardHeader className="border-0">
@@ -59,7 +59,7 @@ class OtherUser extends React.Component {
                 style={{cursor: 'pointer'}}
                 onClick={ (e) => this.goToDetails(seller_id, id) }
                 className="align-items-center"
-              src={ require('../../assets/img/theme/bootstrap.jpg') }>
+              src={ imgSrc }>
             </img>
             <div style={ { display: 'flex', flexDirection: 'column' } }>
               <div style={ { paddingBottom: '8px' } }>
@@ -242,7 +242,8 @@ function mapStateToProps(state) {
           seller_id: item.seller.id,
           storeName: item.store_name,
           lat: item.lat,
-          lng: item.lng
+          lng: item.lng,
+          imgSrc: item.photos[0] ? item.photos[0].photo :require('../../assets/img/theme/bootstrap.jpg')
         });
       }
     }
