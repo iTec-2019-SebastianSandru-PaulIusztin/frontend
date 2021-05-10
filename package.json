@@ -11,7 +11,7 @@
     "eslint-plugin-prettier": "^3.1.1",
     "lint-staged": "^9.4.3",
     "localforage": "^1.5.2",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.21",
     "md5": "^2.2.1",
     "node-sass": "^4.13.0",
     "normalizr": "^3.2.4",
